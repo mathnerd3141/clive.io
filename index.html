@@ -6,46 +6,88 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 	<meta name="description" content="Clive Chan: event organizer, programmer, researcher, high school student.">
+	<meta name="copyright" content="Clive Chan, 2015">
 	
 	<title>Clive Chan</title>
 	
 	<link href="normalize.css" rel="stylesheet">
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="style.css" rel="stylesheet">
 </head>
 <body>
-	<style>
-		#main{
-			width: 500px;
-			margin: 10% auto 0 auto;
-			font-family: "Lucida Grande", Geneva, Tahoma, Verdana, Helvetica, sans-serif;
-		}
-		h1{
-			font-family: "Segoe UI", "Open Sans", "Lucida Grande", Geneva, Tahoma, Verdana, Helvetica, sans-serif;
-			margin-bottom: 0;
-		}
-		p{
-			text-indent: -20px;
-			margin-left: 20px;
-		}
-	</style>
+	<!--can I have that moving triangular background thing-->
+	<header>
+		<!--that fancy image here-->
+		<aside>
+			<div><i class="fa fa-envelope"></i>: <a href="mailto:cc@clive.io">cc@clive.io</a></div>
+			<div><i class="fa fa-github"></i>: <a href="https://github.com/mathnerd3141">https://github.com/mathnerd3141</a></div>
+		</aside>
+		<nav>
+			<a class="home hbg internal plain" href="#home">
+				<h1>Clive Chan</h1>
+				<h2>[UNDER CONSTRUCTION.]</h2>
+			</a><!--eventorg machlearn webdev highschool-->
+			<a class="eo hbg internal plain" href="#eo">Event Organization</a>
+			<a class="ml hbg internal plain" href="#ml">Machine Learning Research</a>
+			<a class="wd hbg internal plain" href="#wd">Web Design Services</a>
+		</nav>
+	</header>
 	
-	<div id="main">
-		<h1>Clive Chan</h1>
-		<div><i class="fa fa-envelope"></i>: <a href="mailto:cc@clive.io">cc@clive.io</a></div>
-		<div><i class="fa fa-github"></i>: <a href="https://github.com/mathnerd3141">https://github.com/mathnerd3141</a></div>
-		<br>
-		<p>Hello. Welcome to my website! This is one of those strange and wonderful things designed entirely for self-promotion, and it's not even done yet. Touch&eacute;.</p>
-		<p>Among other things, I am a serial web designer and/or event organizer (<a href="http://lexscibowl.org">LexSciBowl</a>, <a href="http://lhsmath.org/LMT">Lexington Math Tournament</a>, <a href="http://calcbee.org">CalcBee</a>), avid hobby programmer/scientist/mathematician, and hopefully-above-average high school student.</p>
-	</div>
+	<section id="eo" class="eo">
+		eo
+	</section>
 	
+	<section id="ml" class="ml">
+		ml
+	</section>
+	
+	<section id="wd" class="wd">
+		wd
+	</section>
+	
+	<footer>Made by Clive in 2015 with html5, css3, js/jquery, and plenty of &lt;3.</footer>
+	
+	<script src="jquery-1.11.1.min.js"></script>
 	<script>
-	  (function(c,l,i,v,e,I,O){c['GoogleAnalyticsObject']=e;c[e]=c[e]||function(){
-	  (c[e].q=c[e].q||[]).push(arguments)},c[e].l=1*new Date();I=l.createElement(i),
-	  O=l.getElementsByTagName(i)[0];I.async=1;I.src=v;O.parentNode.insertBefore(I,O)
-	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-	  
-	  ga('create', 'UA-62605323-2', 'auto');
-	  ga('send', 'pageview');
+		window.onload=function(){
+			loadSection(window.location.hash);
+			$(".internal").click(function(){
+				loadSection(this.hash);
+			});
+		}
+		
+		function loadSection(hash){
+			switch(hash){
+				case "#eo":case "#ml":case "#wd":
+					$("section").hide();
+					$(hash).show();
+					minimize();
+					break;
+				case "#home":
+					$("section").hide();
+					maximize();
+					break;
+				default:
+					console.warn("loadSection link incorrect");
+			}
+		}
+		function minimize(){
+			$("header").addClass("minimized");
+		}
+		function maximize(){
+			$("header").removeClass("minimized");
+			
+		}
 	</script>
+	
+	<!--script>
+		(function(c,l,i,v,e,I,O){c['GoogleAnalyticsObject']=e;c[e]=c[e]||function(){
+		(c[e].q=c[e].q||[]).push(arguments)},c[e].l=1*new Date();I=l.createElement(i),
+		O=l.getElementsByTagName(i)[0];I.async=1;I.src=v;O.parentNode.insertBefore(I,O)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-62605323-2', 'auto');
+		ga('send', 'pageview');
+	</script-->
 </body>
 </html>
