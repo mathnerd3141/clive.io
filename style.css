@@ -1,20 +1,22 @@
-* {
-  transition: all 0.2s; }
-
+/*
+main.scss
+Main Stylesheet
+Written by Clive Chan for http://clive.io
+*/
 body {
   font-family: "Lucida Grande", Geneva, Tahoma, Verdana, Helvetica, sans-serif; }
 
-p {
-  text-indent: 20px;
-  color: gray;
-  font-family: Candara, Calibri;
-  text-align: justify; }
-
-a.plain {
+a.plain, header a.nav, a.hoverline {
   color: inherit;
   text-decoration: none; }
 
-.hbg, header.minimized a.home {
+a.plain:hover, header a.nav:hover {
+  text-decoration: none; }
+
+a.hoverline:hover {
+  text-decoration: underline; }
+
+.hbg {
   -moz-transition: background-color 0.3s;
   -o-transition: background-color 0.3s;
   -ms-transition: background-color 0.3s;
@@ -24,104 +26,113 @@ a.plain {
 .home {
   background-color: #fff; }
 
-.home.hbg:hover, header.minimized a.home:hover {
+.home.hbg:hover {
   background-color: #ddd; }
 
-.eo {
+.ec {
   background-color: #fcc; }
 
-.eo.hbg:hover, header.minimized a.eo.home:hover {
+.ec.hbg:hover {
   background-color: #f77; }
 
 .ml {
   background-color: #bfb; }
 
 /*Note that percieved brightness for green is always brighter*/
-.ml.hbg:hover, header.minimized a.ml.home:hover {
+.ml.hbg:hover {
   background-color: #66e466; }
 
 .wd {
   background-color: #ccf; }
 
-.wd.hbg:hover, header.minimized a.wd.home:hover {
+.wd.hbg:hover {
   background-color: #88f; }
 
+canvas#delaunay-bg {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1000; }
+
 header {
-  padding-top: 3em;
-  padding-bottom: 2em;
+  margin-top: 7em;
+  margin-bottom: 10em;
   background-color: white;
   position: absolute;
   left: 50%;
   z-index: 1000;
-  margin-left: -10em;
-  width: 20em; }
-
-h1, h2 {
-  font-size: 3em;
+  margin-left: -12.5em;
+  width: 25em;
   font-family: Candara, Calibri;
-  margin: 0; }
-
-h1 {
-  text-align: center; }
-
-a.nav {
-  font-family: Candara, Calibri;
-  display: block;
-  text-align: center;
-  padding: 1em;
-  font-size: 1.3em;
-  font-variant: small-caps;
-  font-weight: bold; }
-
-a.contact {
-  display: block;
-  text-align: center;
-  font-variant: small-caps;
-  font-weight: bold; }
-
-a.home {
-  display: none; }
+  transition: all 0.5s; }
+  header h1, header h2 {
+    font-size: 3em;
+    margin: 0; }
+  header h1 {
+    text-align: center; }
+  header a.nav {
+    display: block;
+    text-align: center;
+    padding: 1em;
+    font-size: 1.3em;
+    font-variant: small-caps;
+    font-weight: bold; }
+  header a.contact {
+    font-size: 1.1em;
+    display: block;
+    text-align: center;
+    font-variant: small-caps;
+    font-weight: bold;
+    margin-top: 0.2em;
+    color: blue;
+    text-decoration: none; }
+    header a.contact:visited {
+      color: blue; }
+    header a.contact u {
+      text-decoration: underline; }
+  header a.home {
+    display: none; }
+  header p {
+    text-indent: 20px;
+    color: #777;
+    font-family: Candara, Calibri;
+    text-align: justify;
+    font-size: 1.2em;
+    line-height: 1.5em; }
 
 header.minimized {
+  margin: 0;
   padding: 0;
-  font-size: 2em;
   width: 700px;
   display: table;
-  height: 1em;
-  margin-left: -350px; }
+  height: 2em;
+  margin-left: -350px;
+  font-size: 1em;
+  background-color: transparent; }
   @media (max-width: 800px) {
     header.minimized {
-      font-size: 1.3em;
+      font-size: 0.6em;
       width: 500px;
       margin-left: -250px; } }
-
-@media (max-width: 550px) {
+  header.minimized > * {
+    display: none !important; }
   header.minimized nav {
-    display: table-row-group; }
-
-  header.minimized nav a {
-    display: table-row; } }
-header.minimized nav {
-  display: table-row;
-  width: auto;
-  height: 1em;
-  font-size: 1em;
-  margin: 0; }
-
-header.minimized > * {
-  display: none; }
-
-header.minimized nav a.nav {
-  display: table-cell;
-  vertical-align: middle;
-  /*Literally the only intentionally correct vertical-align middle usage ever.*/
-  font-size: 0.5em;
-  height: 2em;
-  line-height: 2em;
-  padding: 0 1em; }
-
-header.minimized h1 {
-  font-size: 1em; }
+    font-size: 0.8em;
+    display: table-row !important;
+    height: 100%;
+    width: auto;
+    margin: 0; }
+  header.minimized a.nav {
+    display: table-cell !important;
+    vertical-align: middle;
+    /*Literally the only intentionally correct vertical-align middle usage ever.*/
+    height: 100%;
+    line-height: 2em;
+    padding: 0 1em; }
 
 section {
   position: absolute;
@@ -130,19 +141,24 @@ section {
   right: 0;
   bottom: 0;
   display: none;
-  padding-top: 3em; }
+  padding: 3em; }
 
 footer {
+  font-family: Candara, Calibri;
   position: fixed;
   bottom: 0px;
+  z-index: 2000;
   left: 50%;
   width: 50em;
+  height: 1.3em;
   margin-left: -25em;
   text-align: center;
   background-color: black;
   color: white;
   border-radius: 3px 3px 0 0;
   font-size: 0.7em;
-  opacity: 0.2; }
+  opacity: 0.4; }
+  footer a {
+    color: white; }
 
 /*# sourceMappingURL=style.css.map */

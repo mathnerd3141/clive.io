@@ -1,17 +1,21 @@
-*{transition:all 0.2s;}
+/*
+main.scss
+Main Stylesheet
+Written by Clive Chan for http://clive.io
+*/
 
 body{
 	font-family: "Lucida Grande", Geneva, Tahoma, Verdana, Helvetica, sans-serif;
 }
-p{
-	text-indent: 20px;
-	color: gray;
-	font-family: Candara, Calibri;
-	text-align: justify;
-}
-a.plain{
+a.plain, a.hoverline{
 	color:inherit;
 	text-decoration:none;
+}
+a.plain:hover{
+	text-decoration:none;
+}
+a.hoverline:hover{
+	text-decoration:underline;
 }
 
 
@@ -24,90 +28,104 @@ a.plain{
 }
 .home{background-color:#fff;}
 .home.hbg:hover{background-color:#ddd;}
-.eo{background-color:#fcc;}
-.eo.hbg:hover{background-color:#f77;}
+.ec{background-color:#fcc;}
+.ec.hbg:hover{background-color:#f77;}
 .ml{background-color:#bfb;} /*Note that percieved brightness for green is always brighter*/
 .ml.hbg:hover{background-color:#66e466;}
 .wd{background-color:#ccf;}
 .wd.hbg:hover{background-color:#88f;}
 
 
+canvas#delaunay-bg{
+	position:fixed;
+	height:100%;
+	width:100%;
+	top:0;left:0;right:0;bottom:0;
+	z-index:-1000;
+}
+
+
 header{
-	padding-top: 3em;
-	padding-bottom: 2em;
+	margin-top: 7em;
+	margin-bottom: 10em;
 	background-color:white;
 	position:absolute; //not fixed so can scroll
 	left:50%;
 	z-index:1000;
-	margin-left:-10em;
-	width:20em;
+	margin-left:-12.5em;
+	width: 25em;
 	font-family: Candara, Calibri;
+	transition:all 0.5s;
 	h1, h2{
 		font-size: 3em;
 		margin: 0;
 	}
 	h1{
-		text-align:center;
+		text-align: center;
 	}
 	a.nav{
-		display:block;
-		text-align:center;
-		padding:1em;
-		font-size:1.3em;
-		font-variant:small-caps;
-		font-weight:bold;
+		@extend a.plain;
+		display: block;
+		text-align: center;
+		padding: 1em;
+		font-size: 1.3em;
+		font-variant: small-caps;
+		font-weight: bold;
 	}
 	a.contact{
-		display:block;
-		text-align:center;
-		font-variant:small-caps;
-		font-weight:bold;
+		font-size: 1.1em;
+		display: block;
+		text-align: center;
+		font-variant: small-caps;
+		font-weight: bold;
+		margin-top: 0.2em;
+		color: blue;
+		&:visited{color: blue;}
+		text-decoration:none;
+		u{text-decoration:underline;}
 	}
 	a.home{display:none;}
+	p{
+		text-indent: 20px;
+		color: #777;
+		font-family: Candara, Calibri;
+		text-align: justify;
+		font-size: 1.2em;
+		line-height:1.5em;
+	}
 }
 header.minimized{
+	margin:0;
 	padding:0;
-	font-size:2em;
 	width:700px;
 	display:table;
-	height:1em;
+	height:2em;
 	margin-left:-350px;
+	font-size: 1em;
+	background-color:transparent;
 	
 	@media(max-width:800px){
-		font-size:1.3em;
+		font-size:0.6em;
 		width:500px;
 		margin-left:-250px;
 	}
-	nav{
-		display:table-row;
-		width:auto;
-		height:1em;
-		font-size:1em;
-		margin:0;
-		@media(max-width:550px){
-			display:table-row-group;
-			a{
-				display:table-row;
-			}
-		}
-	}
 	&>*{ //everything except nav needs to be hidden
-		display:none;
+		display:none !important;
 	}
-	nav a.nav{
-		display:table-cell;
+	nav{
+		font-size: 0.8em;
+		display:table-row !important;
+		height: 100%;
+		width:auto;
+		margin:0;
+	}
+	a.nav{
+		display:table-cell !important;
 		vertical-align: middle; /*Literally the only intentionally correct vertical-align middle usage ever.*/
-		font-size:0.5em;
-		height:2em;
+		height: 100%;
 		line-height:2em;
 		padding:0 1em;
 	}
-	h1{
-		font-size: 1em;
-	}
-	a.home{
-		@extend .hbg;
-	}//add: no hover bgcolor-change when on that page
 }
 
 section{
@@ -117,19 +135,23 @@ section{
 	right:0;
 	bottom:0;
 	display:none;
-	padding-top: 3em;
+	padding: 3em;
 }
 
 footer{
+	font-family: Candara, Calibri;
 	position:fixed;
 	bottom:0px;
+	z-index: 2000;
 	left:50%;
 	width:50em;
+	height:1.3em;
 	margin-left:-25em;
 	text-align:center;
 	background-color:black;
 	color:white;
 	border-radius: 3px 3px 0 0;
 	font-size: 0.7em;
-	opacity:0.2;
+	opacity:0.4;
+	a{color:white;}
 }

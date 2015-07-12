@@ -15,30 +15,37 @@
 	<link href="style.css" rel="stylesheet">
 </head>
 <body>
-	<!--can I have that moving triangular background thing-->
+	<canvas id="delaunay-bg"></canvas>
+	<!--slow moving delaunay on canvas - DO IT YOURSELF with guides.
+	FOR THE OTHER PAGES. Do a delaunay with bg IMAGES on the triangles - have like three different images that shift around :D -->
 	<header>
-		<!--that fancy image here-->
-		<a class="internal plain" href="#home">
-			<h1>Clive Chan</h1>
-		</a>
-		<a class="contact" href="mailto:cc@clive.io"><i class="fa fa-envelope"></i> cc@clive.io</a>
-		<a class="contact" href="https://github.com/cchan"><i class="fa fa-github"></i> https://github.com/cchan</a>
+		<!--that fancy triangulated face image here-->
+		<a class="internal plain" href="#home"><h1>Clive Chan</h1><center><b><font color="red">[under construction!]</font></b></center></a>
+		<a class="contact" href="mailto:cc@clive.io"><i class="fa fa-envelope"></i> <u>cc@clive.io</u></a>
+		<a class="contact" href="https://github.com/cchan"><i class="fa fa-github"></i> <u>https://github.com/cchan</u></a>
 		<p>
-		Welcome! I am a high school student at Lexington High School, MA.
-		I organize large community events, explore artificial intelligence 
-		as a hobby and career goal, and design websites for myself and 
-		as volunteer and hired work for others.
+			Hello! I am a senior year student at Lexington High School in Massachusetts.
+			I am an <a class="internal hoverline" href="#ec" style="color:#f77;font-weight:bold;">event coordinator</a> for several large community events, 
+			explore <a class="internal hoverline" href="#ml" style="color:#66e466;font-weight:bold;">machine learning</a> research as a hobby and potential career, 
+			and serve as <a class="internal hoverline" href="#wd" style="color:#88f;font-weight:bold;">web designer</a> for many local and school organizations.
+		</p>
+		<p>
+			Besides that, I [about me personally - other-accomplishments personality goals inspirations]
+		</p>
+		<p>
+			[resume]
 		</p>
 		<nav>
-			<a class="nav home hbg internal plain" href="#home">Clive Chan</a>
-			<a class="nav eo hbg internal plain" href="#eo">Event Coordinator</a>
-			<a class="nav ml hbg internal plain" href="#ml">Machine Learning Researcher</a>
-			<a class="nav wd hbg internal plain" href="#wd">Web Designer</a>
-			<!--resume/awards/accomplishments?-->
+			<a class="nav home hbg internal" href="#home">Clive Chan</a>
+			<a class="nav ec hbg internal" href="#ec">Event Coordinator</a>
+			<a class="nav ml hbg internal" href="#ml">Machine Learning</a>
+			<a class="nav wd hbg internal" href="#wd">Web Designer</a>
+			<!--resume/awards/accomplishments-->
+			<!--blog?-->
 		</nav>
 	</header>
 	
-	<section id="eo" class="eo">
+	<section id="ec" class="ec">
 		<h2>Event Coordinator</h2>
 		<a href="http://lexscibowl.org">Lexington Science Bowl</a>
 		<a href="http://lexhack.org">LexHack</a>
@@ -46,7 +53,7 @@
 	</section>
 	
 	<section id="ml" class="ml">
-		<h2>Machine Learning Researcher</h2>
+		<h2>Machine Learning</h2>
 		https://github.com/cchan/Scifair2015 //predator-prey coevolution
 		https://github.com/cchan/imgnet //head ct thing
 	</section>
@@ -58,9 +65,17 @@
 		<a href="http://holhs.org">Humans of LHS</a>
 	</section>
 	
-	<footer>Handcrafted by Clive in HTML5, CSS3, and JS/JQuery. Backed with GitHub Pages and plenty of &lt;3, 2015.</footer>
+	<footer>
+	Handcrafted by Clive in <a href="https://validator.w3.org/check?uri=clive.io">HTML5</a>, 
+		<a href="https://jigsaw.w3.org/css-validator/validator?uri=clive.io">CSS3</a>, 
+		and JS/<a href="https://jquery.com/">JQuery</a>. 
+	Backed with <a href="https://pages.github.com/">GitHub Pages</a> 
+		and plenty of &lt;3, 2015.
+	</footer>
+	<!--W3C Certified :)-->
 	
 	<script src="jquery-1.11.1.min.js"></script>
+	<script src="delaunay.js"></script>
 	<script> //when press back-button, doesn't change back.
 		window.onload=function(){
 			loadSection(window.location.hash);
@@ -71,7 +86,7 @@
 		
 		function loadSection(hash){
 			switch(hash){
-				case "#eo":case "#ml":case "#wd":
+				case "#ec":case "#ml":case "#wd":
 					$("section").hide();
 					$(hash).show();
 					$("header").addClass("minimized");
@@ -86,7 +101,7 @@
 		}
 	</script>
 	
-	<!--script>
+	<script>
 		(function(c,l,i,v,e,I,O){c['GoogleAnalyticsObject']=e;c[e]=c[e]||function(){
 		(c[e].q=c[e].q||[]).push(arguments)},c[e].l=1*new Date();I=l.createElement(i),
 		O=l.getElementsByTagName(i)[0];I.async=1;I.src=v;O.parentNode.insertBefore(I,O)
@@ -94,6 +109,6 @@
 
 		ga('create', 'UA-62605323-2', 'auto');
 		ga('send', 'pageview');
-	</script-->
+	</script>
 </body>
 </html>
