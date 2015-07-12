@@ -5,7 +5,7 @@
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
-	<meta name="description" content="Clive Chan: event organizer, programmer, researcher, high school student.">
+	<meta name="description" content="Clive Chan: event coordinator, AI researcher, web designer, high school student.">
 	<meta name="copyright" content="Clive Chan, 2015">
 	
 	<title>Clive Chan</title>
@@ -18,37 +18,50 @@
 	<!--can I have that moving triangular background thing-->
 	<header>
 		<!--that fancy image here-->
-		<aside>
-			<div><i class="fa fa-envelope"></i>: <a href="mailto:cc@clive.io">cc@clive.io</a></div>
-			<div><i class="fa fa-github"></i>: <a href="https://github.com/cchan">https://github.com/cchan</a></div>
-		</aside>
+		<a class="internal plain" href="#home">
+			<h1>Clive Chan</h1>
+		</a>
+		<a class="contact" href="mailto:cc@clive.io"><i class="fa fa-envelope"></i> cc@clive.io</a>
+		<a class="contact" href="https://github.com/cchan"><i class="fa fa-github"></i> https://github.com/cchan</a>
+		<p>
+		Welcome! I am a high school student at Lexington High School, MA.
+		I organize large community events, explore artificial intelligence 
+		as a hobby and career goal, and design websites for myself and 
+		as volunteer and hired work for others.
+		</p>
 		<nav>
-			<a class="home hbg internal plain" href="#home">
-				<h1>Clive Chan</h1>
-				<h2>[UNDER CONSTRUCTION.]</h2>
-			</a><!--eventorg machlearn webdev highschool-->
-			<a class="eo hbg internal plain" href="#eo">Event Organization</a>
-			<a class="ml hbg internal plain" href="#ml">Machine Learning Research</a>
-			<a class="wd hbg internal plain" href="#wd">Web Design Services</a>
+			<a class="nav home hbg internal plain" href="#home">Clive Chan</a>
+			<a class="nav eo hbg internal plain" href="#eo">Event Coordinator</a>
+			<a class="nav ml hbg internal plain" href="#ml">Machine Learning Researcher</a>
+			<a class="nav wd hbg internal plain" href="#wd">Web Designer</a>
+			<!--resume/awards/accomplishments?-->
 		</nav>
 	</header>
 	
 	<section id="eo" class="eo">
-		eo
+		<h2>Event Coordinator</h2>
+		<a href="http://lexscibowl.org">Lexington Science Bowl</a>
+		<a href="http://lexhack.org">LexHack</a>
+		<a href="http://lhsmath.org/LMT">Lexington Mathematics Tournament</a>
 	</section>
 	
 	<section id="ml" class="ml">
-		ml
+		<h2>Machine Learning Researcher</h2>
+		https://github.com/cchan/Scifair2015 //predator-prey coevolution
+		https://github.com/cchan/imgnet //head ct thing
 	</section>
 	
 	<section id="wd" class="wd">
-		wd
+		<h2>Web Designer</h2>
+		<a href="http://lexscibowl.org">Lexington Science Bowl</a>
+		<a href="http://calcbee.org">CalcBee</a>
+		<a href="http://holhs.org">Humans of LHS</a>
 	</section>
 	
-	<footer>Made by Clive in 2015 with html5, css3, js/jquery, and plenty of &lt;3.</footer>
+	<footer>Handcrafted by Clive in HTML5, CSS3, and JS/JQuery. Backed with GitHub Pages and plenty of &lt;3, 2015.</footer>
 	
 	<script src="jquery-1.11.1.min.js"></script>
-	<script>
+	<script> //when press back-button, doesn't change back.
 		window.onload=function(){
 			loadSection(window.location.hash);
 			$(".internal").click(function(){
@@ -61,22 +74,15 @@
 				case "#eo":case "#ml":case "#wd":
 					$("section").hide();
 					$(hash).show();
-					minimize();
+					$("header").addClass("minimized");
 					break;
 				case "#home":
 					$("section").hide();
-					maximize();
+					$("header").removeClass("minimized");
 					break;
 				default:
 					console.warn("loadSection link incorrect");
 			}
-		}
-		function minimize(){
-			$("header").addClass("minimized");
-		}
-		function maximize(){
-			$("header").removeClass("minimized");
-			
 		}
 	</script>
 	

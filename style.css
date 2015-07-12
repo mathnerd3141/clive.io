@@ -1,15 +1,20 @@
+* {
+  transition: all 0.2s; }
+
 body {
   font-family: "Lucida Grande", Geneva, Tahoma, Verdana, Helvetica, sans-serif; }
 
 p {
-  text-indent: -20px;
-  margin-left: 20px; }
+  text-indent: 20px;
+  color: gray;
+  font-family: Candara, Calibri;
+  text-align: justify; }
 
 a.plain {
   color: inherit;
   text-decoration: none; }
 
-.hbg {
+.hbg, header.minimized a.home {
   -moz-transition: background-color 0.3s;
   -o-transition: background-color 0.3s;
   -ms-transition: background-color 0.3s;
@@ -19,79 +24,83 @@ a.plain {
 .home {
   background-color: #fff; }
 
-.home.hbg:hover {
+.home.hbg:hover, header.minimized a.home:hover {
   background-color: #ddd; }
 
 .eo {
   background-color: #fcc; }
 
-.eo.hbg:hover {
+.eo.hbg:hover, header.minimized a.eo.home:hover {
   background-color: #f77; }
 
 .ml {
   background-color: #bfb; }
 
 /*Note that percieved brightness for green is always brighter*/
-.ml.hbg:hover {
+.ml.hbg:hover, header.minimized a.ml.home:hover {
   background-color: #66e466; }
 
 .wd {
   background-color: #ccf; }
 
-.wd.hbg:hover {
+.wd.hbg:hover, header.minimized a.wd.home:hover {
   background-color: #88f; }
 
 header {
+  padding-top: 3em;
+  padding-bottom: 2em;
   background-color: white;
-  position: fixed;
+  position: absolute;
   left: 50%;
   z-index: 1000;
-  border: solid 1px black;
-  margin-left: -201px;
-  width: 400px;
-  height: 400px; }
+  margin-left: -10em;
+  width: 20em; }
+
+h1, h2 {
+  font-size: 3em;
+  font-family: Candara, Calibri;
+  margin: 0; }
 
 h1 {
-  font-family: "Segoe UI", "Open Sans", "Lucida Grande", Geneva, Tahoma, Verdana, Helvetica, sans-serif;
-  margin: 0;
   text-align: center; }
 
-aside {
-  display: table; }
-
-aside div {
-  display: table-cell; }
-
-nav a {
+a.nav {
+  font-family: Candara, Calibri;
   display: block;
   text-align: center;
   padding: 1em;
-  font-size: 1.5em;
+  font-size: 1.3em;
   font-variant: small-caps;
   font-weight: bold; }
 
+a.contact {
+  display: block;
+  text-align: center;
+  font-variant: small-caps;
+  font-weight: bold; }
+
+a.home {
+  display: none; }
+
 header.minimized {
+  padding: 0;
   font-size: 2em;
   width: 700px;
   display: table;
   height: 1em;
-  border-top: none;
   margin-left: -350px; }
+  @media (max-width: 800px) {
+    header.minimized {
+      font-size: 1.3em;
+      width: 500px;
+      margin-left: -250px; } }
 
-@media (max-width: 800px) {
-  header.minimized {
-    font-size: 1.3em;
-    width: 500px;
-    margin-left: -250px; } }
 @media (max-width: 550px) {
   header.minimized nav {
     display: table-row-group; }
 
   header.minimized nav a {
     display: table-row; } }
-header.minimized > * {
-  display: none; }
-
 header.minimized nav {
   display: table-row;
   width: auto;
@@ -99,7 +108,10 @@ header.minimized nav {
   font-size: 1em;
   margin: 0; }
 
-header.minimized nav a {
+header.minimized > * {
+  display: none; }
+
+header.minimized nav a.nav {
   display: table-cell;
   vertical-align: middle;
   /*Literally the only intentionally correct vertical-align middle usage ever.*/
@@ -112,21 +124,25 @@ header.minimized h1 {
   font-size: 1em; }
 
 section {
-  height: 100%;
-  display: none; }
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  padding-top: 3em; }
 
 footer {
   position: fixed;
   bottom: 0px;
   left: 50%;
-  width: 35em;
-  margin-left: -17.5em;
+  width: 50em;
+  margin-left: -25em;
   text-align: center;
   background-color: black;
   color: white;
   border-radius: 3px 3px 0 0;
-  font-size: 0.4em;
-  opacity: 0.2;
-  font-variant: small-caps; }
+  font-size: 0.7em;
+  opacity: 0.2; }
 
 /*# sourceMappingURL=style.css.map */
