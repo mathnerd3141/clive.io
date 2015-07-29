@@ -10,9 +10,9 @@
 	
 	<title>Clive Chan</title>
 	
-	<link href="normalize.css" rel="stylesheet">
+	<link href="css/normalize.css" rel="stylesheet">
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-	<link href="style.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
 </head>
 <body>
 	<canvas id="delaunay-bg"></canvas>
@@ -66,17 +66,15 @@
 	</section>
 	
 	<footer>
-	Handcrafted by Clive in <a href="https://validator.w3.org/check?uri=clive.io">HTML5</a>, 
+	<a href="https://github.com/cchan/clive.io">Handcrafted by Clive</a> in <a href="https://validator.w3.org/check?uri=clive.io">HTML5</a>, 
 		<a href="https://jigsaw.w3.org/css-validator/validator?uri=clive.io">CSS3</a>, 
 		and JS/<a href="https://jquery.com/">JQuery</a>. 
 	Backed with <a href="https://pages.github.com/">GitHub Pages</a> 
 		and plenty of &lt;3, 2015.
 	</footer>
-	<!--W3C Certified :)-->
 	
-	<script src="jquery-1.11.1.min.js"></script>
-	<script src="delaunay.js"></script>
-	<script> //when press back-button, doesn't change back.
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script> //--todo-- when press back-button, doesn't change back.
 		window.onload=function(){
 			loadSection(window.location.hash);
 			$(".internal").click(function(){
