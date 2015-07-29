@@ -83,13 +83,6 @@ header {
     margin: 0; }
   header h1 {
     text-align: center; }
-  header a.nav {
-    display: block;
-    text-align: center;
-    padding: 1em;
-    font-size: 1.3em;
-    font-variant: small-caps;
-    font-weight: bold; }
   header a.contact {
     font-size: 1.1em;
     display: block;
@@ -103,8 +96,18 @@ header {
       color: blue; }
     header a.contact u {
       text-decoration: underline; }
+    header a.contact img {
+      height: 1em;
+      vertical-align: bottom; }
   header a.home {
     display: none; }
+  header a.nav {
+    display: block;
+    text-align: center;
+    padding: 1em;
+    font-size: 1.3em;
+    font-variant: small-caps;
+    font-weight: bold; }
   header p {
     text-indent: 20px;
     color: #777;

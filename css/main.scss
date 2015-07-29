@@ -80,6 +80,26 @@ header{
 	h1{
 		text-align: center;
 	}
+	a.contact{
+		font-size: 1.1em;
+		display: block;
+		text-align: center;
+		font-variant: small-caps;
+		font-weight: bold;
+		margin-top: 0.2em;
+		
+		color: blue;
+		&:visited{color: blue;}
+		
+		text-decoration:none;
+		u{text-decoration:underline;}
+		
+		img{
+			height: 1em;
+			vertical-align: bottom;
+		}
+	}
+	a.home{display:none;}
 	a.nav{
 		@extend a.plain;
 		display: block;
@@ -89,19 +109,6 @@ header{
 		font-variant: small-caps;
 		font-weight: bold;
 	}
-	a.contact{
-		font-size: 1.1em;
-		display: block;
-		text-align: center;
-		font-variant: small-caps;
-		font-weight: bold;
-		margin-top: 0.2em;
-		color: blue;
-		&:visited{color: blue;}
-		text-decoration:none;
-		u{text-decoration:underline;}
-	}
-	a.home{display:none;}
 	p{
 		text-indent: 20px;
 		color: #777;
