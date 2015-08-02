@@ -74,7 +74,7 @@ canvas#delaunay-bg {
   z-index: -1000; }
 
 header {
-  padding: 4em 2em 4em 4em;
+  padding: 4em 0em 4em 2em;
   position: fixed;
   left: 50%;
   top: 0;
@@ -119,7 +119,7 @@ header {
 section {
   position: absolute;
   top: 0;
-  left: 33em;
+  left: 29em;
   right: 0;
   bottom: 0;
   padding: 2em;
