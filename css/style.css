@@ -1,8 +1,7 @@
 /*
 main.scss
 Main Stylesheet
-Written by Clive Chan for http://clive.io
-*/
+Written by Clive Chan for http://clive.io */
 @font-face {
   font-family: 'Candara';
   src: url("fonts/Candara.eot");
@@ -87,6 +86,7 @@ header {
   header.sidebar {
     left: 16.5em; }
   header h1, header h2 {
+    font-family: Raleway;
     font-size: 3em;
     margin: 0; }
   header h1 {

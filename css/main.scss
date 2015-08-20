@@ -1,8 +1,7 @@
 /*
 main.scss
 Main Stylesheet
-Written by Clive Chan for http://clive.io
-*/
+Written by Clive Chan for http://clive.io */
 
 //https://css-tricks.com/snippets/css/using-font-face/
 @font-face { //Why not be stupidly compatible?
@@ -83,6 +82,7 @@ header{
 	&.sidebar{left: 16.5em;}
 	
 	h1, h2{
+		font-family: Raleway;
 		font-size: 3em;
 		margin: 0;
 	}
