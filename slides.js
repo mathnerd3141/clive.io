@@ -1,11 +1,29 @@
-function shuffle(arr){
-	for(var i = 0; i < arr.length; i++){
-		var other = i + Math.floor((arr.length-i) * Math.random());
-		var tmp = arr[i];
-		arr[i] = arr[other];
-		arr[other] = tmp;
+/*
+
+<div class="slideshow-wrapper">
+	<div class="slideshow-image-wrapper">
+		<div class="slideshow-image curr"></div>
+		<div class="slideshow-image next"></div>
+	</div>
+	<div class="slideshow-text-wrapper">
+		<div class="slideshow-text-filler">&nbsp;</div>
+		<div class="slideshow-text curr"></div>
+		<div class="slideshow-text next"></div>
+	</div>
+</div>
+
+*/
+
+
+
+Array.prototype.shuffle = function(){
+	for(var i = 0; i < this.length; i++){
+		var other = i + Math.floor((this.length-i) * Math.random());
+		var tmp = this[i];
+		this[i] = this[other];
+		this[other] = tmp;
 	}
-}
+} //make a matrix library?
 
 (function(slideshow, $, undefined){
 	var previ = 0, nowi = 0, nexti = 0;
