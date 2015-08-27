@@ -3,6 +3,9 @@ main.scss
 Main Stylesheet
 Written by Clive Chan for http://clive.io */
 
+@import "normalize.css"; /*why can't this just import sigh*/
+@import "slides.scss";
+
 //https://css-tricks.com/snippets/css/using-font-face/
 @font-face { //Why not be stupidly compatible?
   font-family: 'Candara';
@@ -14,7 +17,7 @@ Written by Clive Chan for http://clive.io */
        url('fonts/Candara.svg#svgCandara') format('svg'); /* Legacy iOS */
 }
 //https://stackoverflow.com/questions/2436749/how-to-add-multiple-font-files-for-the-same-font
-@font-face { //Hopefully this behaves as expected.
+@font-face { //Hopefully this behaves as expected with that bold thing.
 	font-family: 'Candara';
 	src: url("fonts/Candarab.ttf") format('truetype'); //Came with standard Win8 install
 	font-weight: bold;
@@ -66,23 +69,26 @@ canvas#delaunay-bg{
 	z-index:-1000;
 }
 
+$header-width: 40em;
 
 header{
-	padding: 4em 0em 4em 2em;
+	padding: 4em 2em 4em 2em;
 	position: fixed; //fixed so can't scroll sidebar
 	left: 50%;
 	top:0;
 	bottom:0;
 	z-index: 1000;
-	background-color: white;
+	background-color: rgba(255,255,255,0.8);
 	
-	margin-left:-16.5em; //width/2 + padding-left
-	width: 25em;
+	text-align: center;
+	
+	margin-left: -($header-width/2 + 2); //width/2 + padding-left
+	width: ($header-width);
 	transition: left 0.5s;
 	&.sidebar{left: 16.5em;}
 	
 	h1, h2{
-		font-family: Raleway;
+		font-family: Raleway, Candara, Calibri, Verdana, Helvetica, sans-serif;
 		font-size: 3em;
 		margin: 0;
 	}
@@ -91,11 +97,11 @@ header{
 	}
 	a.contact{
 		font-size: 1.1em;
-		display: block;
+		display: inline-block;
 		text-align: center;
 		font-variant: small-caps;
 		font-weight: bold;
-		margin-top: 0.2em;
+		margin: 0.2em 0.5em;
 		
 		color: blue;
 		&:visited{color: blue;}

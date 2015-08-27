@@ -1,0 +1,72 @@
+/*
+slides.scss
+Stylesheet for slides.js
+Written by Clive Chan for http://clive.io */
+
+.slideshow-image-wrapper, .slideshow-text-wrapper{
+	text-align:center;
+}
+.slideshow-image-wrapper{
+	position: absolute;
+	top:0; bottom:0; left:0; right:0;
+	overflow: hidden;
+	z-index: -1000;
+}
+.slideshow-text-wrapper{
+	position: relative;
+	overflow: visible;
+	color: rgba(0,0,0,0.6);
+	font-size: 0.8em;
+	margin-bottom: 1em;
+}
+.slideshow-text, .slideshow-image{
+	position: absolute;
+	top:0; bottom:0; left:0; right:0;
+	transition: opacity 0.5s, left 0.5s, right 0.5s;
+	opacity:0;
+	z-index:-1000;
+}
+.slideshow-image{
+	/*http://stackoverflow.com/a/9265035/1181387*/
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+.slideshow-text, .slideshow-text-filler, .title{
+	margin:0;
+	
+	font-weight: bold;
+	font-size:3em;
+	letter-spacing:-0.03em; /*what is up with the width of the r!?*/
+}
+.title a{
+	color: black;
+	text-decoration:none;
+}
+.slideshow-image{background-color:white;}
+.slideshow-text.prev,.slideshow-image.prev{left:-50px;}
+.slideshow-text.curr,.slideshow-image.curr{opacity:1;left:-25px;right:-25px;z-index:0;}
+.slideshow-text.next,.slideshow-image.next{right:-50px;}
+
+.slidehide{
+	transition: width 0.5s;
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: bottom;
+	text-align: right;
+}
+
+.byline{
+	margin-top: 0.5em;
+	font-size: 0.5em;
+	transition:height 0.5s;
+	height:1.5em;
+	display:block;
+	overflow:hidden;
+}
+.byline img{
+	max-height:1.5em;
+	vertical-align:bottom;
+}
+
+.slideshow-text-filler{transition:height 0.5s;height:0;overflow:hidden;}

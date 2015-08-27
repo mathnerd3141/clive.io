@@ -12,7 +12,6 @@
 	<title>Clive Chan</title>
 	
 	<link href='http://fonts.googleapis.com/css?family=Raleway:100,400,700,900' rel='stylesheet' type='text/css'>
-	<link href="css/normalize.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
 </head>
 <body>
@@ -20,12 +19,27 @@
 	<!--slow moving delaunay on canvas - DO IT YOURSELF with guides.
 	FOR THE OTHER PAGES. Do a delaunay with bg IMAGES on the triangles - have like three different images that shift around :D -->
 	
+	<div class="slideshow-image-wrapper">
+		<div class="slideshow-image curr"></div>
+		<div class="slideshow-image next"></div>
+	</div>
+	
 	<header>
 		<!--that fancy triangulated face image here-->
-		<a class="internal plain" href="#home"><h1>Clive Chan</h1><small style="color:red;font-weight:bold;display:block;text-align:center;">[under construction]</small></a>
+		<a class="internal plain" href="#home"><h1>Clive Chan</h1><!--small style="color:red;font-weight:bold;display:block;text-align:center;">[under construction]</small--></a>
+		
+		
+	<div class="slideshow-text-wrapper">
+		<div class="slideshow-text-filler">&nbsp;</div>
+		<div class="slideshow-text curr"></div>
+		<div class="slideshow-text next"></div>
+	</div>
+	
+		
 		<!--Icons from: https://github.com/encharm/Font-Awesome-SVG-PNG-->
 		<a class="contact" href="mailto:cc@clive.io"><img class="logo" src="img/email.png" alt="Email"> <u>cc@clive.io</u></a>
 		<a class="contact" href="https://github.com/cchan"><img class="logo" src="img/github.png" alt="GitHub"> <u>https://github.com/cchan</u></a>
+		
 		<p>
 			<!--LinkedIn Description: I am a high school student at Lexington High School, MA, to graduate in June 2016. I am an event organizer focused on STEM education, a web developer with a love for good modern design, and a computer scientist studying and researching machine learning, data mining, computer vision, and the like. I like trying new things, especially when they're as far away as possible from my main goals in STEM. I'm optimistic, pragmatic, self-confident. I believe that the world is simply an awesome place, and I just want to put my own little dent in this vast universe of humanity and beyond.-->
 			<a class="internal hoverline" href="#home">Hello!</a> I am a senior year student at Lexington High School in Massachusetts.
@@ -81,6 +95,7 @@
 	</footer>
 	
 	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/slides.js"></script>
 	<script>
 		$('html,body').animate({scrollTop:0},0);//http://stackoverflow.com/a/10745576/1181387
 		
@@ -99,6 +114,7 @@
 					$("section"+window.location.hash).css({opacity:1,"z-index":100});
 					$("header").addClass("sidebar");
 					break;
+				case "":break;
 				default:
 					console.warn("loadSection link incorrect");
 			}
@@ -107,6 +123,17 @@
 		
 		loadSection(window.location.hash);
 		window.onhashchange = loadSection;
+		
+		
+
+$(function(){
+	slideshow.loadData([
+		{text:"designs beautiful websites.",			imgurl:"img/P8172915.JPG"},
+		{text:"coordinates educational events.",		imgurl:"img/IMG_9903.JPG"},
+		{text:"researches machine learning.",			imgurl:""},
+		//{text:"",			imgurl:""},
+	]).firstSlide().start();
+});
 	</script>
 	
 	<script>
