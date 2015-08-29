@@ -15,9 +15,6 @@ Written by Clive Chan for http://clive.io */
 .slideshow-text-wrapper{
 	position: relative;
 	overflow: visible;
-	color: rgba(0,0,0,0.6);
-	font-size: 0.8em;
-	margin-bottom: 1em;
 }
 .slideshow-text, .slideshow-image{
 	position: absolute;
@@ -69,4 +66,4 @@ Written by Clive Chan for http://clive.io */
 	vertical-align:bottom;
 }
 
-.slideshow-text-filler{transition:height 0.5s;height:0;overflow:hidden;}
+.slideshow-text-filler{height:1em;}

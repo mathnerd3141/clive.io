@@ -26,21 +26,21 @@
 	
 	<header>
 		<!--that fancy triangulated face image here-->
-		<a class="internal plain" href="#home"><h1>Clive Chan</h1><!--small style="color:red;font-weight:bold;display:block;text-align:center;">[under construction]</small--></a>
+		<a class="internal plain" href="#home"><h1>Clive Chan</h1><small style="color:red;font-weight:bold;display:block;text-align:center;">[under construction]</small></a>
 		
-		
-	<div class="slideshow-text-wrapper">
-		<div class="slideshow-text-filler">&nbsp;</div>
-		<div class="slideshow-text curr"></div>
-		<div class="slideshow-text next"></div>
-	</div>
-	
+		<div class="slideshow-text-wrapper slider from-left">
+			<div class="slideshow-text-filler">&nbsp;</div>
+			<div class="slideshow-text curr">does things.</div>
+			<div class="slideshow-text next"></div>
+		</div>
 		
 		<!--Icons from: https://github.com/encharm/Font-Awesome-SVG-PNG-->
-		<a class="contact" href="mailto:cc@clive.io"><img class="logo" src="img/email.png" alt="Email"> <u>cc@clive.io</u></a>
-		<a class="contact" href="https://github.com/cchan"><img class="logo" src="img/github.png" alt="GitHub"> <u>https://github.com/cchan</u></a>
+		<div class="slider from-right" id="contact">
+			<a class="contact" href="mailto:cc@clive.io"><img class="logo" src="img/email.png" alt="Email"> <u>cc@clive.io</u></a>
+			<a class="contact" href="https://github.com/cchan"><img class="logo" src="img/github.png" alt="GitHub"> <u>https://github.com/cchan</u></a>
+		</div>
 		
-		<p>
+		<p class="slider from-left" id="para">
 			<!--LinkedIn Description: I am a high school student at Lexington High School, MA, to graduate in June 2016. I am an event organizer focused on STEM education, a web developer with a love for good modern design, and a computer scientist studying and researching machine learning, data mining, computer vision, and the like. I like trying new things, especially when they're as far away as possible from my main goals in STEM. I'm optimistic, pragmatic, self-confident. I believe that the world is simply an awesome place, and I just want to put my own little dent in this vast universe of humanity and beyond.-->
 			<a class="internal hoverline" href="#home">Hello!</a> I am a senior year student at Lexington High School in Massachusetts.
 			I serve as <a class="internal hoverline" href="#eventcoordinator" style="color:#f77;">event coordinator</a> and founder of several large education-oriented competitive events, 
@@ -54,9 +54,11 @@
 			pottery
 			
 		</p-->
-		<p>
+		<p class="slider from-right" id="resume">
 			Take a look at my <a class="hoverline" href="resume.pdf">resum&eacute;</a>, or get in touch by <a class="hoverline" href="mailto:cc@clive.io">email</a>.
 		</p>
+		
+		<span class="slidedot">&dot;</span><span class="slidedot">&dot;</span><span class="slidedot">&dot;</span>
 	</header>
 	
 	<section id="eventcoordinator">
@@ -86,16 +88,19 @@
 	</section>
 	
 	<footer>
-	<a href="https://github.com/cchan/clive.io" title="GitHub Repository for clive.io">Handcrafted by Clive</a>
-		in <a href="https://validator.w3.org/check?uri=clive.io" title="W3C HTML5 Validation">HTML5</a>, 
-		<a href="https://jigsaw.w3.org/css-validator/validator?uri=clive.io" title="W3C CSS3 Validation">CSS3</a>, 
-		and JS/<a href="https://jquery.com/" title="JQuery Homepage">JQuery</a>. 
-	Backed with <a href="https://pages.github.com/" title="GitHub Pages Homepage">GitHub Pages</a> 
-		and plenty of &lt;3, 2015.
+		<span id="footertext" class="slider from-bottom">
+			<a href="https://github.com/cchan/clive.io" title="GitHub Repository for clive.io">Handcrafted by Clive</a>
+				in <a href="https://validator.w3.org/check?uri=clive.io" title="W3C HTML5 Validation">HTML5</a>, 
+				<a href="https://jigsaw.w3.org/css-validator/validator?uri=clive.io" title="W3C CSS3 Validation">CSS3</a>, 
+				and JS/<a href="https://jquery.com/" title="JQuery Homepage">JQuery</a>. 
+			Backed with <a href="https://pages.github.com/" title="GitHub Pages Homepage">GitHub Pages</a> 
+				and plenty of &lt;3, 2015.
+		</span>
 	</footer>
 	
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/slides.js"></script>
+	<script src="js/sequencer.js"></script><style>.slider{opacity:0;position:relative;}.slider.from-left{left:-25px;}.slider.from-right{left:25px;}.slider.from-top{top:-25px;}.slider.from-bottom{top:25px;}</style>
 	<script>
 		$('html,body').animate({scrollTop:0},0);//http://stackoverflow.com/a/10745576/1181387
 		
@@ -130,9 +135,17 @@ $(function(){
 	slideshow.loadData([
 		{text:"designs beautiful websites.",			imgurl:"img/P8172915.JPG"},
 		{text:"coordinates educational events.",		imgurl:"img/IMG_9903.JPG"},
-		{text:"researches machine learning.",			imgurl:""},
+		{text:"researches machine learning.",			imgurl:"img/IMG_9903.JPG"},
 		//{text:"",			imgurl:""},
-	]).firstSlide().start();
+	]).onchange(function(i){
+		$(".slidedot").removeClass("active").eq(i).addClass("active");
+	}).start();
+	sequencer.slidein(".slideshow-text-wrapper",0)
+		.slidein("#contact",750)
+		.slidein("#para",750)
+		.slidein("#resume",750)
+		.slidein("#footertext",750);
+	
 });
 	</script>
 	

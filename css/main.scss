@@ -61,12 +61,23 @@ a.hoverline:hover{
 .wd.hbg:hover{background-color:#88f;}
 
 
-canvas#delaunay-bg{
-	position:fixed;
-	height:100%;
-	width:100%;
-	top:0;left:0;right:0;bottom:0;
-	z-index:-1000;
+.slideshow-text-wrapper{
+	color: rgba(0,0,0,0.6);
+	font-size: 0.8em;
+	margin-bottom: 1em;
+}
+.slidedot{
+	color: #999;
+	font-size: 4em;
+	height: 0.5em;
+	transition: color 0.3s;
+}
+.slidedot:hover{
+	cursor: pointer;
+	color: #666;
+}
+.slidedot.active{
+	color: black;
 }
 
 $header-width: 40em;
@@ -148,10 +159,13 @@ footer{
 	height:1.3em;
 	margin-left:-25em;
 	text-align:center;
-	background-color:black;
 	color:white;
-	border-radius: 3px 3px 0 0;
 	font-size: 0.7em;
-	opacity:0.15;
 	a{color:white;}
+	#footertext{
+		display:block;
+		background-color: rgba(0,0,0,0.15);
+		border-radius: 3px 3px 0 0;
+	}
 }
+

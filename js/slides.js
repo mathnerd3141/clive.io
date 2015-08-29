@@ -36,10 +36,23 @@ Array.prototype.shuffle = function(){
 	var slideNum = 0;
 	var slideTimeoutId;
 	var isPlaying = false;
+	var callback = function(){};
+	
+	slideshow.onchange = function(cb){
+		callback = cb;
+		return slideshow;
+	}
+	slideshow.changeTo = function(i){
+		nexti = i;
+		slideshow.stop();
+		loadNextSlide();
+		slideshow.nextSlide();
+		slideshow.start();
+	}
 	
 	slideshow.loadData = function(a){
 		imgdata = a;
-		//Preloading images. Should be async delayed so it won't delay loading.
+		//Preloading images. Should be async delayed ($(function(){})) so it won't delay loading.
 		for(var i = 0; i < imgdata.length; i++){
 			imgdata[i].img = new Image();
 			imgdata[i].img.src = imgdata[i].imgurl;
@@ -49,10 +62,10 @@ Array.prototype.shuffle = function(){
 	}
 	
 	slideshow.firstSlide = function(){
+		slideshow.changeTo(0);
 		//Hax to make the first slide not appear to move after the title
-		slideshow.nextSlide();
-		$(".slideshow-image.curr").css("background","transparent");
-		$(".slideshow-image.next").css({left:-25,right:-25,opacity:1});
+		//$(".slideshow-image.curr").css("background","transparent");
+		//$(".slideshow-image.next").css({left:-25,right:-25,opacity:1});
 		
 		return slideshow;
 	}
@@ -60,10 +73,10 @@ Array.prototype.shuffle = function(){
 	slideshow.start = function(){
 		isPlaying = true;
 		slideTimeoutId = setTimeout(function(){
-			hideTitle();
+			//hideTitle();
 			$(window).focus(function(){if(isPlaying){slideshow.nextSlideChained();}}).blur(function(){clearTimeout(slideTimeoutId);});
 			slideshow.nextSlideChained();
-		},3000);
+		},5000);
 		
 		return slideshow;
 	}
@@ -76,15 +89,19 @@ Array.prototype.shuffle = function(){
 	}
 	
 	slideshow.nextSlide = function(){
+		loadNextSlide();
+		
 		previ = nowi;
 		nowi = nexti;
 		nexti = (nexti + 1) % imgdata.length;
+		
+		callback(nowi);
 		
 		$(".slideshow-text.prev").remove();
 		$(".slideshow-text.curr").removeClass("curr").addClass("prev");
 		$(".slideshow-text.next").removeClass("next").addClass("curr");
 		var el = document.createElement("h1");
-		$(el).addClass("slideshow-text next").text(imgdata[nexti].text);
+		$(el).addClass("slideshow-text next");
 		$(".slideshow-text-wrapper").append(el);
 		/*http://stackoverflow.com/a/13933418/1181387*/
 		/*$("h1").css({
@@ -97,38 +114,20 @@ Array.prototype.shuffle = function(){
 		$(".slideshow-image.curr").removeClass("curr").addClass("prev");
 		$(".slideshow-image.next").removeClass("next").addClass("curr");
 		el = document.createElement("div");
-		$(el).addClass("slideshow-image next").css("background-image","url('"+imgdata[nexti].imgurl+"')");
+		$(el).addClass("slideshow-image next");
 		$(".slideshow-image-wrapper").append(el);
+	}
+	
+	function loadNextSlide(){
+		$(".slideshow-text.next").text(imgdata[nexti].text);
+		$(".slideshow-image.next").css("background-image","url('"+imgdata[nexti].imgurl+"')");
 	}
 	
 	slideshow.nextSlideChained = function(){ //Because setInterval sometimes hangs and then speeds up to catch up.
 		slideNum++;
-		if((slideNum % 5) === 0){
-			showTitle();
-			$(".byline").height("1.5em");
-			$(".slideshow-text-filler").css({height:0});
-			$(".slideshow-text.curr").css({left:-50,right:0,opacity:0});
-			slideTimeoutId = setTimeout(slideshow.nextSlideChained,5000);
-		}
-		else{
-			$(".byline").height(0);
-			$(".slideshow-text-filler").css({height:"1em"});
-			hideTitle();
-			slideshow.nextSlide();
-			slideTimeoutId = setTimeout(slideshow.nextSlideChained,3000);
-		}
-	}
-
-	function hideTitle(){/*
-		$(".make .slidehide").each(function(){
-			this.origWidth = $(this).width() || this.origWidth; //if it's zero, ignore
-			$(this).width(this.origWidth).width(0);
-		});*/
-	}
-	function showTitle(){/*
-		$(".make .slidehide").each(function(){
-			$(this).width(0).width(this.origWidth);
-		});*/
+		slideshow.nextSlide();
+		clearTimeout(slideTimeoutId);
+		slideTimeoutId = setTimeout(slideshow.nextSlideChained,5000);
 	}
 	
 	/*TO ADD: navbuttons*/
