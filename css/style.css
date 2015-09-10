@@ -154,17 +154,25 @@ a.hoverline:hover {
   margin-bottom: 1em; }
 
 .slidedot {
-  color: #999;
-  font-size: 4em;
+  color: black;
+  font-size: 0.7em;
+  font-weight: bold;
+  margin: 0 1em;
+  padding: 2em;
   height: 0.5em;
-  transition: color 0.3s; }
+  transition: opacity 0.3s;
+  opacity: 0.5; }
 
 .slidedot:hover {
   cursor: pointer;
-  color: #666; }
+  opacity: 0.8; }
 
 .slidedot.active {
-  color: black; }
+  opacity: 1; }
+
+section, article {
+  position: relative;
+  z-index: 100000; }
 
 header {
   padding: 4em 2em 4em 2em;
@@ -173,7 +181,7 @@ header {
   top: 0;
   bottom: 0;
   z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.9);
   text-align: center;
   margin-left: -22em;
   width: 40em;

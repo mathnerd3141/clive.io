@@ -76,7 +76,7 @@ Array.prototype.shuffle = function(){
 			//hideTitle();
 			$(window).focus(function(){if(isPlaying){slideshow.nextSlideChained();}}).blur(function(){clearTimeout(slideTimeoutId);});
 			slideshow.nextSlideChained();
-		},5000);
+		},3000);
 		
 		return slideshow;
 	}

@@ -44,7 +44,7 @@
 			<!--LinkedIn Description: I am a high school student at Lexington High School, MA, to graduate in June 2016. I am an event organizer focused on STEM education, a web developer with a love for good modern design, and a computer scientist studying and researching machine learning, data mining, computer vision, and the like. I like trying new things, especially when they're as far away as possible from my main goals in STEM. I'm optimistic, pragmatic, self-confident. I believe that the world is simply an awesome place, and I just want to put my own little dent in this vast universe of humanity and beyond.-->
 			<a class="internal hoverline" href="#home">Hello!</a> I am a senior year student at Lexington High School in Massachusetts.
 			I serve as <a class="internal hoverline" href="#eventcoordinator" style="color:#f77;">event coordinator</a> and founder of several large education-oriented competitive events, 
-			explore <a class="internal hoverline" href="#machinelearning" style="color:#66e466;">machine learning</a> research as a hobby and potential career, 
+			explore <a class="internal hoverline" href="#machinelearning" style="color:#11cc11;">machine learning</a> research as a hobby and potential career, 
 			and as <a class="internal hoverline" href="#webdesign" style="color:#88f;">web designer</a> I create websites for many local and school organizations.
 		</p>
 		<!--p>
@@ -58,7 +58,7 @@
 			Take a look at my <a class="hoverline" href="resume.pdf">resum&eacute;</a>, or get in touch by <a class="hoverline" href="mailto:cc@clive.io">email</a>.
 		</p>
 		
-		<span class="slidedot">&dot;</span><span class="slidedot">&dot;</span><span class="slidedot">&dot;</span>
+		<span class="slidedot" onclick="slideshow.changeTo(0);">[web]</span><span class="slidedot" onclick="slideshow.changeTo(1);">[edu]</span><span class="slidedot" onclick="slideshow.changeTo(2);">[ml]</span>
 	</header>
 	
 	<section id="eventcoordinator">
@@ -112,12 +112,10 @@
 			switch(window.location.hash){
 				case "#home":
 					$("section").css({opacity:0,"z-index":-100});
-					$("header").removeClass("sidebar");
 					break;
 				case "#eventcoordinator":case "#machinelearning":case "#webdesign":
 					$("section").css({opacity:0,"z-index":-100});
 					$("section"+window.location.hash).css({opacity:1,"z-index":100});
-					$("header").addClass("sidebar");
 					break;
 				case "":break;
 				default:
@@ -130,23 +128,18 @@
 		window.onhashchange = loadSection;
 		
 		
-
-$(function(){
-	slideshow.loadData([
-		{text:"designs beautiful websites.",			imgurl:"img/P8172915.JPG"},
-		{text:"coordinates educational events.",		imgurl:"img/IMG_9903.JPG"},
-		{text:"researches machine learning.",			imgurl:"img/IMG_9903.JPG"},
-		//{text:"",			imgurl:""},
-	]).onchange(function(i){
-		$(".slidedot").removeClass("active").eq(i).addClass("active");
-	}).start();
-	sequencer.slidein(".slideshow-text-wrapper",0)
-		.slidein("#contact",750)
-		.slidein("#para",750)
-		.slidein("#resume",750)
-		.slidein("#footertext",750);
-	
-});
+		$(function(){
+			slideshow.loadData([
+				{text:"designs beautiful websites.",			imgurl:"img/P8172915.JPG"},
+				{text:"coordinates educational events.",		imgurl:"img/IMG_9903.JPG"},
+				{text:"researches machine learning.",			imgurl:"img/IMG_9903.JPG"},
+				//{text:"",			imgurl:""},
+			]).onchange(function(i){
+				$(".slidedot").removeClass("active").eq(i).addClass("active");
+			}).start();
+			sequencer.slidein(".slideshow-text-wrapper,#contact,#para,#resume",0)
+				.slidein("#footertext",750);
+		});
 	</script>
 	
 	<script>
