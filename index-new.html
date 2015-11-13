@@ -6,38 +6,30 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 	<meta name="description" content="Clive Chan: event coordinator, AI researcher, web designer, high school student.">
-	<meta name="copyright" content="Clive Chan, 2015">
+	<meta name="copyright" content="Clive Chan, 2015-present">
 	<meta name="author" content="Clive Chan">
 	
 	<title>Clive Chan</title>
 	
-	<link href='http://fonts.googleapis.com/css?family=Raleway:100,400,700,900' rel='stylesheet' type='text/css'>
-	<link href="css/style.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" rel="stylesheet">
+	<link href="css/style_new.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/jquery-1.11.3.min.js">\x3C/script>')</script>
 </head>
 <body>
-	<canvas id="delaunay-bg"></canvas>
+	<!--canvas id="delaunay-bg"></canvas-->
 	<!--slow moving delaunay on canvas - DO IT YOURSELF with guides.
 	FOR THE OTHER PAGES. Do a delaunay with bg IMAGES on the triangles - have like three different images that shift around :D -->
 	
-	<div class="slideshow-image-wrapper">
-		<div class="slideshow-image curr"></div>
-		<div class="slideshow-image next"></div>
-	</div>
-	
 	<header>
 		<!--that fancy triangulated face image here-->
-		<a class="internal plain" href="#home"><h1>Clive Chan</h1><small style="color:red;font-weight:bold;display:block;text-align:center;">[under construction]</small></a>
-		
-		<div class="slideshow-text-wrapper slider from-left">
-			<div class="slideshow-text-filler">&nbsp;</div>
-			<div class="slideshow-text curr">does things.</div>
-			<div class="slideshow-text next"></div>
-		</div>
+		<img id="logo" src="img/logo.png" alt="awesome personal logo">
+		<a class="internal plain" href="#home"><h1>Clive Chan</h1></a>
 		
 		<!--Icons from: https://github.com/encharm/Font-Awesome-SVG-PNG-->
-		<div class="slider from-right" id="contact">
-			<a class="contact" href="mailto:cc@clive.io"><img class="logo" src="img/email.png" alt="Email"> <u>cc@clive.io</u></a>
-			<a class="contact" href="https://github.com/cchan"><img class="logo" src="img/github.png" alt="GitHub"> <u>https://github.com/cchan</u></a>
+		<div id="contact">
+			<a href="mailto:cc@clive.io"><img class="logo" src="img/email.png" alt="Email"> <u>cc@clive.io</u></a>
+			<a href="https://github.com/cchan"><img class="logo" src="img/github.png" alt="GitHub"> <u>https://github.com/cchan</u></a>
 		</div>
 		
 		<p class="slider from-left" id="para">
@@ -47,46 +39,22 @@
 			explore <a class="internal hoverline" href="#machinelearning" style="color:#11cc11;">machine learning</a> research as a hobby and potential career, 
 			and as <a class="internal hoverline" href="#webdesign" style="color:#88f;">web designer</a> I create websites for many local and school organizations.
 		</p>
-		<!--p>
-			Besides that, I 
-			skate
-			sing
-			pottery
-			
-		</p-->
 		<p class="slider from-right" id="resume">
 			Take a look at my <a class="hoverline" href="resume.pdf">resum&eacute;</a>, or get in touch by <a class="hoverline" href="mailto:cc@clive.io">email</a>.
 		</p>
-		
-		<span class="slidedot" onclick="slideshow.changeTo(0);">[web]</span><span class="slidedot" onclick="slideshow.changeTo(1);">[edu]</span><span class="slidedot" onclick="slideshow.changeTo(2);">[ml]</span>
 	</header>
 	
-	<section id="eventcoordinator">
-		<h2>Event Coordination</h2>
-		<article class="ec">
 			<a href="http://lexscibowl.org">Lexington Science Bowl</a>
 			<a href="http://lexhack.org">LexHack</a>
 			<a href="http://lhsmath.org/LMT">Lexington Mathematics Tournament</a>
-		</article>
-	</section>
-	
-	<section id="machinelearning">
-		<h2>Machine Learning</h2>
-		<article class="ml">
+			
 			<a href="https://github.com/cchan/Scifair2015"> //predator-prey coevolution</a>
 			<a href="https://github.com/cchan/imgnet"> //head ct thing</a>
-		</article>
-	</section>
-	
-	<section id="webdesign">
-		<h2>Web Design</h2>
-		<article class="wd">
+			
 			<a href="http://lexscibowl.org">Lexington Science Bowl</a>
 			<a href="http://calcbee.org">CalcBee</a>
 			<a href="http://holhs.org">Humans of LHS</a>
-		</article>
-	</section>
-	
+			
 	<footer>
 		<span id="footertext" class="slider from-bottom">
 			<a href="https://github.com/cchan/clive.io" title="GitHub Repository for clive.io">Handcrafted by Clive</a>
@@ -98,48 +66,12 @@
 		</span>
 	</footer>
 	
-	<script src="js/jquery-1.11.3.min.js"></script>
-	<script src="js/slides.js"></script>
-	<script src="js/sequencer.js"></script><style>.slider{opacity:0;position:relative;}.slider.from-left{left:-25px;}.slider.from-right{left:25px;}.slider.from-top{top:-25px;}.slider.from-bottom{top:25px;}</style>
 	<script>
 		$('html,body').animate({scrollTop:0},0);//http://stackoverflow.com/a/10745576/1181387
 		
 		["#home","#eventcoordinator","#machinelearning","#webdesign"];
 		//onscroll change to previous/next.
 		//disable change until stopped scrolling for 0.3sec.
-		
-		function loadSection(){
-			switch(window.location.hash){
-				case "#home":
-					$("section").css({opacity:0,"z-index":-100});
-					break;
-				case "#eventcoordinator":case "#machinelearning":case "#webdesign":
-					$("section").css({opacity:0,"z-index":-100});
-					$("section"+window.location.hash).css({opacity:1,"z-index":100});
-					break;
-				case "":break;
-				default:
-					console.warn("loadSection link incorrect");
-			}
-			return false;
-		}
-		
-		loadSection(window.location.hash);
-		window.onhashchange = loadSection;
-		
-		
-		$(function(){
-			slideshow.loadData([
-				{text:"designs beautiful websites.",			imgurl:"img/P8172915.JPG"},
-				{text:"coordinates educational events.",		imgurl:"img/IMG_9903.JPG"},
-				{text:"researches machine learning.",			imgurl:"img/IMG_9903.JPG"},
-				//{text:"",			imgurl:""},
-			]).onchange(function(i){
-				$(".slidedot").removeClass("active").eq(i).addClass("active");
-			}).start();
-			sequencer.slidein(".slideshow-text-wrapper,#contact,#para,#resume",0)
-				.slidein("#footertext",750);
-		});
 	</script>
 	
 	<script>
