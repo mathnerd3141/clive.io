@@ -32,16 +32,28 @@
 
 $FFallback: "Segoe UI", "Open Sans", "Lucida Grande", Geneva, Tahoma, Verdana, Helvetica, sans-serif;
 
+
 body{
 	width: 100%;
 	font-family: 'Open Sans';
+  background-color: black;
+  color: white;
+  a, a:visited, a:active{
+    color: #bbb;
+  }
 }
+
 #splash{
 	display: block;
 	width: 100%;
 	text-align: center;
+	h1{
+		margin: 0;
+	}
 	article{
-		font-size: 1.5em;
+    margin-left: auto; margin-right: auto;
+		font-size: 1.2em;
+    width: 40%;
 	}
 	nav{
 		display: block;
@@ -50,9 +62,34 @@ body{
 }
 #logo{
 	display: block;
-	img{
-		display: inline-block;
-		width: 13%;
-		margin: 2%;
-	}
+  a{
+    display: inline-block;
+    line-height: 0;
+    width: 13%;
+    background-color: white;
+    border-radius: 50%;
+    padding: 0.5%;
+    margin: 2%;
+    transition: background-color 0.5s;
+    &:hover{
+      background-color: #bbb;
+    }
+    img{
+      width: 100%;
+    }
+  }
+}
+
+main{
+  text-align: center;
+}
+section{
+  color: black;
+  background-color: #eee;
+  a, a:visited, a:active{color: #888;}
+  width: 30%;
+  display: inline-block;
+  margin: 3%;
+  padding: 3%;
+  h2{margin: 0;}
 }
