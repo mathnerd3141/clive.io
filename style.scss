@@ -33,14 +33,19 @@
 $FFallback: "Segoe UI", "Open Sans", "Lucida Grande", Geneva, Tahoma, Verdana, Helvetica, sans-serif;
 
 
+.inlineblock{display: inline-block;}
+
+
+
 body{
 	width: 100%;
 	font-family: 'Open Sans';
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
   a, a:visited, a:active{
-    color: #bbb;
+    color: #777;
   }
+  padding:0; margin:0;
 }
 
 #splash{
@@ -68,11 +73,13 @@ body{
   a{
     display: inline-block;
     line-height: 0;
-    width: 13%;
+    font-size: 4vw;
+    @media(max-width: 800px){font-size: 10vw;}
+    width: 3em;
     background-color: white;
     border-radius: 50%;
-    padding: 0.5%;
-    margin: 2%;
+    padding: 0.1em;
+    margin: 0.5em;
     transition: background-color 0.5s;
     &:hover{
       background-color: #bbb;
