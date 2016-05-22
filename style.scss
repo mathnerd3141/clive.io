@@ -40,7 +40,7 @@ $FFallback: "Segoe UI", "Open Sans", "Lucida Grande", Geneva, Tahoma, Verdana, H
 body{
 	width: 100%;
 	font-family: 'Open Sans';
-  background-color: white;
+  background-color: #eee;
   color: black;
   a, a:visited, a:active{
     color: #777;
@@ -60,7 +60,7 @@ body{
 	article{
     margin-left: auto; margin-right: auto;
 		font-size: 1.2em;
-    width: 40em;
+    width: 30em;
     max-width: 90%;
 	}
 	nav{
@@ -76,13 +76,12 @@ body{
     font-size: 4vw;
     @media(max-width: 800px){font-size: 10vw;}
     width: 3em;
-    background-color: white;
     border-radius: 50%;
     padding: 0.1em;
     margin: 0.5em;
     transition: background-color 0.5s;
     &:hover{
-      background-color: #bbb;
+      background-color: #ddd;
     }
     img{
       width: 100%;
@@ -94,7 +93,6 @@ main{
 }
 section{
   color: black;
-  background-color: #eee;
   a, a:visited, a:active{color: #888;}
   width: 50%;
   margin: 2em auto;
