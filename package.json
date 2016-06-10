@@ -1,0 +1,24 @@
+{
+  "name": "clive.io",
+  "version": "0.0.0",
+  "description": "Clive Chan's personal homepage",
+  "main": "server.js",
+  "scripts": {
+    "start": "sass static/style.scss:static/style.css; node server.js",
+    "watch": "sass --watch static/style.scss:static/style.css & node node_modules/nodemon/index.js server.js &",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cchan/clive.io.git"
+  },
+  "author": "Clive Chan (cc@clive.io)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cchan/clive.io/issues"
+  },
+  "homepage": "http://clive.io",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
