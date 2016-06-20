@@ -14,89 +14,35 @@
   
   <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" rel="stylesheet">
   <link href="style.css" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="jquery-1.11.3.min.js">\x3C/script>')</script>
+  <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script-->
+  <!--script>window.jQuery || document.write('<script src="jquery-1.11.3.min.js">\x3C/script>')</script-->
 </head>
 <body>
   <header id="splash">
-    <!--that fancy triangulated face image here-->
-    <div id="logo"><a href="http://clive.io"><img src="img/logo.png" alt="awesome personal logo"></a></div>
-    <article>
-      <h1>Clive Chan</h1>
-      <p><b>Hi!</b> I'm Clive, a senior at Lexington High School, MA.</p>
-      <p>I'm a programmer at heart, but at any given moment you'll find me happily doing anything science, tech, engineering, or math.</p>
-      <p>
-        See my full <a href="resume.pdf">r&eacute;sum&eacute;</a>, 
-        contact me by <a href="mailto:cc@clive.io">email</a>, 
-        find me on <a href="https://github.com/cchan">GitHub</a>,
-        or just scroll down.
-      </p>
-      <style>
-      /*ct stands for content-transition*/
-      /*hover doesn't work well on mobile*/
-      .ct-hoverwrapper{position:relative;text-align: center;}
-      .ct-hoverwrapper .ct-hovercover{
-        opacity: 1;
-        transition: opacity 0.5s;
-        font-weight:bold;
-      }
-      .ct-hoverwrapper .ct-hovercontent{
-        position: absolute; top:0;
-        z-index: 1;
-        text-align: center;
-        width: 100%;
-        opacity:0;
-        transition: opacity 0.5s;
-      }
-      .ct-hoverwrapper:hover .ct-hovercover{
-        opacity: 0;
-      }
-      .ct-hoverwrapper:hover .ct-hovercontent{
-        opacity: 1;
-      }
-      #pgp.ct-hoverwrapper .ct-hovercontent{
-        top:0.7em;
-        font-size:0.5em;
-        font-family:monospace;
-      }
-      </style>
-      <div class="ct-hoverwrapper">
-        <div class="ct-hovercover"><a href="mailto:cc@clive.io">email</a></div>
-        <div class="ct-hovercontent"><a href="mailto:cc@clive.io">cc@clive.io</a></div>
+    <!-- cool animated visualizations - delaunay face, chaos loop thing, machine learning, stereoscopic simulations -->
+    <div>
+      <div id="logo">
+        <a href="http://clive.io"><img src="img/logo.png" alt="awesome personal logo"></a>
       </div>
-      <div class="ct-hoverwrapper">
-        <div class="ct-hovercover"><a href="https://github.com/cchan">github</a></div>
-        <div class="ct-hovercontent"><a href="https://github.com/cchan">cchan</a></div>
+      <div>
+        <h1>Clive Chan</h1>
+        <a href="mailto:cc@clive.io">email</a>
+        <a href="https://github.com/cchan">github</a>
+        <!--a href="https://pgp.mit.edu/pks/lookup?op=get&search=0x5DD681F35FEE0C47" title="7209 384F 80FE FBE1 2945 // CA74 5DD6 81F3 5FEE 0C47">PGP</a-->
       </div>
-      <div class="ct-hoverwrapper" id="pgp">
-        <div class="ct-hovercover"><a href="https://pgp.mit.edu/pks/lookup?op=get&search=0x5DD681F35FEE0C47" title="7209 384F 80FE FBE1 2945  CA74 5DD6 81F3 5FEE 0C47">PGP</a></div>
-        <div class="ct-hovercontent"><a href="https://pgp.mit.edu/pks/lookup?op=get&search=0x5DD681F35FEE0C47" title="7209 384F 80FE FBE1 2945  CA74 5DD6 81F3 5FEE 0C47">7209 384F 80FE FBE1 2945<br>CA74 5DD6 81F3 5FEE 0C47</a></div>
-      </div>
-    </article>
+    </div>
+    <p>University of Waterloo Software Engineering Class of 2021</p>
+    <p>Self-taught artist of tech, physics, and math.</p>
+    
+    tutoring
+    webdev
+    r&eacute;sum&eacute;
+    
   </header>
   <main>
     <section>
-      <h2>Clubs, Events, & Leadership</h2>
+      <h2></h2>
       <p></p>
-      <a href="http://lexscibowl.org">Lexington Science Bowl</a>
-      <a href="http://lexhack.org">LexHack</a>
-      <a href="http://lhsmath.org/LMT">Lexington Mathematics Tournament</a>
-    </section>
-    <section>
-      <h2>Programming & Web Design</h2>
-      <p>Someday I might do this for a living. So I'd better be pretty good.</p>
-      <!--<a href="https://github.com/cchan/Scifair2015"> //predator-prey coevolution</a>
-      <a href="https://github.com/cchan/imgnet"> //head ct thing</a>-->
-      <a href="http://lexscibowl.org">Lexington Science Bowl</a>
-      <a href="http://calcbee.org">CalcBee</a>
-      <a href="http://holhs.org">Humans of LHS</a>
-    </section>
-    <section>
-      <h2>Science & Math</h2>
-      <!--Just duplicate the resume in colorful interactive form-->
-    </section>
-    <section>
-      <h2>Other than that...</h2>
     </section>
   </main>
   <footer>
