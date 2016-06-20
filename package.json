@@ -4,8 +4,9 @@
   "description": "Clive Chan's personal homepage",
   "main": "server.js",
   "scripts": {
-    "start": "sass --watch src:dist && node node_modules/cpx/lib/index.js \"static/**/*.*\" dist && node node_modules/nodemon/lib/nodemon.js server.coffee",
-    "start:prod": "sass src:dist && cp \"static/**/*.*\" dist && coffee server.coffee",
+    "start": "node node_modules/gulp/bin/gulp.js serve",
+    "build": "node node_modules/gulp/bin/gulp.js build",
+    "start:prod": "node node_modules/coffee-script/bin/coffee src/server.coffee",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,16 +20,13 @@
   },
   "homepage": "http://clive.io",
   "dependencies": {
+    "coffee-script": "^1.10.0",
     "express": "^4.13.4"
   },
   "devDependencies": {
     "browser-sync": "^2.12.10",
     "gulp": "^3.9.1",
-    "gulp-eslint": "^2.0.0",
     "gulp-nodemon": "^2.0.7",
-    "gulp-pug": "^3.0.3",
-    "gulp-pug-lint": "^0.1.6",
-    "gulp-sass": "^2.3.1",
-    "gulp-sass-lint": "^1.1.1"
+    "gulp-sass": "^2.3.1"
   }
 }
