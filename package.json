@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node node_modules/gulp/bin/gulp.js serve",
     "build": "node node_modules/gulp/bin/gulp.js build",
-    "start:prod": "node node_modules/coffee-script/bin/coffee src/server.coffee",
+    "start:prod": "curl -X POST localhost:10000/register/clive.io/10203 && node node_modules/coffee-script/bin/coffee src/server.coffee 10203",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
