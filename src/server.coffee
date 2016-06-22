@@ -12,6 +12,8 @@ http = require('http').Server(app);
 http.listen PORT, ->
 	console.log "listening on * : " + PORT
 
+app.disable 'x-powered-by'
+
 app.get '/', (req, res) ->
 	res.sendFile 'dist/index.html', { root: '.' }
 
