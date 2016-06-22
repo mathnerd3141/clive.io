@@ -9,7 +9,7 @@ app = express();
 http = require('http').Server(app);
 # https = require('https').Server(app);
 
-http.listen PORT, ->
+http.listen PORT, 'localhost', ->
 	console.log "listening on * : " + PORT
 
 app.disable 'x-powered-by'
