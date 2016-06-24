@@ -18,28 +18,37 @@
   <!--script>window.jQuery || document.write('<script src="jquery-1.11.3.min.js">\x3C/script>')</script-->
 </head>
 <body>
-  <header id="splash">
-    <!-- cool animated visualizations - delaunay face, chaos loop thing, machine learning, stereoscopic simulations -->
+  <header> <!-- position: absolute then switch to position: fixed when scroll to top-->
     <div>
       <div id="logo">
-        <a href="http://clive.io"><img src="img/logo.png" alt="awesome personal logo"></a>
+        <a href="https://clive.io"><img src="img/logo.png" alt="awesome personal logo"></a>
       </div>
       <div>
-        <h1>Clive Chan</h1>
-        <a href="mailto:cc@clive.io">email</a>
-        <a href="https://github.com/cchan">github</a>
+        <h1 id="title">Clive Chan</h1> <!--replace this with Hello! in js-->
+        <nav> <!-- standard navbar items that invert color on hover, and may have different but all dark colors. Reasonably large text. -->
+          <a href="#scene1">Scene 1</a>
+          <a href="#scene2">Scene 2</a>
+          <a href="#scene3">Scene 3</a>
+        </nav>
+        <aside> <!--a single square at the right edge that expands into multiple colorful squares with social icons when moused over, fading the actual navbar items-->
+          <a href="mailto:cc@clive.io">email</a>
+          <a href="https://github.com/cchan">github</a>
+        </aside>
         <!--a href="https://pgp.mit.edu/pks/lookup?op=get&search=0x5DD681F35FEE0C47" title="7209 384F 80FE FBE1 2945 // CA74 5DD6 81F3 5FEE 0C47">PGP</a-->
       </div>
     </div>
-    <p>University of Waterloo Software Engineering Class of 2021</p>
-    <p>Self-taught artist of tech, physics, and math.</p>
-    
-    tutoring
-    webdev
-    r&eacute;sum&eacute;
-    
   </header>
   <main>
+    <section id="splash">
+      <!-- cool animated visualizations - delaunay face, chaos loop thing, machine learning, stereoscopic simulations -->
+      <p>UWaterloo Software Engineering Class of 2021</p>
+      <p>Self-taught code craftsman, community STEM outreach leader, physics and math lover.</p>
+      
+      <p>Scroll down or just see my <a href="resume.pdf">r&eacute;sum&eacute;</a>.</p>
+      
+      <!--calltoaction: tutoring-->
+      <!--calltoaction: webdev-->
+    </section>
     <section>
       <h2></h2>
       <p></p>
