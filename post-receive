@@ -1,5 +1,7 @@
 #!/bin/sh
 npm install
 npm prune
+rm -rf dist
 npm build
+
 pm2 restart clive.io
