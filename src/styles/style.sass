@@ -11,13 +11,11 @@ header
   font-size: 28px
   &>*
     display: inline-block
-    vertical-align: middle
+    vertical-align: top
     color: white
   #logo
     width: 5em
     height: 5em
-    img
-      height: 5em
     background-color: white
     border-radius: 50%
     border: solid 0.2em black
@@ -25,8 +23,41 @@ header
     margin-top: -1.65em
     margin-left: 1em
     float: left
-  #title
+    img
+      height: 5em
+  h1
     font-size: 2em
-    line-height: 2.5em
+    line-height: 1.25em
+    margin: 0 1em
     text-align: center
+    span
+      font-size: 0.3em
+      color: red
+      vertical-align: top
+      margin-left: 1em
+  nav
+    width: 15em
+    transition: width 1s
+    &:hover
+      width: 0
+      overflow: hidden
+    div
+      display: inline-block
+      width: 15em
+      a
+        box-sizing: border-box
+        width: 5em
+        text-align: center
+        display: inline-block
+        background-color: #333
+        color: white
+        border-left: solid 1px #999
+        transition: color 0.4s, background-color 0.4s
+        line-height: 2.5em
+        text-decoration: none
+        &:hover
+          background-color: white
+          color: black
+  aside
+    
   

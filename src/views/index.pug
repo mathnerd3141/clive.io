@@ -20,32 +20,35 @@ html(lang="en")
     header
       //- position: absolute then switch to position: fixed when scroll to top
       //- idk, something like ::before ::after
-        //- cool animated visualizations - delaunay face, chaos loop thing, machine learning, stereoscopic simulations
-        p UWaterloo Software Engineering Class of 2021
-        p Self-taught code craftsman, community STEM outreach leader, physics/math/compsci fanatic.
-          //- "connoisseur"
-        
-        p Scroll down or just see my 
-          a(href="resume.pdf") r&eacute;sum&eacute;
       
       a#logo(href="https://clive.io")
         img(src="img/logo.png", alt="awesome personal logo")
-      h1#title Hello!
-        div(style="font-size: 0.5em; color:red;") under construction
+      h1 Hello!
+        span under construction
         //- replace this with Hello! in js
-      div
-        nav
+      nav
+        div
           //- standard navbar items that invert color on hover, and may have different but all dark colors. Reasonably large text.
           a(href="#scene1") Scene 1
           a(href="#scene2") Scene 2
           a(href="#scene3") Scene 3
-        aside
-          //- a single square at the right edge that expands into multiple colorful squares with social icons when moused over, fading the actual navbar items
-          a(href="mailto:cc@clive.io") email
-          a(href="https://github.com/cchan") github
+      aside
+        //- a single square at the right edge that expands into multiple colorful squares with social icons when moused over, fading the actual navbar items
+        a(href="mailto:cc@clive.io") email
+        a(href="https://github.com/cchan") github
         // a(href="https://pgp.mit.edu/pks/lookup?op=get&search=0x5DD681F35FEE0C47" title="7209 384F 80FE FBE1 2945 // CA74 5DD6 81F3 5FEE 0C47") PGP
     main
       section#splash
+        //- On scroll down, as the navbar moves up these stay attached to the fixed background and fade out
+        
+        //- cool animated visualizations - delaunay face, chaos loop thing, machine learning, stereoscopic simulations
+        p UWaterloo Software Engineering Class of 2021
+        p Self-taught code craftsman, community STEM outreach leader, physics/math/compsci fanatic.
+          //- "connoisseur", "chef"
+        
+        p Scroll down or just see my 
+          a(href="resume.pdf") r&eacute;sum&eacute;
+        
         //- calltoaction: tutoring
         //- calltoaction: webdev
       section
