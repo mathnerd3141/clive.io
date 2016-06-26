@@ -5,8 +5,8 @@ var pug = require('gulp-pug');
 var sass = require('gulp-sass');
 
 var PATHS = {
-  pug: "src/pug/**/*.pug",
-  sass: "src/scss/**/*.{scss,sass}",
+  pug: "src/views/**/*.pug",
+  sass: "src/styles/**/*.{scss,sass}",
   static: "static/**/*.*"
 };
 
