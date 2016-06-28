@@ -1,34 +1,44 @@
 var browserSync = require('browser-sync').create();
 var gulp = require('gulp');
+var gutil = require('gulp-util');
 var nodemon = require('gulp-nodemon');
+var coffee = require('gulp-coffee');
 var pug = require('gulp-pug');
 var sass = require('gulp-sass');
 
 var PATHS = {
+  server: "src/server.coffee",
   pug: "src/views/**/*.pug",
   sass: "src/styles/**/*.{scss,sass}",
+  coffee: "src/scripts/**/*.coffee",
   static: "static/**/*.*"
 };
 
 var PORT = 10203;
 
-gulp.task('serve', ['nodemon', 'build'], function() {
+gulp.task('serve', ['build'], function() {
+  nodemon({
+    script: PATHS.server, 
+    args: [PORT.toString()]
+  });
+  
   browserSync.init({
     proxy: 'localhost:' + PORT
   });
 
+  gulp.watch(PATHS.coffee, ['coffee']);
   gulp.watch(PATHS.pug, ['pug']);
   gulp.watch(PATHS.sass, ['sass']);
   gulp.watch(PATHS.static, ['static']);
 });
 
-gulp.task('build', ['pug', 'sass', 'static']);
+gulp.task('build', ['coffee', 'pug', 'sass', 'static']);
 
-gulp.task('nodemon', function() {
-  nodemon({
-    script: './src/server.coffee', 
-    args: [PORT.toString()]
-  });
+gulp.task('coffee', function() {
+  gulp.src(PATHS.coffee)
+    .pipe(coffee({bare: true}).on('error', gutil.log))
+    .pipe(gulp.dest('./dist'))
+    .pipe(browserSync.stream());
 });
 
 gulp.task('pug', function() {
@@ -50,5 +60,3 @@ gulp.task('static', function() {
     .pipe(gulp.dest('./dist'))
     .pipe(browserSync.stream());
 });
-
-gulp.task('default', ['serve']);

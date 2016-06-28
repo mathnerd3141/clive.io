@@ -16,6 +16,8 @@ html(lang="en")
     
     link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css")
     link(rel="stylesheet", href="style.css")
+    
+    script(src="script.js")
   body
     header
       //- position: absolute then switch to position: fixed when scroll to top
@@ -23,8 +25,10 @@ html(lang="en")
       
       a#logo(href="https://clive.io")
         img(src="img/logo.png", alt="awesome personal logo")
-      h1 Hello!
-        span under construction
+        //- Loading animation: this shows up in center and pulses size, then rolls off
+        //- to the side and expands into place as the bar fades into being.
+      h1 Hi, I'm Clive!
+        //span under construction
         //- replace this with Hello! in js
       nav
         div
@@ -34,18 +38,17 @@ html(lang="en")
           a(href="#scene3") Scene 3
       aside
         //- a single square at the right edge that expands into multiple colorful squares with social icons when moused over, fading the actual navbar items
-        a(href="mailto:cc@clive.io") email
-        a(href="https://github.com/cchan") github
+        a(href="mailto:cc@clive.io") EM
+        a(href="https://github.com/cchan") GH
         // a(href="https://pgp.mit.edu/pks/lookup?op=get&search=0x5DD681F35FEE0C47" title="7209 384F 80FE FBE1 2945 // CA74 5DD6 81F3 5FEE 0C47") PGP
     main
       section#splash
         //- On scroll down, as the navbar moves up these stay attached to the fixed background and fade out
         
         //- cool animated visualizations - delaunay face, chaos loop thing, machine learning, stereoscopic simulations
-        p UWaterloo Software Engineering Class of 2021
+        p I'm in the UWaterloo Software Engineering Class of 2021.
         p Self-taught code craftsman, community STEM outreach leader, physics/math/compsci fanatic.
           //- "connoisseur", "chef"
-        
         p Scroll down or just see my 
           a(href="resume.pdf") r&eacute;sum&eacute;
         

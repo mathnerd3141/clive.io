@@ -1,63 +1,66 @@
+$header-height: 4rem
 body
   background-color: #eee
   font-family: Arial
+  padding: 0
+  margin: 0
 header
   position: absolute
   top: 40%
-  width: 90%
-  margin-left: 2%
-  height: 2.5em
+  width: 96%
+  padding: 0 2%
+  margin-left: 0
+  height: $header-height
   background-color: black
-  font-size: 28px
+  font-size: 0.5 * $header-height
+  text-align: center
   &>*
     display: inline-block
     vertical-align: top
     color: white
   #logo
-    width: 5em
-    height: 5em
+    width: 2.5 * $header-height
+    height: 2.5 * $header-height
     background-color: white
     border-radius: 50%
-    border: solid 0.2em black
-    padding: 0.2em
-    margin-top: -1.65em
-    margin-left: 1em
+    border: solid (0.1 * $header-height) black
+    padding: 0.1 * $header-height
+    margin: -0.95 * $header-height 0 0 0
     float: left
     img
-      height: 5em
+      height: 2.5 * $header-height
   h1
-    font-size: 2em
-    line-height: 1.25em
+    font-size: 1em
+    line-height: $header-height
     margin: 0 1em
     text-align: center
-    span
+    span //under construction
       font-size: 0.3em
       color: red
       vertical-align: top
       margin-left: 1em
+  nav a
+    width: 5em
+  aside a
+    width: $header-height
+    font-size: 0.5em
+  nav, aside
+    display: inline-block
+    float: right
   nav
-    width: 15em
-    transition: width 1s
+    display: none
+  nav a, aside a
+    box-sizing: border-box //remove this
+    text-align: center
+    display: inline-block
+    background-color: #333
+    color: white
+    transition: color 0.4s, background-color 0.4s
+    line-height: $header-height
+    text-decoration: none
     &:hover
-      width: 0
-      overflow: hidden
-    div
-      display: inline-block
-      width: 15em
-      a
-        box-sizing: border-box
-        width: 5em
-        text-align: center
-        display: inline-block
-        background-color: #333
-        color: white
-        border-left: solid 1px #999
-        transition: color 0.4s, background-color 0.4s
-        line-height: 2.5em
-        text-decoration: none
-        &:hover
-          background-color: white
-          color: black
+      background-color: white
+      color: black
   aside
     
   
