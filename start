@@ -1,7 +1,11 @@
 #!/bin/sh
-npm install
-npm prune
-rm -rf dist
+npm run clean
+npm build
+
+PORT=10203
+
+curl localhost:10000/unregister/clive.io
+curl localhost:10000/register/clive.io/$PORT
 
 # http://stackoverflow.com/a/35764114/1181387
-pm2 start npm --no-automation --name=clive.io -- run start:prod
+pm2 start npm --no-automation --name=clive.io -- run start:prod -- $PORT

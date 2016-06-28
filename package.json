@@ -4,10 +4,11 @@
   "description": "Clive Chan's personal homepage",
   "main": "server.js",
   "scripts": {
-    "start": "node node_modules/gulp/bin/gulp.js serve",
-    "build": "node node_modules/gulp/bin/gulp.js build",
-    "start:prod": "curl -X POST localhost:10000/register/clive.io/10203 && node node_modules/coffee-script/bin/coffee src/server.coffee 10203",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "gulp serve",
+    "build": "gulp build",
+    "start:prod": "coffee src/server.coffee",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "npm install; npm prune; rm -rf dist"
   },
   "repository": {
     "type": "git",
