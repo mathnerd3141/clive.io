@@ -1,12 +1,12 @@
 #!/bin/sh
-npm run clean
-npm build
-
 if [[ $# -eq 0 ]] ; then
   echo "[clive.io] Fatal error: server port argument required"
   exit 1
 else
   PORT="$1"
+  
+  npm run clean
+  npm run build
 
   curl localhost:10000/unregister/clive.io
   curl localhost:10000/register/clive.io/$PORT
