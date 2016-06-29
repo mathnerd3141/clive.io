@@ -2,10 +2,17 @@
 npm run clean
 npm build
 
-PORT=10203
+if [[ $# -eq 0 ]] ; then
+  echo "[clive.io] Fatal error: server port argument required"
+  exit 1
+else
+  PORT="$1"
 
-curl localhost:10000/unregister/clive.io
-curl localhost:10000/register/clive.io/$PORT
+  curl localhost:10000/unregister/clive.io
+  curl localhost:10000/register/clive.io/$PORT
 
-# http://stackoverflow.com/a/35764114/1181387
-pm2 start npm --no-automation --name=clive.io -- run start:prod -- $PORT
+  # http://stackoverflow.com/a/35764114/1181387
+  pm2 start npm --no-automation --name=clive.io -- run start:prod -- $PORT
+  
+  exit 0
+fi
