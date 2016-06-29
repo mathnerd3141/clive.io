@@ -17,19 +17,23 @@ var PATHS = {
 var PORT = 10203;
 
 gulp.task('serve', ['build'], function() {
-  nodemon({
-    script: PATHS.server, 
-    args: [PORT.toString()]
-  });
-  
-  browserSync.init({
-    proxy: 'localhost:' + PORT
-  });
+  try{
+    nodemon({
+      script: PATHS.server, 
+      args: [PORT.toString()]
+    });
+    
+    browserSync.init({
+      proxy: 'localhost:' + PORT
+    });
 
-  gulp.watch(PATHS.coffee, ['coffee']);
-  gulp.watch(PATHS.pug, ['pug']);
-  gulp.watch(PATHS.sass, ['sass']);
-  gulp.watch(PATHS.static, ['static']);
+    gulp.watch(PATHS.coffee, ['coffee']);
+    gulp.watch(PATHS.pug, ['pug']);
+    gulp.watch(PATHS.sass, ['sass']);
+    gulp.watch(PATHS.static, ['static']);
+  }catch(e){
+    console.log(e);
+  }
 });
 
 gulp.task('build', ['coffee', 'pug', 'sass', 'static']);
@@ -60,3 +64,5 @@ gulp.task('static', function() {
     .pipe(gulp.dest('./dist'))
     .pipe(browserSync.stream());
 });
+
+gulp.task('default', ['serve']);

@@ -39,28 +39,33 @@ header
       color: red
       vertical-align: top
       margin-left: 1em
-  nav a
-    width: 5em
-  aside a
-    width: $header-height
-    font-size: 0.5em
   nav, aside
     display: inline-block
     float: right
   nav
     display: none
   nav a, aside a
-    box-sizing: border-box //remove this
     text-align: center
     display: inline-block
-    background-color: #333
     color: white
     transition: color 0.4s, background-color 0.4s
-    line-height: $header-height
     text-decoration: none
     &:hover
       background-color: white
       color: black
+  nav a
+    background-color: #333
+    height: $header-height
+    width: 5em
+    line-height: $header-height
+  aside a
+    height: 0.5 * $header-height
+    width: 0.5 * $header-height
+    line-height: 0.5 * $header-height
+    font-size: 0.5em
+    display: inline-block
   aside
-    
-  
+    height: $header-height
+    width: $header-height
+    border: solid 1px #000
+
