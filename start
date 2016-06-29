@@ -12,7 +12,7 @@ else
   curl localhost:10000/register/clive.io/$PORT
 
   # http://stackoverflow.com/a/35764114/1181387
-  pm2 start npm --no-automation --name=clive.io -- run start:prod -- $PORT
-  
+  pm2 start npm --no-automation --name=clive.io -- run start:prod -- --port=$PORT
+
   exit 0
 fi

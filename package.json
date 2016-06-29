@@ -8,7 +8,7 @@
     "build": "gulp build",
     "start:prod": "coffee src/server.coffee",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "npm install; npm prune; rm -rf dist"
+    "clean": "npm install && npm prune && rm -rf dist"
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,8 @@
     "coffee-script": "^1.10.0",
     "express": "^4.13.4",
     "gulp-coffee": "^2.3.2",
-    "gulp-util": "^3.0.7"
+    "gulp-util": "^3.0.7",
+    "yargs": "^4.7.1"
   },
   "devDependencies": {
     "browser-sync": "^2.12.10",

@@ -1,6 +1,7 @@
 var browserSync = require('browser-sync').create();
 var gulp = require('gulp');
 var gutil = require('gulp-util');
+var argv = require('yargs').argv;
 var nodemon = require('gulp-nodemon');
 var coffee = require('gulp-coffee');
 var pug = require('gulp-pug');
@@ -14,17 +15,21 @@ var PATHS = {
   static: "static/**/*.*"
 };
 
-var PORT = 10203;
-
 gulp.task('serve', ['build'], function() {
-  try{
+  var PORT = argv.port;
+  console.log(argv.port);
+  if(typeof PORT !== "number" || Math.floor(PORT) !== PORT){
+    console.error('You need to supply a valid port like --port=12345.');
+    process.exit(1);
+  }else try{
     nodemon({
       script: PATHS.server, 
       args: [PORT.toString()]
     });
-    
+
     browserSync.init({
-      proxy: 'localhost:' + PORT
+      proxy: 'localhost:' + PORT,
+      online: false
     });
 
     gulp.watch(PATHS.coffee, ['coffee']);
