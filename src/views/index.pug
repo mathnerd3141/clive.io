@@ -37,16 +37,16 @@ html(lang="en")
         a(href="#scene3") Scene 3
       aside
         a(href="mailto:cc@clive.io" title="cc@clive.io") EM
-        a(href="https://github.com/cchan", title="@cchan") GH
-        a(href="https://twitter.com/cchan3141", title="@cchan3141") TW
-        a(href="https://linkedin.com/in/cchan3141" title="cchan3141") LN
+        a(href="https://github.com/cchan", title="cchan") GH
+        a.second(href="https://linkedin.com/in/cchan3141" title="cchan3141") LN
+        a.second(href="https://twitter.com/cchan3141", title="@cchan3141") TW
         // a(href="https://pgp.mit.edu/pks/lookup?op=get&search=0x5DD681F35FEE0C47" title="7209 384F 80FE FBE1 2945 // CA74 5DD6 81F3 5FEE 0C47") PGP
     main
       section#splash
         //- On scroll down, as the navbar moves up these stay attached to the fixed background and fade out
         
         //- cool animated visualizations - delaunay face, chaos loop thing, machine learning, stereoscopic simulations
-        p I'm in the UWaterloo Software Engineering Class of 2021.
+        p UWaterloo Software Engineering Co-op, Class of 2021.
         p Self-taught code craftsman, community STEM outreach leader, physics/math/compsci fanatic.
           //- "connoisseur", "chef"
         p Scroll down or just see my 
@@ -54,6 +54,27 @@ html(lang="en")
         
         //- calltoaction: tutoring
         //- calltoaction: webdev
+      section
+        h2 About
+        p I'm a primarily self-taught programmer with a strong intuition for solving hard problems.
+          | 
+          | I'm currently a student at the University of Waterloo in the Software Engineering Co-op program.
+        ul
+          li Born: October 1998
+          li Citizenship: dual US/Canadian
+          li Email (preferred contact): 
+            a(href="mailto:cc@clive.io") cc@clive.io
+          //-
+            li Alternate email: 
+              a(href="mailto:clive.chan@uwaterloo.ca") clive.chan@uwaterloo.ca
+            li Alternate email: 
+              a(href="mailto:cchan3141@gmail.com") cchan3141@gmail.com
+          li GitHub Profile: 
+            a(href="https://github.com/cchan") cchan
+          li LinkedIn Profile: 
+            a(href="https://linkedin.com/in/cchan3141") cchan3141
+          li Twitter Handle: 
+            a(href="https://twitter.com/cchan3141") @cchan3141
       section
         h2 Programming Skills
         article
@@ -92,6 +113,7 @@ html(lang="en")
           h3 Machine Learning and Other Research
           ul
             li C++
+              //- ADD: teaching (not just c++), usaco, etc.
             li Python (NumPy, TensorFlow)
             li Octave/MATLAB
             li R

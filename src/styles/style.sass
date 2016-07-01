@@ -7,8 +7,8 @@ body
 header
   position: absolute
   top: 40%
-  width: 96%
-  padding: 0 2%
+  width: 94%
+  padding: 0 4% 0 2%
   margin-left: 0
   height: $header-height
   background-color: black
@@ -62,10 +62,12 @@ header
     height: 0.5 * $header-height
     width: 0.5 * $header-height
     line-height: 0.5 * $header-height
-    font-size: 0.5em
+    font-size: 0.3em
     display: inline-block
+    vertical-align: top //top = best possible, about 5px sep
   aside
     height: $header-height
     width: $header-height
-    border: solid 1px #000
+  aside a.second
+    margin-top: -0.3rem
 
