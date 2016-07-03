@@ -1,27 +1,28 @@
-var browserSync = require('browser-sync').create();
 var gulp = require('gulp');
-var gutil = require('gulp-util');
-var argv = require('yargs').argv;
-var nodemon = require('gulp-nodemon');
-var coffee = require('gulp-coffee');
-var pug = require('gulp-pug');
-var sass = require('gulp-sass');
+var browserSync = require('browser-sync').create();
 
 var PATHS = {
   server: "src/server.coffee",
   pug: "src/views/**/*.pug",
   sass: "src/styles/**/*.{scss,sass}",
   coffee: "src/scripts/**/*.coffee",
-  static: "static/**/*.*"
+  static: "static/**/*.*",
+  dist: "./dist"
 };
 
+function swallowError(e){
+  console.log(e.toString());
+  this.emit('end');
+}
+
 gulp.task('serve', ['build'], function() {
-  var PORT = argv.port;
-  console.log(argv.port);
+  var nodemon = require('gulp-nodemon');
+  var PORT = require('yargs').argv.port;
+
   if(typeof PORT !== "number" || Math.floor(PORT) !== PORT){
     console.error('You need to supply a valid port like --port=12345.');
     process.exit(1);
-  }else try{
+  }else{
     nodemon({
       script: PATHS.server, 
       args: [PORT.toString()]
@@ -36,37 +37,46 @@ gulp.task('serve', ['build'], function() {
     gulp.watch(PATHS.pug, ['pug']);
     gulp.watch(PATHS.sass, ['sass']);
     gulp.watch(PATHS.static, ['static']);
-  }catch(e){
-    console.log(e);
   }
 });
 
 gulp.task('build', ['coffee', 'pug', 'sass', 'static']);
 
 gulp.task('coffee', function() {
+  var coffee = require('gulp-coffee');
+
   gulp.src(PATHS.coffee)
-    .pipe(coffee({bare: true}).on('error', gutil.log))
-    .pipe(gulp.dest('./dist'))
+    .pipe(coffee({bare: true}))
+    .on('error', swallowError)
+    .pipe(gulp.dest(PATHS.dist))
     .pipe(browserSync.stream());
 });
 
 gulp.task('pug', function() {
+  var pug = require('gulp-pug');
+
   return gulp.src(PATHS.pug)
     .pipe(pug())
-    .pipe(gulp.dest('./dist'))
+    .on('error', swallowError)
+    .pipe(gulp.dest(PATHS.dist))
     .pipe(browserSync.stream());
 });
 
 gulp.task('sass', function() {
+  var sass = require('gulp-sass');
+  var sourcemaps = require('gulp-sourcemaps');
+
   return gulp.src(PATHS.sass)
-    .pipe(sass({outputStyle: 'compressed'}))
-    .pipe(gulp.dest('./dist'))
+    .pipe(sourcemaps.init())
+    .pipe(sass({outputStyle:'compressed'}).on('error', sass.logError))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(PATHS.dist))
     .pipe(browserSync.stream());
 });
 
 gulp.task('static', function() {
   return gulp.src(PATHS.static)
-    .pipe(gulp.dest('./dist'))
+    .pipe(gulp.dest(PATHS.dist))
     .pipe(browserSync.stream());
 });
 
