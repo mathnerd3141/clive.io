@@ -4,12 +4,11 @@ html(lang="en")
     meta(charset="utf-8")
     meta(http-equiv="content-type", content="text/html; charset=UTF-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
-    title Clive Chan
-      //- Add something to title so that it'll show up in search results with a tagline
+    title Clive Chan - Software Engineer
     // waldo@clive.io
     // You seem to have found Waldo.
-    meta(name="description", content="Clive Chan: event coordinator, AI researcher, web designer, high school student.")
-      //- Change this
+    meta(name="description", content="Clive Chan - Software Engineer")
+      //- Change this to the tagline down there
     meta(name="viewport",    content="width=device-width, initial-scale=1, user-scalable=yes")
     meta(name="copyright",   content="Clive Chan, 2015-present")
     meta(name="author",      content="Clive Chan")
@@ -46,11 +45,13 @@ html(lang="en")
         //- On scroll down, as the navbar moves up these stay attached to the fixed background and fade out
         
         //- cool animated visualizations - delaunay face, chaos loop thing, machine learning, stereoscopic simulations
-        p UWaterloo Software Engineering Co-op, Class of 2021.
-        p Self-taught code craftsman, community STEM outreach leader, physics/math/compsci fanatic.
+        p.subtitle UWaterloo Software Engineering Co-op, Class of 2021.
+        p.tagline Self-taught code craftsman. Community STEM outreach leader. Physics/math/compsci fanatic. Expert improv problemsolver. Software engineer.
           //- "connoisseur", "chef"
-        p Scroll down or just see my 
+        p.action Scroll down or just see my 
           a(href="resume.pdf") r&eacute;sum&eacute;
+        
+        //- feature some <code></code> somewhere... hmm
         
         //- calltoaction: tutoring
         //- calltoaction: webdev
@@ -77,6 +78,8 @@ html(lang="en")
             a(href="https://twitter.com/cchan3141") @cchan3141
       section
         h2 Programming Skills
+          //- Organize by category in some tabular way
+          //- On hover over project photosquares, light up the skills demonstrated
         article
           h3 Frontend Languages & Frameworks
           ul
