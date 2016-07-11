@@ -6,6 +6,7 @@ var PATHS = {
   pug: "src/views/**/*.pug",
   sass: "src/styles/**/*.{scss,sass}",
   coffee: "src/scripts/**/*.coffee",
+  js: "src/scripts/**/*.js",
   static: "static/**/*.*",
   dist: "./dist"
 };
@@ -34,13 +35,14 @@ gulp.task('serve', ['build'], function() {
     });
 
     gulp.watch(PATHS.coffee, ['coffee']);
+    gulp.watch(PATHS.js, ['js']);
     gulp.watch(PATHS.pug, ['pug']);
     gulp.watch(PATHS.sass, ['sass']);
     gulp.watch(PATHS.static, ['static']);
   }
 });
 
-gulp.task('build', ['coffee', 'pug', 'sass', 'static']);
+gulp.task('build', ['coffee', 'js', 'pug', 'sass', 'static']);
 
 gulp.task('coffee', function() {
   var coffee = require('gulp-coffee');
@@ -48,6 +50,12 @@ gulp.task('coffee', function() {
   gulp.src(PATHS.coffee)
     .pipe(coffee({bare: true}))
     .on('error', swallowError)
+    .pipe(gulp.dest(PATHS.dist))
+    .pipe(browserSync.stream());
+});
+
+gulp.task('js', function() {
+  gulp.src(PATHS.js)
     .pipe(gulp.dest(PATHS.dist))
     .pipe(browserSync.stream());
 });

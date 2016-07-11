@@ -17,29 +17,39 @@ html(lang="en")
     link(rel="stylesheet", href="style.css")
     
     script(src="script.js")
+    
+    script(src='http://d3js.org/d3.v3.min.js')
+    script(src="http://wow.techbrood.com/libs/prefixfree.min.js")
+    script(src="http://wow.techbrood.com/libs/modernizr.js")
+    script(src="http://wow.techbrood.com/libs/jquery/jquery-1.11.1.min.js")
+    script(src="lorenz.js")
   body
     header
+      canvas#splash
+      //- Lorenz, Gravitation, Swarm intelligence, ...
+      
       //- position: absolute then switch to position: fixed when scroll to top
       //- idk, something like ::before ::after
       
-      a#logo(href="https://clive.io")
-        img(src="img/logo.png", alt="awesome personal logo")
-        //- Loading animation: this shows up in center and pulses size, then rolls off
-        //- to the side and expands into place as the bar fades into being.
-      h1 Hi, I'm Clive!
-        //span under construction
-        //- replace this with Hello! in js
-      nav
-        //- standard navbar items that invert color on hover, and may have different but all dark colors. Reasonably large text.
-        a(href="#scene1") Scene 1
-        a(href="#scene2") Scene 2
-        a(href="#scene3") Scene 3
-      aside
-        a(href="mailto:cc@clive.io" title="cc@clive.io") EM
-        a(href="https://github.com/cchan", title="cchan") GH
-        a.second(href="https://linkedin.com/in/cchan3141" title="cchan3141") LN
-        a.second(href="https://twitter.com/cchan3141", title="@cchan3141") TW
-        // a(href="https://pgp.mit.edu/pks/lookup?op=get&search=0x5DD681F35FEE0C47" title="7209 384F 80FE FBE1 2945 // CA74 5DD6 81F3 5FEE 0C47") PGP
+      div
+        a#logo(href="https://clive.io")
+          img(src="img/logo.png", alt="awesome personal logo")
+          //- Loading animation: this shows up in center and pulses size, then rolls off
+          //- to the side and expands into place as the bar fades into being.
+        h1 Hi, I'm Clive.
+          //span under construction
+          //- replace this with Hello! in js
+        nav
+          //- standard navbar items that invert color on hover, and may have different but all dark colors. Reasonably large text.
+          a(href="#scene1") Scene 1
+          a(href="#scene2") Scene 2
+          a(href="#scene3") Scene 3
+        aside
+          a(href="mailto:cc@clive.io" title="cc@clive.io") EM
+          a(href="https://github.com/cchan", title="cchan") GH
+          a.second(href="https://linkedin.com/in/cchan3141" title="cchan3141") LN
+          a.second(href="https://twitter.com/cchan3141", title="@cchan3141") TW
+          // a(href="https://pgp.mit.edu/pks/lookup?op=get&search=0x5DD681F35FEE0C47" title="7209 384F 80FE FBE1 2945 // CA74 5DD6 81F3 5FEE 0C47") PGP
     main
       section#splash
         //- On scroll down, as the navbar moves up these stay attached to the fixed background and fade out
@@ -58,18 +68,18 @@ html(lang="en")
       section
         h2 About
         article
-          include:md about.md
+          include:markdown about.md
       section
         h2 Programming Skills
           //- Organize by category in some tabular way
           //- On hover over project photosquares, light up the skills demonstrated
         article
-          include:md skills.md
+          include:markdown skills.md
       section
         h2 Projects
         article
-          include:md leadership.md
-          include:md experience.md
+          include:markdown leadership.md
+          include:markdown experience.md
     footer
       span.inlineblock
         a(href="https://github.com/cchan/clive.io", title="GitHub Repository for clive.io") Handcrafted
