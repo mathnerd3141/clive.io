@@ -57,86 +57,19 @@ html(lang="en")
         //- calltoaction: webdev
       section
         h2 About
-        p I'm a primarily self-taught programmer with a strong intuition for solving hard problems.
-          | 
-          | I'm currently a student at the University of Waterloo in the Software Engineering Co-op program.
-        ul
-          li Born: October 1998
-          li Citizenship: dual US/Canadian
-          li Email (preferred contact): 
-            a(href="mailto:cc@clive.io") cc@clive.io
-          //-
-            li Alternate email: 
-              a(href="mailto:clive.chan@uwaterloo.ca") clive.chan@uwaterloo.ca
-            li Alternate email: 
-              a(href="mailto:cchan3141@gmail.com") cchan3141@gmail.com
-          li GitHub Profile: 
-            a(href="https://github.com/cchan") cchan
-          li LinkedIn Profile: 
-            a(href="https://linkedin.com/in/cchan3141") cchan3141
-          li Twitter Handle: 
-            a(href="https://twitter.com/cchan3141") @cchan3141
+        article
+          include:md about.md
       section
         h2 Programming Skills
           //- Organize by category in some tabular way
           //- On hover over project photosquares, light up the skills demonstrated
         article
-          h3 Frontend Languages & Frameworks
-          ul
-            li HTML5 (+ Jade/Pug)
-            li CSS3 (+ Sass CSS)
-            li JavaScript (+ CoffeeScript, ES6, SocketIO)
-            li JQuery
-            li AngularJS
-            li React
-          h3 Backend/Application Languages
-          ul
-            li Firebase
-            li NodeJS (+ExpressJS)
-            li PHP
-            li MySQL
-            li Apache
-            li Python (+ Twisted)
-            li Java
-            li C++
-            li iOS
-          h3 Development Tools & Platforms
-          ul
-            li Git, GitHub
-            li Amazon EC2 (Bash, SSH)
-            li Nmap
-            li Raspberry Pi
-            li Travis CI
-            
-            li NPM (+ Gulp)
-            li Visual Studio C++
-            li Android Studio
-            li Eclipse
-            li Maven (+JUnit)
-          h3 Machine Learning and Other Research
-          ul
-            li C++
-              //- ADD: teaching (not just c++), usaco, etc.
-            li Python (NumPy, TensorFlow)
-            li Octave/MATLAB
-            li R
-            li LaTeX
+          include:md skills.md
       section
-        h2 Leadership
+        h2 Projects
         article
-          h3 LexHack
-          ul
-            li live.lexhack.org
-            li lexhack.org
-          h3 LMT
-          ul
-            li lhsmath.org
-            li lhsmath.org/LMT
-          h3 LexSciBowl
-          ul
-            li lexscibowl.org
-            li vocative.github.io (live.lexscibowl.org/chat)
-            li doeqs.clive.io (todo)
+          include:md leadership.md
+          include:md experience.md
     footer
       span.inlineblock
         a(href="https://github.com/cchan/clive.io", title="GitHub Repository for clive.io") Handcrafted
