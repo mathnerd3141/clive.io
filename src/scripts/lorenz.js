@@ -16,12 +16,12 @@ var dt = 0.001, // (δτ) Represents time. Draw curve - higher the value, straig
 var width, height, canvas = d3.select("canvas#splash");
 var context = canvas.node().getContext("2d");
 function setDims(){
-  width = $("header").width();
-  height = $("header").height();
+  width = $("header").outerWidth();
+  height = $("header").outerHeight();
   
   canvas.attr("width", width)
       .attr("height", height);
-
+  
   // set how the new images are drawn onto the existing image. 'lighter' will  display the new over the old
   context.globalCompositeOperation = "lighter";
   context.translate(width / 2, height / 2);
@@ -34,7 +34,7 @@ setDims();
 //Color Range
 var color = d3.scale.linear()
     .domain([0, 20, 30, 45])
-    .range(["yellow", "orange", "brown", "purple"])
+    .range(["white", "cyan", "blue", "navyblue", "black"])
     .interpolate(d3.interpolateHcl);
 
 

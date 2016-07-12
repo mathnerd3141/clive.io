@@ -13,7 +13,9 @@ html(lang="en")
     meta(name="copyright",   content="Clive Chan, 2015-present")
     meta(name="author",      content="Clive Chan")
     
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css")
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css")
     link(rel="stylesheet", href="style.css")
     
     script(src="script.js")
@@ -25,18 +27,20 @@ html(lang="en")
     script(src="lorenz.js")
   body
     header
+      //- Need a color scheme. Let's go with navy blue, black, white.
+      
       canvas#splash
       //- Lorenz, Gravitation, Swarm intelligence, ...
       
       //- position: absolute then switch to position: fixed when scroll to top
       //- idk, something like ::before ::after
       
-      div
+      div#title
         a#logo(href="https://clive.io")
           img(src="img/logo.png", alt="awesome personal logo")
           //- Loading animation: this shows up in center and pulses size, then rolls off
           //- to the side and expands into place as the bar fades into being.
-        h1 Hi, I'm Clive.
+        h1 Clive Chan
           //span under construction
           //- replace this with Hello! in js
         nav
@@ -45,27 +49,32 @@ html(lang="en")
           a(href="#scene2") Scene 2
           a(href="#scene3") Scene 3
         aside
-          a(href="mailto:cc@clive.io" title="cc@clive.io") EM
-          a(href="https://github.com/cchan", title="cchan") GH
-          a.second(href="https://linkedin.com/in/cchan3141" title="cchan3141") LN
-          a.second(href="https://twitter.com/cchan3141", title="@cchan3141") TW
-          // a(href="https://pgp.mit.edu/pks/lookup?op=get&search=0x5DD681F35FEE0C47" title="7209 384F 80FE FBE1 2945 // CA74 5DD6 81F3 5FEE 0C47") PGP
-    main
-      section#splash
+          a(href="mailto:cc@clive.io" title="cc@clive.io")
+            i(class="fa fa-envelope" aria-label="email")
+          a(href="https://github.com/cchan", title="cchan")
+            i(class="fa fa-github" aria-label="github")
+          a.second(href="https://linkedin.com/in/cchan3141" title="cchan3141")
+            i(class="fa fa-linkedin" aria-label="linkedin")
+          a.second(href="https://twitter.com/cchan3141", title="@cchan3141")
+            i(class="fa fa-twitter" aria-label="twitter")
+      div#subtitle
         //- On scroll down, as the navbar moves up these stay attached to the fixed background and fade out
         
         //- cool animated visualizations - delaunay face, chaos loop thing, machine learning, stereoscopic simulations
         p.subtitle UWaterloo Software Engineering Co-op, Class of 2021.
-        p.tagline Self-taught code craftsman. Community STEM outreach leader. Physics/math/compsci fanatic. Expert improv problemsolver. Software engineer.
+        p.tagline Code craftsman. Community STEM outreach leader. Physics/math/compsci fanatic. Expert improv problemsolver. Software engineer.
           //- "connoisseur", "chef"
         p.action Scroll down or just see my 
           a(href="resume.pdf") r&eacute;sum&eacute;
+        
+        <a href="#about"><span class="scrollto--arrow"><img src="img/scroll_down.png" alt="scroll down arrow"></span></a>
         
         //- feature some <code></code> somewhere... hmm
         
         //- calltoaction: tutoring
         //- calltoaction: webdev
-      section
+    main
+      section#about
         h2 About
         article
           include:markdown about.md

@@ -3,44 +3,49 @@ $header-height: 4rem
 html, body
   height: 100%
   margin: 0
+  //Copied from GitHub:
+  font-family: Montserrat;
 
 body
-  background-color: #eee
-  font-family: Arial
+  background-color: black
   padding: 0
   margin: 0
 
 header
+  box-sizing: border-box
   display: block
-  background-color: black
   min-height: 100%
+  canvas#splash
+    position: absolute
+    top: 0
+    z-index: -1000
+    opacity: 0.5
+  padding-top: 200px
 
-header>div
-  position: absolute
-  top: 40%
-  width: 94%
-  padding: 0 4% 0 2%
-  margin-left: 0
-  height: $header-height
-  background-color: white
-  font-size: 0.5 * $header-height
+header>div#title
+  background-color: transparent
+  font-size: 2em
   text-align: center
   &>*
     display: inline-block
     vertical-align: top
-    color: black
+    color: #ffffe6
   #logo
     width: 2.5 * $header-height
     height: 2.5 * $header-height
-    background-color: white
+    background-color: inherit
     border-radius: 50%
     padding: 0.1 * $header-height
     margin: -0.9 * $header-height 0 0 0
-    float: left
     img
       height: 2.5 * $header-height
+      filter: invert(100%)
+      -webkit-filter: invert(100%)
+      z-index: -2000
+      position: relative
+      opacity: 0.9
   h1
-    font-size: 1em
+    font-size: 1.5em
     line-height: $header-height
     margin: 0 1em
     text-align: center
@@ -51,13 +56,12 @@ header>div
       margin-left: 1em
   nav, aside
     display: inline-block
-    float: right
   nav
     display: none
   nav a, aside a
     text-align: center
     display: inline-block
-    color: white
+    color: inherit
     transition: color 0.4s, background-color 0.4s
     text-decoration: none
     &:hover
@@ -72,7 +76,7 @@ header>div
     height: 0.5 * $header-height
     width: 0.5 * $header-height
     line-height: 0.5 * $header-height
-    font-size: 0.3em
+    font-size: 0.7em
     display: inline-block
     vertical-align: top //top = best possible, about 5px sep
   aside
@@ -81,3 +85,19 @@ header>div
   aside a.second
     margin-top: -0.3rem
 
+header>div#subtitle
+  margin-top: 3em
+  font-size: 1em
+  color: #ffffe6
+  text-align: center
+  .scrollto--arrow
+    display: block
+    position: absolute
+    bottom: 1em
+    text-align: center
+    width: 100%
+  a
+    color: white
+
+main
+  background-color: #ffffee
