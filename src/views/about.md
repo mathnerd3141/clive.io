@@ -1,3 +1,5 @@
+## About
+
 [](use a real photo of myself somewhere in this region)
 
 I'm a primarily self-taught programmer with a strong intuition for solving hard problems.

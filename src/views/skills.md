@@ -1,3 +1,8 @@
+## Skills
+
+[](Organize by category in some tabular way)
+[](On hover over project photosquares, light up the skills demonstrated)
+
 ### Frontend Languages & Frameworks
 - HTML5 (+ Jade/Pug)
 - CSS3 (+ Sass CSS)
@@ -29,7 +34,6 @@
 - Nmap
 - Raspberry Pi
 - Travis CI
-
 - NPM (+ Gulp)
 - Visual Studio C++
 - Android Studio
