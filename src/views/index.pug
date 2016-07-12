@@ -43,11 +43,6 @@ html(lang="en")
         h1 Clive Chan
           //span under construction
           //- replace this with Hello! in js
-        nav
-          //- standard navbar items that invert color on hover, and may have different but all dark colors. Reasonably large text.
-          a(href="#scene1") Scene 1
-          a(href="#scene2") Scene 2
-          a(href="#scene3") Scene 3
         aside
           a(href="mailto:cc@clive.io" title="cc@clive.io")
             i(class="fa fa-envelope" aria-label="email")
@@ -61,14 +56,15 @@ html(lang="en")
         //- On scroll down, as the navbar moves up these stay attached to the fixed background and fade out
         
         //- cool animated visualizations - delaunay face, chaos loop thing, machine learning, stereoscopic simulations
-        p.subtitle UWaterloo Software Engineering Co-op, Class of 2021.
+        p.school UWaterloo Software Engineering Co-op, Class of 2021.
         p.tagline Code craftsman. Community STEM outreach leader. Physics/math/compsci fanatic. Expert improv problemsolver. Software engineer.
           //- "connoisseur", "chef"
         p.action Scroll down or just see my 
           a(href="resume.pdf") r&eacute;sum&eacute;
         p(style="color:red") under construction
         
-        <a href="#about"><span class="scrollto--arrow"><img src="img/scroll_down.png" alt="scroll down arrow"></span></a>
+        a(href="#about", class="arrow")
+          img(src="img/scroll_down.png", alt="scroll down arrow")
         
         //- feature some <code></code> somewhere... hmm
         

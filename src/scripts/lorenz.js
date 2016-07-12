@@ -34,12 +34,12 @@ setDims();
 //Color Range
 var color = d3.scale.linear()
     .domain([0, 20, 30, 45])
-    .range(["white", "cyan", "blue", "navyblue", "black"])
+    .range(["white", "cyan", "blue", "navyblue"])
     .interpolate(d3.interpolateHcl);
 
 
 //mouse reactions
-d3.select("canvas").on("mousemove", function() {
+d3.select("body").on("mousemove", function() {
     var m = d3.mouse(canvas.node());
     x0 = (m[0] - width / 2) / 12;
     y0 = (m[1] - height / 2) / 8;
@@ -47,14 +47,14 @@ d3.select("canvas").on("mousemove", function() {
 });
 
 //consistent timing of animations when concurrent transitions are scheduled for fluidity
-d3.timer(function() {
+setInterval(function() {
     var x = (width * Math.random() - width / 2)/12, //x0 + (Math.random() - .5) * 4,
         y = (height * Math.random() - height / 2)/8, //y0 + (Math.random() - .5) * 4,
         z = z0 + (Math.random() - .5) * 4,
         n = Math.random() * 3 | 0,
-        t1 = Math.random() * 5000 + 10000;
+        t1 = Math.random() * 10000 + 15000; // time it's allowed to swirl for
     
-    if(Math.random() < 0.2){
+    if(Math.random() < 0.5){
       x = x0 + (Math.random() - .5) * 4;
       y = y0 + (Math.random() - .5) * 4;
     }
@@ -81,6 +81,6 @@ d3.timer(function() {
     context.fillStyle = "rgba(0,0,0,.03)";
     context.fillRect(0, 0, width, height);
     context.restore();
-});
+}, 50);
 
 });

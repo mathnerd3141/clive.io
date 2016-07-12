@@ -4,100 +4,73 @@ $almostwhite: #ffffdd
 
 html, body
   height: 100%
+  padding: 0
   margin: 0
-  //Copied from GitHub:
-  font-family: Montserrat;
+  font-family: Montserrat
 
 body
   background-color: black
-  padding: 0
-  margin: 0
 
 header
-  box-sizing: border-box
   display: block
   min-height: 100%
   canvas#splash
     position: fixed
     top: 0
     z-index: -1000
-    opacity: 0.5
-  padding-top: 25vh
+    opacity: 0.6
 
 header>div#title
-  background-color: transparent
-  font-size: 2em
+  margin-top: 25vh
   text-align: center
   &>*
     display: inline-block
-    vertical-align: top
+    vertical-align: middle
     color: $almostwhite
   #logo
-    width: 2.5 * $header-height
-    height: 2.5 * $header-height
-    background-color: inherit
-    border-radius: 50%
-    padding: 0.1 * $header-height
-    margin: -0.9 * $header-height 0 0 0
     img
       height: 2.5 * $header-height
       filter: invert(100%)
       -webkit-filter: invert(100%)
-      z-index: -2000
-      position: relative
-      opacity: 0.9
+      opacity: 0.7
   h1
-    font-size: 1.5em
+    font-size: 3em
     line-height: $header-height
-    margin: 0 1em
-    text-align: center
-    span //under construction
-      font-size: 0.3em
-      color: red
-      vertical-align: top
-      margin-left: 1em
-  nav, aside
-    display: inline-block
-  nav
-    display: none
-  nav a, aside a
-    text-align: center
-    display: inline-block
-    color: inherit
-    transition: color 0.4s, background-color 0.4s
-    text-decoration: none
-    &:hover
-      background-color: white
-      color: black
-  nav a
-    background-color: #333
-    height: $header-height
-    width: 5em
-    line-height: $header-height
-  aside a
-    height: 0.5 * $header-height
-    width: 0.5 * $header-height
-    line-height: 0.5 * $header-height
-    font-size: 0.7em
-    display: inline-block
-    vertical-align: top //top = best possible, about 5px sep
+    margin: 0 0.8em 0 0.5em
   aside
     height: $header-height
     width: $header-height
-  aside a.second
-    margin-top: -0.3rem
+  aside a
+    display: inline-block
+    text-decoration: none
+    color: inherit
+    transition: color 0.4s, background-color 0.4s
+    &:hover
+      background-color: white
+      color: black
+    font-size: 1.5rem
+    height: $header-height / 2
+    width: $header-height / 2
+    line-height: $header-height / 2
+    border-radius: 1px
 
 header>div#subtitle
+  margin-bottom: -25vh
   margin-top: 3em
   font-size: 1em
   color: $almostwhite
   text-align: center
-  .scrollto--arrow
-    display: block
+  .arrow
+    display: inline-block
     position: absolute
-    bottom: 1em
+    bottom: 1.5em
     text-align: center
-    width: 100%
+    margin: 0 auto
+    padding: 1em
+    transition: bottom 0.5s, padding-top 0.5s
+    &:hover
+      padding-top: 2em
+      bottom: 0.5em
   a
     color: white
 
