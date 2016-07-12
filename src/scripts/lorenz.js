@@ -32,7 +32,7 @@ $(window).resize(setDims);
 setDims();
 
 //Color Range
-var color = d3.scale.linear()
+var color = d3.scaleLinear()
     .domain([0, 20, 30, 45])
     .range(["white", "cyan", "blue", "navyblue"])
     .interpolate(d3.interpolateHcl);
