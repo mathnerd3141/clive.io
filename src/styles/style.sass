@@ -1,5 +1,7 @@
 $header-height: 4rem
 
+$almostwhite: #ffffdd
+
 html, body
   height: 100%
   margin: 0
@@ -20,7 +22,7 @@ header
     top: 0
     z-index: -1000
     opacity: 0.5
-  padding-top: 200px
+  padding-top: 25vh
 
 header>div#title
   background-color: transparent
@@ -29,7 +31,7 @@ header>div#title
   &>*
     display: inline-block
     vertical-align: top
-    color: #ffffe6
+    color: $almostwhite
   #logo
     width: 2.5 * $header-height
     height: 2.5 * $header-height
@@ -88,7 +90,7 @@ header>div#title
 header>div#subtitle
   margin-top: 3em
   font-size: 1em
-  color: #ffffe6
+  color: $almostwhite
   text-align: center
   .scrollto--arrow
     display: block
@@ -100,4 +102,14 @@ header>div#subtitle
     color: white
 
 main
-  background-color: #ffffee
+  background-color: $almostwhite
+  padding: 5%
+
+footer
+  background-color: transparent
+  height: 10em
+  line-height: 10em
+  text-align: center
+  color: $almostwhite
+  a
+    color: white
