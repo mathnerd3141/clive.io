@@ -3,7 +3,8 @@ var browserSync = require('browser-sync').create();
 
 var PATHS = {
   server: "src/server.coffee",
-  pug: "src/views/**/*.pug",
+  pugsrc: "src/views/**/*.pug",
+  pugwatch: "src/views/**/*.{pug,html,md}",
   sass: "src/styles/**/*.{scss,sass}",
   coffee: "src/scripts/**/*.coffee",
   js: "src/scripts/**/*.js",
@@ -36,7 +37,7 @@ gulp.task('serve', ['build'], function() {
 
     gulp.watch(PATHS.coffee, ['coffee']);
     gulp.watch(PATHS.js, ['js']);
-    gulp.watch(PATHS.pug, ['pug']);
+    gulp.watch(PATHS.pugwatch, ['pug']);
     gulp.watch(PATHS.sass, ['sass']);
     gulp.watch(PATHS.static, ['static']);
   }
@@ -63,7 +64,7 @@ gulp.task('js', function() {
 gulp.task('pug', function() {
   var pug = require('gulp-pug');
 
-  return gulp.src(PATHS.pug)
+  return gulp.src(PATHS.pugsrc)
     .pipe(pug())
     .on('error', swallowError)
     .pipe(gulp.dest(PATHS.dist))

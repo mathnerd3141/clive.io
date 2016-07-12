@@ -39,12 +39,12 @@ var color = d3.scale.linear()
 
 
 //mouse reactions
-//d3.select("canvas").on("mousemove", function() {
-//    var m = d3.mouse(canvas.node());
-//    x0 = (m[0] - width / 2) / 12;
-//    y0 = (m[1] - height / 2) / 8;
-//    z0 = 10;
-//});
+d3.select("canvas").on("mousemove", function() {
+    var m = d3.mouse(canvas.node());
+    x0 = (m[0] - width / 2) / 12;
+    y0 = (m[1] - height / 2) / 8;
+    z0 = 10;
+});
 
 //consistent timing of animations when concurrent transitions are scheduled for fluidity
 d3.timer(function() {
@@ -53,7 +53,12 @@ d3.timer(function() {
         z = z0 + (Math.random() - .5) * 4,
         n = Math.random() * 3 | 0,
         t1 = Math.random() * 5000 + 10000;
-
+    
+    if(Math.random() < 0.2){
+      x = x0 + (Math.random() - .5) * 4;
+      y = y0 + (Math.random() - .5) * 4;
+    }
+    
     d3.timer(function(t0) {
         for (var i = 0; i < n; ++i) {
             context.strokeStyle = color(z);

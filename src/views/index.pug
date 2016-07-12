@@ -66,6 +66,7 @@ html(lang="en")
           //- "connoisseur", "chef"
         p.action Scroll down or just see my 
           a(href="resume.pdf") r&eacute;sum&eacute;
+        p(style="color:red") under construction
         
         <a href="#about"><span class="scrollto--arrow"><img src="img/scroll_down.png" alt="scroll down arrow"></span></a>
         
@@ -77,18 +78,18 @@ html(lang="en")
       section#about
         h2 About
         article
-          include:markdown about.md
+          include:marked about.md
       section
         h2 Programming Skills
           //- Organize by category in some tabular way
           //- On hover over project photosquares, light up the skills demonstrated
         article
-          include:markdown skills.md
+          include:marked skills.md
       section
         h2 Projects
         article
-          include:markdown leadership.md
-          include:markdown experience.md
+          include:marked leadership.md
+          include:marked experience.md
     footer
       span.inlineblock
         a(href="https://github.com/cchan/clive.io", title="GitHub Repository for clive.io") Handcrafted

@@ -1,17 +1,19 @@
 ### LexHack
 Organized ...
-- live.lexhack.org
-- lexhack.org
+
+- [live.lexhack.org](live.lexhack.org)
+- [lexhack.org](lexhack.org)
 
 ### LMT
-- lhsmath.org
-- lhsmath.org/LMT
+- [lhsmath.org](lhsmath.org)
+- [lhsmath.org/LMT](lhsmath.org/LMT)
 
 ### LexSciBowl
-- lexscibowl.org
-- vocative.github.io (live.lexscibowl.org/chat)
-- doeqs.clive.io (todo)
+- [lexscibowl.org](lexscibowl.org)
+- [vocative.github.io](vocative.github.io) for coordination chat
+- [doeqs.clive.io](doeqs.clive.io) tangentially related
 
 ### Other
-- calcbee.org
-- lexmusket.com
+- [CalcBee](calcbee.org), webmaster
+
+[](- [LHS Musket Newspaper](lexmusket.com), webdev advisor)

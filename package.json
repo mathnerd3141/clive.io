@@ -22,7 +22,7 @@
   "dependencies": {
     "coffee-script": "^1.10.0",
     "express": "^4.13.4",
-    "jstransformer-markdown": "^1.1.0"
+    "jstransformer-marked": "^1.0.1"
   },
   "devDependencies": {
     "gulp": "^3.9.1",

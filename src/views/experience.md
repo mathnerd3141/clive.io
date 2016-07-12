@@ -12,7 +12,7 @@ Performing network meta-analysis of cancer treatments to compare studies with di
 
 ### VitaeDev co-founder
 2016-present
-Lead programmer in student-run startup writing modern websites for Lexington-area businesses, with free services to nonprofit community organizations. <vitaedev.com>
+Lead programmer in student-run startup writing modern websites for Lexington-area businesses, with free services to nonprofit community organizations. [vitaedev.com](vitaedev.com)
 
 ### SkillFlow developer
 2016-present
