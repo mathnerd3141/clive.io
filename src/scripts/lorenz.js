@@ -32,10 +32,11 @@ $(window).resize(setDims);
 setDims();
 
 //Color Range
-var color = d3.scaleLinear()
-    .domain([0, 20, 30, 45])
-    .range(["white", "cyan", "blue", "navyblue"])
-    .interpolate(d3.interpolateHcl);
+var color = d3.scalePow()
+    .domain([0, 8, 23, 55])
+    .range(["white", "cyan", "deepskyblue", "#00f"])
+    .exponent(1.5)
+    .interpolate(d3.interpolateRgb);
 
 
 //mouse reactions
@@ -46,22 +47,27 @@ d3.select("body").on("mousemove", function() {
     z0 = 10;
 });
 
-//consistent timing of animations when concurrent transitions are scheduled for fluidity
-setInterval(function() {
+function spawnSprite(spawnAtMouse) {
+    if(typeof spawnAtMouse == "undefined")
+      spawnAtMouse = false;
+    
     var x = (width * Math.random() - width / 2)/12, //x0 + (Math.random() - .5) * 4,
         y = (height * Math.random() - height / 2)/8, //y0 + (Math.random() - .5) * 4,
-        z = z0 + (Math.random() - .5) * 4,
+        z = z0 + (Math.random() - .5) * 10,
         n = Math.random() * 3 | 0,
-        t1 = Math.random() * 10000 + 15000; // time it's allowed to swirl for
+        t1 = Math.random() * 15; // time (sec) it's allowed to swirl for
     
-    if(Math.random() < 0.5){
-      x = x0 + (Math.random() - .5) * 4;
-      y = y0 + (Math.random() - .5) * 4;
+    if(spawnAtMouse){
+      x = x0;
+      y = y0;
     }
+    
+    
+    var offset = Math.random() * 20;
     
     d3.timer(function(t0) {
         for (var i = 0; i < n; ++i) {
-            context.strokeStyle = color(z);
+            context.strokeStyle = color(z + offset);
             context.beginPath();
             context.moveTo(x, y);
             x += dt * w * (y - x);
@@ -78,9 +84,16 @@ setInterval(function() {
 
     //source-atop draws old image on top of the new image, eliminating the part of the old image that is outside of the new image range.
     context.globalCompositeOperation = "source-atop";
-    context.fillStyle = "rgba(0,0,0,.03)";
+    context.fillStyle = "rgba(0,0,0,.05)";
     context.fillRect(0, 0, width, height);
     context.restore();
-}, 50);
+}
+
+setInterval(spawnSprite, 500);
+for(var i = 0; i < 30; i++)
+  spawnSprite();
+$("body").on("click", function(){
+  spawnSprite(true);
+});
 
 });
