@@ -13,7 +13,7 @@ html(lang="en")
     meta(name="copyright",   content="Clive Chan, 2015-present")
     meta(name="author",      content="Clive Chan")
     
-    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Montserrat")
     link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css")
     link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css")
     link(rel="stylesheet", href="style.css")
@@ -24,23 +24,17 @@ html(lang="en")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js")
     script(src="lorenz.js")
   body
+    canvas#splash
+    //- Lorenz, Gravitation, Swarm intelligence, ...
+    //- delaunay face, chaos loop thing, machine learning, stereoscopic simulations
+    
     header
-      //- Need a color scheme. Let's go with navy blue, black, white.
-      
-      canvas#splash
-      //- Lorenz, Gravitation, Swarm intelligence, ...
-      
-      //- position: absolute then switch to position: fixed when scroll to top
-      //- idk, something like ::before ::after
-      
       div#title
         a#logo(href="https://clive.io")
           img(src="img/logo.png", alt="awesome personal logo")
           //- Loading animation: this shows up in center and pulses size, then rolls off
-          //- to the side and expands into place as the bar fades into being.
+          //- to the side then expands into place as the bar fades into being.
         h1 Clive Chan
-          //span under construction
-          //- replace this with Hello! in js
         aside
           a(href="mailto:cc@clive.io" title="cc@clive.io")
             i(class="fa fa-envelope" aria-label="email")
@@ -50,37 +44,58 @@ html(lang="en")
             i(class="fa fa-linkedin" aria-label="linkedin")
           a.second(href="https://twitter.com/cchan3141", title="@cchan3141")
             i(class="fa fa-twitter" aria-label="twitter")
-      div#subtitle
-        //- On scroll down, as the navbar moves up these stay attached to the fixed background and fade out
-        
-        //- cool animated visualizations - delaunay face, chaos loop thing, machine learning, stereoscopic simulations
-        p.school UWaterloo Software Engineering Co-op, Class of 2021.
-        p.tagline Code craftsman. Community STEM outreach leader. Physics/math/compsci fanatic. Expert improv problemsolver. Software engineer.
-          //- "connoisseur", "chef"
-        p.action Scroll down or just see my 
+      
+      //- [?] On scroll down, as the navbar moves up these stay attached to the fixed background and fade out
+      
+      p.position
+        span UWaterloo Software Engineering Co-op,
+        | 
+        span Class of 2021.
+      p.tagline
+        span Code craftsman.
+        | 
+        span Community STEM outreach leader.
+        | 
+        span Physics/math/compsci fanatic.
+        | 
+        span Expert problemsolver.
+        | 
+        span.b Software engineer.
+      p(style="color:red;opacity:.5;font-weight:100;font-size: 1.3em") under construction
+      
+      div(id="cta")
+        p Scroll down
+        p (or just see my 
           a(href="resume.pdf") r&eacute;sum&eacute;
-        p(style="color:red") under construction
-        
-        a(href="#about", class="arrow")
+          | )
+        a(href="#about")
           img(src="img/scroll_down.png", alt="scroll down arrow")
-        
-        //- feature some <code></code> somewhere... hmm
-        
-        //- calltoaction: tutoring
-        //- calltoaction: webdev
+      
+      //- feature some <code></code> somewhere... hmm
+      
+      //- calltoaction: tutoring
+      //- calltoaction: webdev
     main
       section#about
         include:marked about.md
-      section
+      div.intersection
+        //-
+          Not sure how this will work. I suspect I need a canvas in each, since if I just javascript-switch on scrollheight, 
+          what if a section (like About) is shorter than a screen? And it will also be strange when animations restart every time. 
+          (they should pause in the background rather than keep running, though)
+      section#skills
         include:marked skills.md
-      section
+      div.intersection
+      section#experience
         include:marked experience.md
+      div.intersection
+      section#leadership
         include:marked leadership.md
-        include:marked projects.md
+      div.intersection
+      section#other
+        include:marked other.md
     footer
-      span.inlineblock
-        a(href="https://github.com/cchan/clive.io", title="GitHub Repository for clive.io") Handcrafted
-        |  by Clive with &lt;3, 2015-present.
+      a(href="https://github.com/cchan/clive.io", title="GitHub Repository for clive.io") Handcrafted by Clive with &lt;3, 2015-present.
     script.
       //Smooth scrolling, copied from calcbee/onestep.
       //Originally adapted from //http://www.paulund.co.uk/smooth-scroll-to-internal-links-with-jquery

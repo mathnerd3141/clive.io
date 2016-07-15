@@ -55,7 +55,7 @@ function spawnSprite(spawnAtMouse) {
         y = (height * Math.random() - height / 2)/8, //y0 + (Math.random() - .5) * 4,
         z = z0 + (Math.random() - .5) * 10,
         n = Math.random() * 3 | 0,
-        t1 = Math.random() * 15; // time (sec) it's allowed to swirl for
+        t1 = Math.random() * 10; // time (sec) it's allowed to swirl for
     
     if(spawnAtMouse){
       x = x0;
@@ -89,7 +89,7 @@ function spawnSprite(spawnAtMouse) {
     context.restore();
 }
 
-setInterval(spawnSprite, 500);
+setInterval(spawnSprite, 800);
 for(var i = 0; i < 30; i++)
   spawnSprite();
 $("body").on("click", function(){

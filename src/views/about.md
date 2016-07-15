@@ -2,7 +2,8 @@
 
 [](use a real photo of myself somewhere in this region)
 
-I'm a primarily self-taught programmer with a strong intuition for solving hard problems.
+I'm a primarily self-taught full-stack programmer with a strong intuition for solving hard problems
+and a passion for reaching out to my community to share my love of science and technology.
 I'm currently a student at the University of Waterloo in the Software Engineering Co-op program.
 
 - **Born**: October 1998

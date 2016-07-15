@@ -2,90 +2,130 @@ $header-height: 4rem
 
 $almostwhite: #ffffdd
 
+$titlefont: Montserrat, "Segoe UI", "Open Sans"
+$contentfont: Montserrat //for now
+
 html, body
   height: 100%
+  width: 100%
   padding: 0
   margin: 0
-  font-family: Montserrat
 
 body
   background-color: black
 
-header
+canvas#splash
+  position: fixed
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  z-index: -1000
+  opacity: 0.6
+
+body>header
+  font-family: $titlefont
   display: block
   min-height: 100%
-  canvas#splash
-    position: fixed
-    top: 0
-    z-index: -1000
-    opacity: 0.6
-
-header>div#title
-  margin-top: 25vh
   text-align: center
-  &>*
-    display: inline-block
-    vertical-align: middle
-    color: $almostwhite
-  #logo
-    img
+  color: $almostwhite
+  a
+    color: white
+  p
+    margin: 0.5em 0 0 0
+  
+  #title
+    padding-top: 7em
+    &>*
+      display: inline-block
+      vertical-align: middle
+    #logo img
       height: 2.5 * $header-height
       filter: invert(100%)
       -webkit-filter: invert(100%)
+      
       opacity: 0.7
       transition: opacity 0.5s
       &:hover
         opacity: 1
-  h1
-    font-size: 3em
-    line-height: $header-height
-    margin: 0 0.8em 0 0.5em
-  aside
-    height: $header-height
-    width: $header-height
-  aside a
-    display: inline-block
-    text-decoration: none
-    color: inherit
-    transition: color 0.4s, background-color 0.4s
-    &:hover
-      background-color: white
-      color: black
-    font-size: 1.5rem
-    height: $header-height / 2
-    width: $header-height / 2
-    line-height: $header-height / 2
-    border-radius: 1px
-
-header>div#subtitle
-  margin-bottom: -25vh
-  margin-top: 3em
-  font-size: 1em
-  color: $almostwhite
-  text-align: center
-  .arrow
-    display: inline-block
+    h1
+      font-size: 3em
+      line-height: $header-height
+      margin: 0 0.8em 0 0.5em
+    aside
+      height: $header-height
+      width: $header-height
+    aside a
+      display: inline-block
+      text-decoration: none
+      
+      color: inherit
+      transition: color 0.4s, background-color 0.4s
+      &:hover
+        background-color: white
+        color: black
+      
+      font-size: 1.5rem
+      height: $header-height / 2
+      width: $header-height / 2
+      line-height: $header-height / 2
+      border-radius: 1px
+  
+  .position, .tagline
+    span
+      display: inline-block
+    .b
+      font-weight: bold
+  .position
+    font-size: 1.2em
+  .tagline
+    font-size: 0.8em
+  
+  #cta //"call to action"
     position: absolute
-    bottom: 1.5em
+    bottom: 0
     text-align: center
-    margin: 0 auto
-    padding: 1em
-    transition: bottom 0.5s, padding-top 0.5s
-    &:hover
-      padding-top: 2em
-      bottom: 0.5em
-  a
-    color: white
+    width: 100%
+    padding-bottom: 1.5em
+    p
+      margin: 0
+      font-size: 0.6em
+    &>a
+      position: relative
+      padding: 1em 1em 0.5em
+      bottom: 0
+      transition: bottom 0.5s, padding-top 0.5s
+      &:hover
+        padding-top: 2em
+        bottom: -1em
 
-main
+main section
+  border-top: 1px solid white
   background-color: $almostwhite
-  padding: 5% 20%
+  padding: 0 25% 5% 25%
+  font-family: $contentfont
+  h2
+    font-family: $titlefont
+    text-align: center
+    padding: 2em 0 0.5em 0
+    margin: 0
+  p
+    text-indent: 1em
+
+main .intersection
+  height: 3em
 
 footer
+  font-family: $titlefont
   background-color: transparent
-  height: 10em
-  line-height: 10em
   text-align: center
-  color: $almostwhite
   a
-    color: white
+    margin: 3em 0
+    padding: 1.5em
+    display: inline-block
+    text-decoration: none
+    color: #999
+    transition: color 0.5s
+    &:hover
+      color: $almostwhite
+    
