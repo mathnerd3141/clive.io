@@ -1,8 +1,6 @@
-$header-height: 4rem
-
 $almostwhite: #ffffdd
 
-$titlefont: Montserrat, "Segoe UI", "Open Sans"
+$titlefont: "Segoe UI", Montserrat, "Open Sans" //- add Gotham from Waterloo
 $contentfont: Montserrat //for now
 
 html, body
@@ -14,16 +12,35 @@ html, body
 body
   background-color: black
 
-canvas#splash
-  position: fixed
+div#splash-wrap
+  position: absolute
+  z-index: -1000
   top: 0
   bottom: 0
   left: 0
   right: 0
-  z-index: -1000
-  opacity: 0.6
+  overflow: hidden
+
+  canvas#splash
+    position: fixed
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    opacity: 0.6
+
+  aside#splash-details
+    position: fixed
+    bottom: 1em
+    right: 1em
+    font-family: $titlefont
+    color: $almostwhite
+    font-size: 0.8em
+    opacity: 0.1
 
 body>header
+  $header-height: 4rem
+  
   font-family: $titlefont
   display: block
   min-height: 100%
@@ -112,7 +129,7 @@ main section
     text-indent: 1em
 
 main .intersection
-  height: 3em
+  height: 10em
 
 footer
   font-family: $titlefont
