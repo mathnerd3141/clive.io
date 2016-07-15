@@ -55,7 +55,7 @@ function spawnSprite(spawnAtMouse) {
         y = (height * Math.random() - height / 2)/8, //y0 + (Math.random() - .5) * 4,
         z = z0 + (Math.random() - .5) * 10,
         n = Math.random() * 3 | 0,
-        t1 = Math.random() * 10; // time (sec) it's allowed to swirl for
+        t1 = Math.random() * 10; // time (sec) it's allowed to swirl for //--todo-- there are way too many and they never end :(
     
     if(spawnAtMouse){
       x = x0;
@@ -63,7 +63,7 @@ function spawnSprite(spawnAtMouse) {
     }
     
     
-    var offset = Math.random() * 20;
+    var offset = Math.random() * 30; //to vary the colors more
     
     d3.timer(function(t0) {
         for (var i = 0; i < n; ++i) {
