@@ -2,6 +2,7 @@
 $(function(){
 
 $("#splash-details").text("Lorenz Strange Attractor");
+$("main").click(function(e){e.stopPropagation();});
 
 //I've included as many comments as possible for the variables associated with Lorenz Mathamatics so you can edit and play.  The rest of the script should be self - explanatory, if not, you can refer to the D3.js docs.
 //Lorenz Attractor Parameters

@@ -1,7 +1,7 @@
 ## Skills
 
-[](Organize by category in some tabular way)
-[](On hover over project photosquares, light up the skills demonstrated)
+<!--Organize by category in some tabular way-->
+<!--On hover over project photosquares, light up the skills demonstrated-->
 
 ### Frontend Languages & Frameworks
 - HTML5 (+ Jade/Pug)

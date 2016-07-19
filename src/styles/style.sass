@@ -19,7 +19,6 @@ div#splash-wrap
   bottom: 0
   left: 0
   right: 0
-  overflow: hidden
 
   canvas#splash
     position: fixed
@@ -35,7 +34,7 @@ div#splash-wrap
     right: 1em
     font-family: $titlefont
     color: $almostwhite
-    font-size: 0.8em
+    font-size: 0.9em
     opacity: 0.2
 
 body>header
@@ -43,7 +42,7 @@ body>header
   
   font-family: $titlefont
   display: block
-  min-height: 100%
+  min-height: 100% //check that this is *actually* more compatible than height: 100vh
   text-align: center
   color: $almostwhite
   a
@@ -112,6 +111,9 @@ body>header
       &:hover
         padding-top: 2em
         bottom: -1em
+
+main
+  background-color: black
 
 main section
   border-top: 1px solid white
