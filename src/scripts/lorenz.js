@@ -1,6 +1,5 @@
 // (Adapted from http://wow.techbrood.com/static/20151028/2960.html)
 $(function(){
-
 $("#splash-details").text("Lorenz Strange Attractor");
 $("main").click(function(e){e.stopPropagation();});
 
@@ -51,8 +50,9 @@ d3.select("body").on("mousemove", function() {
 });
 
 function spawnSprite(spawnAtMouse) {
-  if(typeof spawnAtMouse == "undefined")
+  if(typeof spawnAtMouse == "undefined" || spawnAtMouse !== true)
     spawnAtMouse = false;
+  
   do{
     var x = width * Math.random() - width / 2,
         y = height * Math.random() - height / 2;
@@ -60,8 +60,8 @@ function spawnSprite(spawnAtMouse) {
   x = x / 12;
   y = y / 8;
   var z = z0 + (Math.random() - .5) * 10,
-      n = Math.random() * 3 | 0,
-      t1 = Math.random() * 10; // time (sec) it's allowed to swirl for //--todo-- there are way too many and they never end :(
+      n = Math.random() * 3 | 1, //different speeds
+      t1 = Math.random() * 10000 + 20000; // time (sec) it's allowed to swirl for //--todo-- there are way too many and they never end :(
   
   if(spawnAtMouse){
     x = x0;
@@ -71,7 +71,7 @@ function spawnSprite(spawnAtMouse) {
   
   var offset = Math.random() * 30; //to vary the colors more
   
-  d3.timer(function(t0) {
+  var t = d3.timer(function(t0) {
     for (var i = 0; i < n; ++i) {
       context.strokeStyle = color(z + offset);
       context.beginPath();
@@ -82,9 +82,11 @@ function spawnSprite(spawnAtMouse) {
       context.lineTo(x, y);
       context.stroke();
     }
-    return t0 > t1;
+    if(t0 > t1)
+      t.stop();
   });
-
+}
+function fadeTick(){
   context.save();
   context.setTransform(1, 0, 0, 1, 0, 0);
 
@@ -95,7 +97,8 @@ function spawnSprite(spawnAtMouse) {
   context.restore();
 }
 
-d3.interval(function(elapsedTime){spawnSprite();}, 800);
+d3.interval(function(elapsedTime){spawnSprite();}, 500);
+d3.interval(function(elapsedTime){fadeTick();}, 200);
 for(var i = 0; i < 30; i++)
   spawnSprite();
 $("body").on("click", function(){

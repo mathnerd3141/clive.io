@@ -15,4 +15,4 @@ I'm currently a student at the University of Waterloo in the Software Engineerin
 - **Twitter**: [@cchan3141](https://twitter.com/cchan3141)
 - **PGP**: [7209 384F 80FE FBE1 2945 // CA74 5DD6 81F3 5FEE 0C47](https://pgp.mit.edu/pks/lookup?op=get&search=0x5DD681F35FEE0C47)
 
-Take a look at my [resume](resume.pdf) for more.
+Take a look at my [r&eacute;sum&eacute;](resume.pdf) for more.
