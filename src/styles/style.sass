@@ -45,6 +45,8 @@ body>header
   min-height: 100% //check that this is *actually* more compatible than height: 100vh
   text-align: center
   color: $almostwhite
+  text-shadow: 0px 0px 5px #000000
+  
   a
     color: white
   p
@@ -79,6 +81,7 @@ body>header
       &:hover
         background-color: white
         color: black
+        text-shadow: none
       
       font-size: 1.5rem
       height: $header-height / 2
@@ -114,9 +117,10 @@ body>header
 
 main
   background-color: black
+  box-shadow: 0px 0px 20px 10px black
 
 main section
-  border-top: 1px solid white
+  box-shadow: 0px 0px 20px 10px black
   background-color: $almostwhite
   padding: 0 25% 5% 25%
   font-family: $contentfont
