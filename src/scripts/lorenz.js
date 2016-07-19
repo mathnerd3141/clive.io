@@ -1,4 +1,4 @@
-// (From http://wow.techbrood.com/static/20151028/2960.html)
+// (Adapted from http://wow.techbrood.com/static/20151028/2960.html)
 $(function(){
 
 $("#splash-details").text("Lorenz Strange Attractor");
@@ -22,7 +22,7 @@ function setDims(){
   height = $("header").outerHeight();
   
   canvas.attr("width", width)
-      .attr("height", height);
+        .attr("height", height);
   
   // set how the new images are drawn onto the existing image. 'lighter' will  display the new over the old
   context.globalCompositeOperation = "lighter";
@@ -35,63 +35,66 @@ setDims();
 
 //Color Range
 var color = d3.scalePow()
-    .domain([0, 8, 23, 55])
-    .range(["white", "cyan", "deepskyblue", "#00f"])
-    .exponent(1.5)
-    .interpolate(d3.interpolateRgb);
+              .domain([0, 8, 23, 55])
+              .range(["white", "cyan", "deepskyblue", "#00f"])
+              .exponent(1.5)
+              .interpolate(d3.interpolateRgb);
 
 
 //mouse reactions
 d3.select("body").on("mousemove", function() {
-    var m = d3.mouse(canvas.node());
-    x0 = (m[0] - width / 2) / 12;
-    y0 = (m[1] - height / 2) / 8;
-    z0 = 10;
+  var m = d3.mouse(canvas.node());
+  x0 = (m[0] - width / 2) / 12;
+  y0 = (m[1] - height / 2) / 8;
+  z0 = 10;
 });
 
 function spawnSprite(spawnAtMouse) {
-    if(typeof spawnAtMouse == "undefined")
-      spawnAtMouse = false;
-    
-    var x = (width * Math.random() - width / 2)/12, //x0 + (Math.random() - .5) * 4,
-        y = (height * Math.random() - height / 2)/8, //y0 + (Math.random() - .5) * 4,
-        z = z0 + (Math.random() - .5) * 10,
-        n = Math.random() * 3 | 0,
-        t1 = Math.random() * 10; // time (sec) it's allowed to swirl for //--todo-- there are way too many and they never end :(
-    
-    if(spawnAtMouse){
-      x = x0;
-      y = y0;
+  if(typeof spawnAtMouse == "undefined")
+    spawnAtMouse = false;
+  do{
+    var x = width * Math.random() - width / 2,
+        y = height * Math.random() - height / 2;
+  }while(Math.abs(x) < width / 4 && Math.abs(y) < height / 4); //Redo it until it's not in the center quarter (by area) of the screen
+  x = x / 12;
+  y = y / 8;
+  var z = z0 + (Math.random() - .5) * 10,
+      n = Math.random() * 3 | 0,
+      t1 = Math.random() * 10; // time (sec) it's allowed to swirl for //--todo-- there are way too many and they never end :(
+  
+  if(spawnAtMouse){
+    x = x0;
+    y = y0;
+  }
+  
+  
+  var offset = Math.random() * 30; //to vary the colors more
+  
+  d3.timer(function(t0) {
+    for (var i = 0; i < n; ++i) {
+      context.strokeStyle = color(z + offset);
+      context.beginPath();
+      context.moveTo(x, y);
+      x += dt * w * (y - x);
+      y += dt * (x * (p - z) - y);
+      z += dt * (x * y - beta * z);
+      context.lineTo(x, y);
+      context.stroke();
     }
-    
-    
-    var offset = Math.random() * 30; //to vary the colors more
-    
-    d3.timer(function(t0) {
-        for (var i = 0; i < n; ++i) {
-            context.strokeStyle = color(z + offset);
-            context.beginPath();
-            context.moveTo(x, y);
-            x += dt * w * (y - x);
-            y += dt * (x * (p - z) - y);
-            z += dt * (x * y - beta * z);
-            context.lineTo(x, y);
-            context.stroke();
-        }
-        return t0 > t1;
-    });
+    return t0 > t1;
+  });
 
-    context.save();
-    context.setTransform(1, 0, 0, 1, 0, 0);
+  context.save();
+  context.setTransform(1, 0, 0, 1, 0, 0);
 
-    //source-atop draws old image on top of the new image, eliminating the part of the old image that is outside of the new image range.
-    context.globalCompositeOperation = "source-atop";
-    context.fillStyle = "rgba(0,0,0,.05)";
-    context.fillRect(0, 0, width, height);
-    context.restore();
+  //source-atop draws old image on top of the new image, eliminating the part of the old image that is outside of the new image range.
+  context.globalCompositeOperation = "source-atop";
+  context.fillStyle = "rgba(0,0,0,.05)";
+  context.fillRect(0, 0, width, height);
+  context.restore();
 }
 
-setInterval(spawnSprite, 800);
+d3.interval(function(elapsedTime){spawnSprite();}, 800);
 for(var i = 0; i < 30; i++)
   spawnSprite();
 $("body").on("click", function(){
