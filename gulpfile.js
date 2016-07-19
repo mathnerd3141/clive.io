@@ -74,10 +74,14 @@ gulp.task('pug', function() {
 gulp.task('sass', function() {
   var sass = require('gulp-sass');
   var sourcemaps = require('gulp-sourcemaps');
+  var autoprefixer = require('gulp-autoprefixer');
+  var concat = require('gulp-concat');
 
   return gulp.src(PATHS.sass)
     .pipe(sourcemaps.init())
     .pipe(sass({outputStyle:'compressed'}).on('error', sass.logError))
+    .pipe(autoprefixer())
+    .pipe(concat('style.css'))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(PATHS.dist))
     .pipe(browserSync.stream());
