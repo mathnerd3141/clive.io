@@ -23,7 +23,7 @@
     "coffee-script": "^1.10.0",
     "express": "^4.13.4",
     "helmet": "^2.1.1",
-    "jstransformer-marked": "^1.0.1"
+    "jstransformer-commonmark": "^0.3.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",

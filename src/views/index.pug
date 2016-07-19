@@ -82,7 +82,7 @@ html(lang="en")
       //- calltoaction: webdev
     main
       section#about
-        include:marked about.md
+        include:commonmark about.md
       div.intersection
         //-
           Not sure how this will work. I suspect I need a canvas in each, since if I just javascript-switch on scrollheight, 
@@ -90,16 +90,16 @@ html(lang="en")
           (they should pause in the background rather than keep running, though)
           Apparently overflow:hidden works.
       section#skills
-        include:marked skills.md
+        include:commonmark skills.md
       div.intersection
       section#experience
-        include:marked experience.md
+        include:commonmark experience.md
       div.intersection
       section#leadership
-        include:marked leadership.md
+        include:commonmark leadership.md
       div.intersection
       section#other
-        include:marked other.md
+        include:commonmark other.md
     footer
       a(href="https://github.com/cchan/clive.io", title="GitHub Repository for clive.io") Handcrafted by Clive with &lt;3, 2015-present.
     

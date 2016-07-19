@@ -3,7 +3,7 @@ var browserSync = require('browser-sync').create();
 
 var PATHS = {
   server: "src/server.coffee",
-  pugsrc: "src/views/**/*.pug",
+  pugsrc: "src/views/index.pug",
   pugwatch: "src/views/**/*.{pug,html,md}",
   sass: "src/styles/**/*.{scss,sass}",
   coffee: "src/scripts/**/*.coffee",
