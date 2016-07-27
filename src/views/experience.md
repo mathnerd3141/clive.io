@@ -24,7 +24,7 @@ Performing network meta-analysis of cancer treatments to compare studies with di
 Lead programmer in student-run startup writing modern websites for Lexington-area businesses, with free services to nonprofit community organizations. [vitaedev.com](vitaedev.com)
 
 
-### SkillFlow developer
+### SkillFlow software engineer
 *2016-present*
 
 Startup based in Palo Alto creating a platform to facilitate live collaboration of software developers in need of experienced help, using the Slack chat platform.
