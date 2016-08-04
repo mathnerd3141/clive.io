@@ -1,7 +1,37 @@
-$almostwhite: #ffffdd
+$almostwhite: #eee
 
 $titlefont: "Segoe UI", Montserrat, "Open Sans" //- add Gotham from Waterloo
 $contentfont: Montserrat //for now
+$header-height: 4rem
+
+
+@keyframes rotate
+  0%
+    transform: rotate(0deg) scale(1)
+  50%
+    transform: rotate(720deg) scale(1.4)
+  100%
+    transform: rotate(1440deg) scale(1)
+
+.loading
+  *
+    opacity: 0 !important
+    visibility: hidden
+  #logo
+    img
+      height: 10vh !important
+      animation: rotate 5s ease infinite
+    margin-left: -5vh
+    margin-top: -5vh
+    z-index: 100000
+  header>*, div#title>*
+    display: none
+  header, div#title, #logo, #logo img
+    opacity: 1 !important
+    visibility: visible
+    display: block !important
+  #logo img
+    margin: 50vh auto 0
 
 html, body
   height: 100%
@@ -34,12 +64,10 @@ div#splash-wrap
     right: 1em
     font-family: $titlefont
     color: $almostwhite
-    font-size: 0.9em
     opacity: 0.2
+    font-size: 0.9em
 
 body>header
-  $header-height: 4rem
-  
   font-family: $titlefont
   display: block
   min-height: 100% //check that this is *actually* more compatible than height: 100vh
