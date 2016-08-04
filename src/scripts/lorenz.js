@@ -11,8 +11,8 @@ $(function(){
       beta = 8 / 3, // (β) points of equilibrium - this applied value results in the infinity symbol. higher values will break the equilibrium, causing the ends to separate and spread. When ρ = 28, σ = 10, and β = 8/3, the Lorenz system has chaotic solutions; it is this set of chaotic solutions that make up the Lorenz Attractor (the infinity symbol).  If ρ < 1 then there is only one equilibrium point, which is at the origin. This point corresponds to no convection. All orbits converge to the origin when ρ  < 1.  The 'fork' occurs occurs at ρ = 1, or ρ > 1 Try it. 
 
       //Below x, y, and z values are the components of a given three dimensional location in space
-      x0 = .5, //change in x,y, or z with respect to time
-      y0 = .5, //"                                       "
+      x0 = 0.5, //change in x,y, or z with respect to time
+      y0 = 0.5, //"                                       "
       z0 = 10; //"                                       "
 
   var width, height, canvas = d3.select("canvas#splash");
@@ -28,7 +28,7 @@ $(function(){
     context.globalCompositeOperation = "lighter";
     context.translate(width / 2, height / 2);
     context.scale(12, 8);
-    context.lineWidth = .2;
+    context.lineWidth = 0.2;
   }
   $(window).resize(setDims);
   setDims();
@@ -53,13 +53,14 @@ $(function(){
     if(typeof spawnAtMouse == "undefined" || spawnAtMouse !== true)
       spawnAtMouse = false;
     
+    var x, y;
     do{
-      var x = width * Math.random() - width / 2,
-          y = height * Math.random() - height / 2;
+      x = width * Math.random() - width / 2,
+      y = height * Math.random() - height / 2;
     }while(Math.abs(x) < width / 4 && Math.abs(y) < height / 4); //Redo it until it's not in the center quarter (by area) of the screen
     x = x / 12;
     y = y / 8;
-    var z = z0 + (Math.random() - .5) * 10,
+    var z = z0 + (Math.random() - 0.5) * 10,
         n = Math.random() * 3 | 1, //different speeds
         t1 = Math.random() * 10000 + 20000; // time (sec) it's allowed to swirl for //--todo-- there are way too many and they never end :(
     
