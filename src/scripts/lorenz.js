@@ -55,7 +55,7 @@ $(function(){
     
     var x, y;
     do{
-      x = width * Math.random() - width / 2,
+      x = width * Math.random() - width / 2;
       y = height * Math.random() - height / 2;
     }while(Math.abs(x) < width / 4 && Math.abs(y) < height / 4); //Redo it until it's not in the center quarter (by area) of the screen
     x = x / 12;
