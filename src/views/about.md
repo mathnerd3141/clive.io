@@ -6,7 +6,6 @@ I'm a primarily self-taught full-stack programmer with a strong intuition for so
 and a passion for reaching out to my community to share my love of science and technology.
 I'm currently a student at the University of Waterloo in the Software Engineering Co-op program.
 
-- **Born**: October 1998
 - **Citizenship**: USA/Canada Dual
 - **Languages**: English, native fluency; Mandarin, basic fluency
 - **Email** (preferred contact): [cc@clive.io](mailto:cc@clive.io)
