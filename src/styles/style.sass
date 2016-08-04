@@ -31,7 +31,7 @@ $header-height: 4rem
     visibility: visible
     display: block !important
   #logo img
-    margin: 50vh auto 0
+    margin: 30vh auto 0
 
 html, body
   height: 100%
@@ -44,7 +44,6 @@ body
 
 div#splash-wrap
   position: absolute
-  z-index: -1000
   top: 0
   bottom: 0
   left: 0
@@ -52,28 +51,50 @@ div#splash-wrap
 
   canvas#splash
     position: fixed
+    z-index: -1000
     top: 0
     bottom: 0
     left: 0
     right: 0
     opacity: 0.6
 
-  aside#splash-details
-    position: fixed
-    bottom: 1em
+  aside
+    z-index: 1000
+    cursor: default
+    position: absolute
+    bottom: -3em
+    padding: 2em 1em 3em 1em
+    transition: bottom 0.5s, opacity 0.5s
+    &:hover
+      bottom: 0
+      opacity: 1
     right: 1em
+    text-align: right
     font-family: $titlefont
     color: $almostwhite
-    opacity: 0.2
-    font-size: 0.9em
+    opacity: 0.25
+    font-size: 0.7em
+    z-index: 1000
+    #simulation-name
+      margin-bottom: 0.5em
+      font-size: 1.3em
+    ul
+      margin: 0
+      padding: 0 0 0 1em
+      list-style-type: none
+      li:before
+        content: "-"
+        margin-right: 0.5em
 
 body>header
   font-family: $titlefont
   display: block
-  min-height: 100% //check that this is *actually* more compatible than height: 100vh
+  height: 100vh
   text-align: center
   color: $almostwhite
   text-shadow: 0px 0px 5px #000000
+  position: relative
+  z-index: 100
   
   a
     color: white
@@ -144,8 +165,10 @@ body>header
         bottom: -1em
 
 main
-  background-color: black
+  //background-color: black
   box-shadow: 0px 0px 20px 10px black
+  position: relative
+  z-index: 2000
 
 main section
   box-shadow: 0px 0px 20px 10px black

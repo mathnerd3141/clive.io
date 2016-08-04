@@ -27,14 +27,18 @@ html(lang="en")
   body.loading
     div#splash-wrap
       canvas#splash
-      aside#splash-details
+      aside
+        div#simulation-name
+        div Click around to interact with the simulation!
+        //ul
+          li [Other simulations to come soon]
         //- eventually be able to click to expand and different visualizations
     //- Lorenz, Gravitation, Swarm intelligence, ...
     //- delaunay face, chaos loop thing, machine learning, stereoscopic simulations
     
     header
       div#title
-        a#logo(href="https://clive.io")
+        span#logo(href="https://clive.io")
           img(src="img/logo.png" alt="awesome personal logo")
           //- Loading animation: this shows up in center and pulses size, then rolls off
           //- to the side then expands into place as the bar fades into being.
