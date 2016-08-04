@@ -60,16 +60,37 @@ html(lang="en")
         | 
         span Class of 2021.
       p.tagline
-        span Code craftsman.
+        span
+          //- For any `a` with a `desc` attribute, on click, this spawns a modal that has the direct link AND the description.
+          a(href="http://live.lexhack.org" data-popup="lhlive") Code
+          | 
+          a(href="https://cchan.github.io/onestep" data-popup="onestep") craftsman
+          |.
         | 
-        span Community STEM outreach leader.
+        span 
+          //what about opensource
+          a(href="http://lexscibowl.org" data-popup="lsb") Community
+          | 
+          a(href="http://lexhack.org" data-popup="lh") STEM
+          | 
+          a(href="https://lhsmath.org" data-popup="lhsmath") outreach
+          | 
+          a(href="https://lhsmath.org/LMT" data-popup="lmt") leader
+          |.
         | 
-        span Physics/math/compsci fanatic.
+        span
+          span(data-popup="usaco") Compsci
+          |  / 
+          span(data-popup="usapho") physics
+          |  / 
+          span(data-popup="usamo") math
+          | 
+          span(data-popup="scibowl") fanatic.
         | 
         span Expert problemsolver.
         | 
         span.b Aspiring software engineer.
-      p(style="color:red;opacity:.7;font-size: 1.3em;letter-spacing: 0.1em") under construction
+      //p(style="color:red;opacity:.7;font-size: 1.3em;letter-spacing: 0.1em") under construction
       
       div(id="cta")
         p Scroll down
@@ -113,6 +134,7 @@ html(lang="en")
     script(defer src="https://d3js.org/d3-timer.v1.min.js")
     script(defer src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js")
     //script(defer src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js")
-    script(defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js")
+    script(defer src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous")
+    //script(defer src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous")
     script(defer src="lorenz.js")
     script(defer src="script.js")

@@ -13,6 +13,10 @@ $header-height: 4rem
   100%
     transform: rotate(1440deg) scale(1)
 
+.linkish
+  text-decoration: underline
+  cursor: pointer
+
 .loading
   *
     opacity: 0 !important
@@ -139,12 +143,16 @@ body>header
       border-radius: 1px
   
   .position, .tagline
-    span
+    &>span
       display: inline-block
+      margin: 0 0.4em
     .b
       font-weight: bold
   .position
     font-size: 1.4em
+  .tagline
+    max-width: 40%
+    margin: 0 auto
   
   #cta //"call to action"
     position: absolute
