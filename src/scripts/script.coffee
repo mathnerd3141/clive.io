@@ -1,5 +1,5 @@
 animations = 
-  "Lorenz Strange Attractor": "lorenz"
+  'Lorenz Strange Attractor': 'Lorenz'
 
 $ =>
   WIDTH = HEIGHT = 0
@@ -14,8 +14,8 @@ $ =>
   
   names = Object.keys animations
   name = names[Math.floor Math.random()*names.length]
-  $("#simulation-name").text name
-  $("main section").click (e) =>
+  $('#simulation-name').text name
+  $('main section').click (e) =>
     e.stopPropagation()
   
   script = $.extend document.createElement('script'),
@@ -32,9 +32,9 @@ $ =>
 
 popupData = 
   lhlive:
-    title: "LexHack Live Site"
-    url: "http://live.lexhack.org"
-    desc: "" # I'm hesitant to put this here. Can I copy an html element from elsewhere in the page and drop it into the modal?
+    title: 'LexHack Live Site'
+    url: 'http://live.lexhack.org'
+    desc: '' # I'm hesitant to put this here. Can I copy an html element from elsewhere in the page and drop it into the modal?
             # So then I won't be repeating stuff.
             # OR pug can interpolate...
   #onestep:

@@ -1,6 +1,6 @@
 // (Adapted from http://wow.techbrood.com/static/20151028/2960.html)
 
-lorenz = function(){
+Lorenz = function(){
   //I've included as many comments as possible for the variables associated with Lorenz Mathamatics so you can edit and play.  The rest of the script should be self - explanatory, if not, you can refer to the D3.js docs.
   //Lorenz Attractor Parameters
   var dt = 0.001, // (δτ) Represents time. Draw curve - higher the value, straighter the lines
