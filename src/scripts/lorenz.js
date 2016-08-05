@@ -1,6 +1,6 @@
 // (Adapted from http://wow.techbrood.com/static/20151028/2960.html)
 
-(function(){
+lorenz = function(){
   //I've included as many comments as possible for the variables associated with Lorenz Mathamatics so you can edit and play.  The rest of the script should be self - explanatory, if not, you can refer to the D3.js docs.
   //Lorenz Attractor Parameters
   var dt = 0.001, // (δτ) Represents time. Draw curve - higher the value, straighter the lines
@@ -34,7 +34,7 @@
   //Color Range
   var color = d3.scalePow()
                 .domain([0, 8, 23, 55])
-                .range(["white", "cyan", "deepskyblue", "#00f"])
+                .range(["#666", "#099", "#069", "#009"])
                 .exponent(1.5)
                 .interpolate(d3.interpolateRgb);
 
@@ -103,4 +103,4 @@
   $("body").on("click", function(){
     spawnSprite(true);
   });
-})();
+};

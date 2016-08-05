@@ -1,30 +1,16 @@
 animations = 
-  "Lorenz Strange Attractor": "lorenz.js"
+  "Lorenz Strange Attractor": "lorenz"
 
 $ =>
-  WIDTH = 0
-  HEIGHT = 0
-  
-  resize = ->
+  WIDTH = HEIGHT = 0
+  resize = =>
     WIDTH = $('header').outerWidth()
     HEIGHT = $('header').outerHeight()
     $ 'canvas#splash'
       .attr 'width', WIDTH
       .attr 'height', HEIGHT
-  
   resize()
-  
   $('window').resize resize
-  
-  ###
-  $(document).mousemove (e) ->
-    $('div#title').css
-      left: (e.pageX - WIDTH / 2) / 20
-      top: (e.pageY - HEIGHT / 2) / 20
-    $('.position, .tagline').css
-      left: (e.pageX - WIDTH / 2) / 50
-      top: (e.pageY - HEIGHT / 2) / 50
-  ###
   
   names = Object.keys animations
   name = names[Math.floor Math.random()*names.length]
@@ -36,10 +22,11 @@ $ =>
     type: 'text/javascript'
     async: true
     defer: true
-    onload: ->
-      console.log 'loaded'
-      #fade in
-    src: animations[name]
+    onload: =>
+      $('canvas#splash').css
+        opacity: 1
+      window[animations[name]]()
+    src: animations[name] + '.js'
   document.getElementsByTagName('head')[0].appendChild(script)
 
 
