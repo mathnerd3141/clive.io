@@ -1,3 +1,48 @@
+animations = 
+  "Lorenz Strange Attractor": "lorenz.js"
+
+$ =>
+  WIDTH = 0
+  HEIGHT = 0
+  
+  resize = ->
+    WIDTH = $('header').outerWidth()
+    HEIGHT = $('header').outerHeight()
+    $ 'canvas#splash'
+      .attr 'width', WIDTH
+      .attr 'height', HEIGHT
+  
+  resize()
+  
+  $('window').resize resize
+  
+  ###
+  $(document).mousemove (e) ->
+    $('div#title').css
+      left: (e.pageX - WIDTH / 2) / 20
+      top: (e.pageY - HEIGHT / 2) / 20
+    $('.position, .tagline').css
+      left: (e.pageX - WIDTH / 2) / 50
+      top: (e.pageY - HEIGHT / 2) / 50
+  ###
+  
+  names = Object.keys animations
+  name = names[Math.floor Math.random()*names.length]
+  $("#simulation-name").text name
+  $("main section").click (e) =>
+    e.stopPropagation()
+  
+  script = $.extend document.createElement('script'),
+    type: 'text/javascript'
+    async: true
+    defer: true
+    onload: ->
+      console.log 'loaded'
+      #fade in
+    src: animations[name]
+  document.getElementsByTagName('head')[0].appendChild(script)
+
+
 popupData = 
   lhlive:
     title: "LexHack Live Site"
@@ -5,15 +50,15 @@ popupData =
     desc: "" # I'm hesitant to put this here. Can I copy an html element from elsewhere in the page and drop it into the modal?
             # So then I won't be repeating stuff.
             # OR pug can interpolate...
-  onestep:
-  lsb:
-  lh:
-  lhsmath:
-  lmt:
-  usaco:
-  usapho:
-  usamo:
-  scibowl:
+  #onestep:
+  #lsb:
+  #lh:
+  #lhsmath:
+  #lmt:
+  #usaco:
+  #usapho:
+  #usamo:
+  #scibowl:
 
 $ =>
   # Smooth scrolling, adapted from calcbee and onestep
@@ -27,7 +72,7 @@ $ =>
     .addClass 'linkish'
     .on 'click', (e) ->
       key = $(this).data 'popup'
-      alert popupData[key]
+      #alert popupData[key]
       e.preventDefault()
 
 # On full load of all assets (not just the DOM, as above), remove the loading screen
