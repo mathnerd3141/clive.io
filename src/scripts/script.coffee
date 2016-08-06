@@ -71,6 +71,5 @@ $(window).bind 'load', =>
 (C[e].q=C[e].q||[]).push(arguments)},C[e].l=1*new Date();I=l.createElement(i),
 O=l.getElementsByTagName(i)[0];I.async=1;I.src=v;O.parentNode.insertBefore(I,O)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
 ga('create', 'UA-62605323-2', 'auto');
 ga('send', 'pageview');`
