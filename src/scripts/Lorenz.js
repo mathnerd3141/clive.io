@@ -1,7 +1,6 @@
 // (Adapted from http://wow.techbrood.com/static/20151028/2960.html)
 
 Lorenz = function(){
-  //I've included as many comments as possible for the variables associated with Lorenz Mathamatics so you can edit and play.  The rest of the script should be self - explanatory, if not, you can refer to the D3.js docs.
   //Lorenz Attractor Parameters
   var dt = 0.001, // (δτ) Represents time. Draw curve - higher the value, straighter the lines
       p = 28, // (ρ) point of origin
@@ -9,9 +8,7 @@ Lorenz = function(){
       beta = 8 / 3, // (β) points of equilibrium - this applied value results in the infinity symbol. higher values will break the equilibrium, causing the ends to separate and spread. When ρ = 28, σ = 10, and β = 8/3, the Lorenz system has chaotic solutions; it is this set of chaotic solutions that make up the Lorenz Attractor (the infinity symbol).  If ρ < 1 then there is only one equilibrium point, which is at the origin. This point corresponds to no convection. All orbits converge to the origin when ρ  < 1.  The 'fork' occurs occurs at ρ = 1, or ρ > 1 Try it. 
 
       //Below x, y, and z values are the components of a given three dimensional location in space
-      x0 = 0.5, //change in x,y, or z with respect to time
-      y0 = 0.5, //"                                       "
-      z0 = 10; //"                                       "
+      x0 = 0.5, y0 = 0.5, z0 = 10; //change in x,y, or z with respect to time
 
   var width, height, canvas = d3.select("canvas#splash");
   var context = canvas.node().getContext("2d");
@@ -38,15 +35,6 @@ Lorenz = function(){
                 .exponent(1.5)
                 .interpolate(d3.interpolateRgb);
 
-
-  //mouse reactions
-  d3.select("body").on("mousemove", function() {
-    var m = d3.mouse(canvas.node());
-    x0 = (m[0] - width / 2) / 12;
-    y0 = (m[1] - height / 2) / 8;
-    z0 = 10;
-  });
-
   function spawnSprite(spawnAtMouse) {
     if(typeof spawnAtMouse == "undefined" || spawnAtMouse !== true)
       spawnAtMouse = false;
@@ -60,11 +48,12 @@ Lorenz = function(){
     y = y / 8;
     var z = z0 + (Math.random() - 0.5) * 10,
         n = Math.random() * 3 | 1, //different speeds
-        t1 = Math.random() * 10000 + 20000; // time (sec) it's allowed to swirl for //--todo-- there are way too many and they never end :(
+        t1 = Math.random() * 10000 + 20000; // time (sec) it's allowed to swirl for
     
     if(spawnAtMouse){
-      x = x0;
-      y = y0;
+      var m = d3.mouse(canvas.node())
+      x = (m[0] - width / 2) / 12;
+      y = (m[1] - height / 2) / 8;
     }
     
     
