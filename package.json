@@ -7,7 +7,7 @@
     "start": "gulp serve --port",
     "build": "gulp build",
     "test": "snyk test",
-    "clean": "npm install && npm prune && rm -rf dist"
+    "clean": "npm install && npm rebuild && npm prune && rm -rf dist"
   },
   "repository": {
     "type": "git",
