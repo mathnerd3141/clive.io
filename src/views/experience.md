@@ -9,7 +9,7 @@ Taught basics of C++ programming to elementary school students.
 ### KTByte Teaching Assistant
 *summer 2014*
 
-Helped students learn Processing & build their own interactive projects. [ktbyte.com](http://ktbyte.com)
+Helped students learn Processing/Java & build their own interactive projects. [ktbyte.com](http://ktbyte.com)
 
 
 ### MIT PRIMES researcher
@@ -21,11 +21,11 @@ Performing network meta-analysis of cancer treatments to compare studies with di
 ### VitaeDev co-founder
 *2016-present*
 
-Lead programmer in student-run startup writing modern websites for Lexington-area businesses, with free services to nonprofit community organizations. [vitaedev.com](http://vitaedev.com)
+Lead developer in startup writing modern websites for Lexington-area businesses. Free services to nonprofit community organizations. [vitaedev.com](http://vitaedev.com)
 
 
-### SkillFlow software engineer
+### (Stealth Mode company) software engineer
 *2016-present*
 
-Startup based in Palo Alto creating a platform to facilitate live collaboration of software developers in need of experienced help, using the Slack chat platform.
+Startup headquartered in California where I work on a NodeJS application with a global team using modern development processes and paradigms. (Under NDA)
 
