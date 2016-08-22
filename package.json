@@ -4,7 +4,7 @@
   "description": "Clive Chan's personal homepage",
   "main": "src/server.coffee",
   "scripts": {
-    "start": "gulp serve --port",
+    "start": "gulp serve",
     "build": "gulp build",
     "test": "snyk test",
     "clean": "npm install && npm rebuild && npm prune && rm -rf dist"
