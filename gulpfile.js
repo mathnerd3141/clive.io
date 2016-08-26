@@ -19,28 +19,21 @@ function swallowError(e){
 
 gulp.task('serve', ['build'], function() {
   var nodemon = require('gulp-nodemon');
-  var PORT = require('yargs').argv.port;
 
-  if(typeof PORT !== "number" || Math.floor(PORT) !== PORT){
-    console.error('You need to supply a valid port like --port=12345.');
-    process.exit(1);
-  }else{
-    nodemon({
-      script: PATHS.server, 
-      args: [PORT.toString()]
-    });
+  nodemon({
+    script: PATHS.server
+  });
 
-    browserSync.init({
-      proxy: 'localhost:' + PORT,
-      online: false
-    });
+  browserSync.init({
+    proxy: 'localhost:' + process.env.PORT,
+    online: false
+  });
 
-    gulp.watch(PATHS.coffee, ['coffee']);
-    gulp.watch(PATHS.js, ['js']);
-    gulp.watch(PATHS.pugwatch, ['pug']);
-    gulp.watch(PATHS.sass, ['sass']);
-    gulp.watch(PATHS.static, ['static']);
-  }
+  gulp.watch(PATHS.coffee, ['coffee']);
+  gulp.watch(PATHS.js, ['js']);
+  gulp.watch(PATHS.pugwatch, ['pug']);
+  gulp.watch(PATHS.sass, ['sass']);
+  gulp.watch(PATHS.static, ['static']);
 });
 
 gulp.task('build', ['coffee', 'js', 'pug', 'sass', 'static']);
