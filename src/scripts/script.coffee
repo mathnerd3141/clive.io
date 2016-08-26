@@ -50,7 +50,7 @@ popupData =
 $ =>
   # Smooth scrolling, adapted from calcbee and onestep
   # Originally adapted from //http://www.paulund.co.uk/smooth-scroll-to-internal-links-with-jquery
-  $('a[href^="#"]').on 'click', (e) =>
+  $('a[href^="#"]').on 'click', (e) ->
     $('html, body').stop().animate {scrollTop: $(@hash).offset().top}, 900, 'swing', =>
       window.location.hash = @hash
     e.preventDefault()
