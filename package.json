@@ -21,11 +21,11 @@
   "homepage": "http://clive.io",
   "dependencies": {
     "express": "^4.13.4",
-    "helmet": "^2.1.2"
+    "helmet": "^2.1.3"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
-    "browser-sync": "^2.14.0",
+    "browser-sync": "^2.15.0",
     "gulp-nodemon": "^2.0.7",
     "yargs": "^5.0.0",
     "gulp-coffee": "^2.3.2",
@@ -35,6 +35,6 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-concat": "^2.6.0",
-    "snyk": "^1.18.1"
+    "snyk": "^1.19.1"
   }
 }
