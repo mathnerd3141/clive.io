@@ -12,6 +12,14 @@ Lorenz = function(){
 
   var width, height, canvas = d3.select("canvas#splash");
   var context = canvas.node().getContext("2d");
+
+  //http://stackoverflow.com/a/32798277
+  context['imageSmoothingEnabled'] = true;       /* standard */
+  context['mozImageSmoothingEnabled'] = true;    /* Firefox */
+  context['oImageSmoothingEnabled'] = true;      /* Opera */
+  context['webkitImageSmoothingEnabled'] = true; /* Safari */
+  context['msImageSmoothingEnabled'] = true;     /* IE */
+
   function setDims(){
     width = $("header").outerWidth();
     height = $("header").outerHeight();
