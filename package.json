@@ -34,7 +34,7 @@
     "gulp-sass": "^2.3.1",
     "gulp-sourcemaps": "^2.1.1",
     "gulp-autoprefixer": "^3.1.1",
-    "gulp-concat": "^2.6.0",
+    "gulp-concat": "^2.6.1",
     "snyk": "^1.19.1"
   }
 }
