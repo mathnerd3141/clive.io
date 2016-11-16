@@ -12,4 +12,7 @@ app.use helmet()
 app.get '/', (req, res) ->
 	res.sendFile 'dist/index.html', { root: '.' }
 
+app.get '/rr', (req, res) ->
+  res.redirect 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+
 app.use express.static 'dist'
