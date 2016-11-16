@@ -21,20 +21,20 @@
   "homepage": "http://clive.io",
   "dependencies": {
     "express": "^4.13.4",
-    "helmet": "^2.3.0"
+    "helmet": "^3.1.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
-    "browser-sync": "^2.17.5",
+    "browser-sync": "^2.17.6",
     "gulp-nodemon": "^2.2.1",
-    "yargs": "^6.2.0",
-    "gulp-coffee": "^2.3.2",
+    "yargs": "^6.4.0",
+    "gulp-coffee": "^2.3.3",
     "gulp-pug": "^3.1.0",
     "jstransformer-commonmark": "^0.3.0",
     "gulp-sass": "^2.3.1",
-    "gulp-sourcemaps": "^2.1.1",
+    "gulp-sourcemaps": "^2.2.0",
     "gulp-autoprefixer": "^3.1.1",
-    "gulp-concat": "^2.6.0",
+    "gulp-concat": "^2.6.1",
     "snyk": "^1.19.1"
   }
 }
