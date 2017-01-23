@@ -7,6 +7,8 @@ helmet = require 'helmet'
 http.listen process.env.PORT, 'localhost', ->
 	console.log "listening on * : " + process.env.PORT
 
+app.set 'trust proxy', true
+
 app.use helmet()
 
 app.get '/', (req, res) ->
@@ -14,5 +16,9 @@ app.get '/', (req, res) ->
 
 app.get '/rr', (req, res) ->
   res.redirect 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+
+app.use '/resume.pdf', (req, res, next) ->
+  console.log 'Resume visited from ' + req.ip
+  next()
 
 app.use express.static 'dist'
