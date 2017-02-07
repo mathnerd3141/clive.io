@@ -12,6 +12,6 @@ I'm currently a student at the University of Waterloo in the Software Engineerin
 - **GitHub**: [cchan](https://github.com/cchan)
 - **LinkedIn**: [cchan3141](https://linkedin.com/in/cchan3141)
 - **Twitter**: [@cchan3141](https://twitter.com/cchan3141)
-- **PGP**: [7209 384F 80FE FBE1 2945 // CA74 5DD6 81F3 5FEE 0C47](https://pgp.mit.edu/pks/lookup?op=get&search=0x5DD681F35FEE0C47)
+- **PGP**: [5510 37AB E3A4 82EC 182C // AB2B 566E 7E8B A594 63A1](https://pgp.mit.edu/pks/lookup?op=get&search=0x566E7E8BA59463A1)
 
 Take a look at my [r&eacute;sum&eacute;](resume.pdf) for more.
