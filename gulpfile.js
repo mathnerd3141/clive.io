@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
+var uglify = require('gulp-uglify');
 
 var PATHS = {
   server: "src/server.coffee",
@@ -13,7 +14,7 @@ var PATHS = {
 };
 
 function swallowError(e){
-  console.log(e.toString());
+  console.error(e.toString());
   this.emit('end');
 }
 
@@ -44,12 +45,14 @@ gulp.task('coffee', function() {
   gulp.src(PATHS.coffee)
     .pipe(coffee({bare: true}))
     .on('error', swallowError)
+    .pipe(uglify())
     .pipe(gulp.dest(PATHS.dist))
     .pipe(browserSync.stream());
 });
 
 gulp.task('js', function() {
   gulp.src(PATHS.js)
+    .pipe(uglify())
     .pipe(gulp.dest(PATHS.dist))
     .pipe(browserSync.stream());
 });
