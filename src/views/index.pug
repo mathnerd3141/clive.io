@@ -24,14 +24,14 @@ html(lang="en")
     
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css")
     link(rel="stylesheet" href="style.css")
-  body.loading
+  body
     div#splash-wrap
       canvas#splash
-      aside
+      aside#simulation-desc
         div#simulation-name
         div Click around to interact with the simulation!
         //ul
-          li [Other simulations to come soon]
+        //  li [Other simulations to come soon]
         //- eventually be able to click to expand and different visualizations
     //- Lorenz, Gravitation, Swarm intelligence
     //- delaunay face, chaos loop thing, machine learning, stereoscopic simulations
@@ -51,82 +51,13 @@ html(lang="en")
             i.fa.fa-github(aria-label="github")
           a.second(href="https://linkedin.com/in/cchan3141" title="cchan3141")
             i.fa.fa-linkedin(aria-label="linkedin")
-          a.second(href="https://twitter.com/cchan3141" title="@cchan3141")
-            i.fa.fa-twitter(aria-label="twitter")
       
       //- [?] On scroll down, as the navbar moves up these stay attached to the fixed background and fade out
       
-      p.position
-        span UWaterloo Software Engineering Co-op,
-        | 
-        span Class of 2021.
       p.tagline
-        span
-          //- For any `a` with a `desc` attribute, on click, this spawns a modal that has the direct link AND the description.
-          a(href="http://live.lexhack.org" data-popup="lhlive") Code
-          | 
-          a(href="https://cchan.github.io/onestep" data-popup="onestep") craftsman
-          |.
-        | 
-        span 
-          //what about opensource
-          a(href="http://lexscibowl.org" data-popup="lsb") Community
-          | 
-          a(href="http://lexhack.org" data-popup="lh") STEM
-          | 
-          a(href="https://lhsmath.org" data-popup="lhsmath") outreach
-          | 
-          a(href="https://lhsmath.org/LMT" data-popup="lmt") leader
-          |.
-        | 
-        span
-          span(data-popup="usaco") Compsci
-          |  / 
-          span(data-popup="usapho") physics
-          |  / 
-          span(data-popup="usamo") math
-          | 
-          span(data-popup="scibowl") fanatic.
-        | 
-        span Expert problemsolver.
-        | 
-        span.b Aspiring software engineer.
-      //p(style="color:red;opacity:.7;font-size: 1.3em;letter-spacing: 0.1em") under construction
-      
+        UWaterloo Software Engineering Co-op, Class of 2021. Community STEM outreach leader. Compsci/physics/math fanatic. Aspiring software engineer.
       div(id="cta")
-        p Scroll down
-        p (or just see my 
           a(href="resume.pdf") r&eacute;sum&eacute;
-          | )
-        a(href="#about")
-          img(src="img/scroll_down.png" alt="scroll down arrow")
-      
-      //- feature some <code></code> somewhere... hmm
-      
-      //- calltoaction: tutoring
-      //- calltoaction: webdev
-    main
-      section#about
-        include:commonmark about.md
-      div.intersection
-        //-
-          Not sure how this will work. I suspect I need a canvas in each, since if I just javascript-switch on scrollheight, 
-          what if a section (like About) is shorter than a screen? And it will also be strange when animations restart every time. 
-          (they should pause in the background rather than keep running, though)
-          Apparently overflow:hidden works.
-      section#skills
-        include:commonmark skills.md
-      div.intersection
-      section#experience
-        include:commonmark experience.md
-      div.intersection
-      section#leadership
-        include:commonmark leadership.md
-      div.intersection
-      section#other
-        include:commonmark other.md
-    footer
-      a(href="https://github.com/cchan/clive.io" title="GitHub Repository for clive.io") Handcrafted by Clive with &lt;3, 2015-present.
     
     link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat")
     link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css")
@@ -138,5 +69,5 @@ html(lang="en")
     //script(defer src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js")
     script(defer src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous")
     //script(defer src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous")
-    script(defer src="https://unpkg.com/whoosh-js@1.0.2/whoosh.min.js" integrity="sha384-bToX25nKsP39knZkNcS7ngaMMmmBwsXAdrw4w/vq/7srDIx4EtpPP8pIv8f5pyrc" crossorigin="anonymous")
+    //script(defer src="https://unpkg.com/whoosh-js@1.0.2/whoosh.min.js" integrity="sha384-bToX25nKsP39knZkNcS7ngaMMmmBwsXAdrw4w/vq/7srDIx4EtpPP8pIv8f5pyrc" crossorigin="anonymous")
     script(defer src="script.js")

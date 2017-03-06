@@ -12,6 +12,8 @@ $ =>
   resize()
   $('window').resize resize
   
+  $('#simulation-desc').show()
+  
   names = Object.keys animations
   name = names[Math.floor Math.random()*names.length]
   $('#simulation-name').text name
@@ -23,29 +25,11 @@ $ =>
     async: true
     defer: true
     onload: =>
-      $('canvas#splash').css
-        opacity: 1
+      $('canvas#splash').css {opacity: 1}
       window[animations[name]]()
     src: animations[name] + '.js'
   document.getElementsByTagName('head')[0].appendChild(script)
 
-
-popupData = 
-  lhlive:
-    title: 'LexHack Live Site'
-    url: 'http://live.lexhack.org'
-    desc: '' # I'm hesitant to put this here. Can I copy an html element from elsewhere in the page and drop it into the modal?
-            # So then I won't be repeating stuff.
-            # OR pug can interpolate...
-  #onestep:
-  #lsb:
-  #lh:
-  #lhsmath:
-  #lmt:
-  #usaco:
-  #usapho:
-  #usamo:
-  #scibowl:
 
 $ =>
   # Smooth scrolling, adapted from calcbee and onestep
@@ -54,17 +38,6 @@ $ =>
     $('html, body').stop().animate {scrollTop: $(@hash).offset().top}, 900, 'swing', =>
       window.location.hash = @hash
     e.preventDefault()
-
-  $ '[data-popup]'
-    .addClass 'linkish'
-    .on 'click', (e) ->
-      key = $(this).data 'popup'
-      #alert popupData[key]
-      e.preventDefault()
-
-# On full load of all assets (not just the DOM, as above), remove the loading screen
-$(window).bind 'load', =>
-  $('body').removeClass 'loading'
 
 # Google Analytics
 `(function(C,l,i,v,e,I,O){C['GoogleAnalyticsObject']=e;C[e]=C[e]||function(){

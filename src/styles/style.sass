@@ -17,26 +17,6 @@ $header-height: 4rem
   text-decoration: none //underline
   cursor: default //pointer
 
-.loading
-  *
-    opacity: 0 !important
-    visibility: hidden
-  #logo
-    img
-      height: 10vh !important
-      animation: rotate 5s ease infinite
-    margin-left: -5vh
-    margin-top: -5vh
-    z-index: 100000
-  header>*, div#title>*
-    display: none
-  header, div#title, #logo, #logo img
-    opacity: 1 !important
-    visibility: visible
-    display: block !important
-  #logo img
-    margin: 30vh auto 0
-
 html, body
   height: 100%
   width: 100%
@@ -52,6 +32,7 @@ div#splash-wrap
   bottom: 0
   left: 0
   right: 0
+  overflow: hidden
 
   canvas#splash
     position: fixed
@@ -64,20 +45,21 @@ div#splash-wrap
     transition: opacity 5s
 
   aside
+    display: none
     z-index: 1000
     cursor: default
     position: absolute
-    bottom: -3em
+    bottom: -4em
     padding: 2em 1em 3em 1em
     transition: bottom 0.5s, opacity 0.5s
     &:hover
-      bottom: 0
+      bottom: -1em
       opacity: 1
     right: 1em
     text-align: right
     font-family: $titlefont
     color: $almostwhite
-    opacity: 0.25
+    opacity: 0.35
     font-size: 0.7em
     z-index: 1000
     #simulation-name
@@ -97,7 +79,6 @@ body>header
   height: 100vh
   text-align: center
   color: $almostwhite
-  text-shadow: 0px 0px 5px #000000
   position: relative
   z-index: 100
   overflow: hidden
@@ -109,13 +90,13 @@ body>header
   
   #title
     position: relative
-    padding-top: 7em
+    padding-top: 30vh
     padding-right: 1em
     &>*
       display: inline-block
       vertical-align: middle
     #logo img
-      height: 2.5 * $header-height
+      height: 1.5 * $header-height
       filter: invert(100%)
       
       opacity: 0.7
@@ -127,8 +108,8 @@ body>header
       line-height: $header-height
       margin: 0 0.8em 0 0.5em
     aside
-      height: $header-height
-      width: $header-height
+      height: 1.5*$header-height
+      width: 0.5*$header-height
     aside a
       display: inline-block
       text-decoration: none
@@ -146,71 +127,33 @@ body>header
       line-height: $header-height / 2
       border-radius: 1px
   
-  .position, .tagline
+  .tagline
     position: relative
+    text-shadow: 0px 0px 5px #000000
+    max-width: 40%
+    margin: 0 auto
     &>span
       display: inline-block
       margin: 0 0.4em
     .b
       font-weight: bold
-  .position
-    font-size: 1.4em
-  .tagline
-    max-width: 40%
-    margin: 0 auto
   
   #cta //"call to action"
-    position: absolute
-    bottom: 0
+    margin-top: 1em
     text-align: center
     width: 100%
-    padding-bottom: 1.5em
-    p
-      margin: 0
-      font-size: 0.8em
     &>a
       position: relative
-      padding: 1em 1em 0.5em
+      display: inline-block
+      padding: 0.2em 0.4em
       bottom: 0
-      transition: bottom 0.5s, padding-top 0.5s
+      margin: 1em
+      transition: background-color 0.5s, color 0.5s
+      text-decoration: none
+      color: white
+      background-color: transparent
+      border: solid 1px white
+      border-radius: 5px
       &:hover
-        padding-top: 2em
-        bottom: -1em
-
-main
-  //background-color: black
-  box-shadow: 0px 0px 20px 10px black
-  position: relative
-  z-index: 2000
-
-main section
-  box-shadow: 0px 0px 20px 10px black
-  background-color: $almostwhite
-  padding: 0 25% 5% 25%
-  font-family: $contentfont
-  h2
-    font-size: 2.5em
-    font-family: $titlefont
-    text-align: center
-    padding: 1em 0 0.3em 0
-    margin: 0
-  p
-    text-indent: 1em
-
-main .intersection
-  height: 10em
-
-footer
-  font-family: $titlefont
-  background-color: transparent
-  text-align: center
-  a
-    margin: 3em 0
-    padding: 1.5em
-    display: inline-block
-    text-decoration: none
-    color: #999
-    transition: color 0.5s
-    &:hover
-      color: $almostwhite
-    
+        background-color: white
+        color: black
