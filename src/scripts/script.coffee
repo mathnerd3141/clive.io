@@ -1,35 +1,22 @@
 animations = 
-  'Lorenz Strange Attractor': 'Lorenz'
+  'Lorenz': {title: 'Lorenz Strange Attractor', desc: 'Click around to add streamers!'}
 
 $ =>
-  WIDTH = HEIGHT = 0
+  # Set the canvas to automatically resize
   resize = =>
-    WIDTH = $('header').outerWidth()
-    HEIGHT = $('header').outerHeight()
     $ 'canvas#splash'
-      .attr 'width', WIDTH
-      .attr 'height', HEIGHT
+      .attr 'width', $('header').outerWidth()
+      .attr 'height', $('header').outerHeight()
   resize()
   $('window').resize resize
   
-  $('#simulation-desc').show()
-  
-  names = Object.keys animations
-  name = names[Math.floor Math.random()*names.length]
-  $('#simulation-name').text name
-  $('main section').click (e) =>
-    e.stopPropagation()
-  
-  script = $.extend document.createElement('script'),
-    type: 'text/javascript'
-    async: true
-    defer: true
-    onload: =>
-      $('canvas#splash').css {opacity: 1}
-      window[animations[name]]()
-    src: animations[name] + '.js'
-  document.getElementsByTagName('head')[0].appendChild(script)
-
+  # Fetch and run the simulation
+  name = Object.keys(animations)[Math.floor Math.random()*Object.keys(animations).length]
+  $.getScript name + '.js', =>
+    $('canvas#splash').css {opacity: 1}
+  $('#simulation-name').text animations[name].title
+  $('#simulation-note').text animations[name].desc
+  $('#simulation-info').show()
 
 $ =>
   # Smooth scrolling, adapted from calcbee and onestep
