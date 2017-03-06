@@ -12,8 +12,8 @@ $ =>
   
   # Fetch and run the simulation
   name = Object.keys(animations)[Math.floor Math.random()*Object.keys(animations).length]
-  $.getScript name + '.js', =>
-    $('canvas#splash').css {opacity: 1}
+  window[name]("canvas#splash")
+  $('canvas#splash').css {opacity: 1}
   $('#simulation-name').text animations[name].title
   $('#simulation-note').text animations[name].desc
   $('#simulation-info').show()

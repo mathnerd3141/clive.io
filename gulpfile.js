@@ -1,6 +1,5 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
-var uglify = require('gulp-uglify');
 
 var PATHS = {
   server: "src/server.coffee",
@@ -30,28 +29,27 @@ gulp.task('serve', ['build'], function() {
     online: false
   });
 
-  gulp.watch(PATHS.coffee, ['coffee']);
-  gulp.watch(PATHS.js, ['js']);
+  gulp.watch([PATHS.js, PATHS.coffee], ['js']);
   gulp.watch(PATHS.pugwatch, ['pug']);
   gulp.watch(PATHS.sass, ['sass']);
   gulp.watch(PATHS.static, ['static']);
 });
 
-gulp.task('build', ['coffee', 'js', 'pug', 'sass', 'static']);
-
-gulp.task('coffee', function() {
-  var coffee = require('gulp-coffee');
-
-  gulp.src(PATHS.coffee)
-    .pipe(coffee({bare: true}))
-    .on('error', swallowError)
-    .pipe(uglify())
-    .pipe(gulp.dest(PATHS.dist))
-    .pipe(browserSync.stream());
-});
+gulp.task('build', ['js', 'pug', 'sass', 'static']);
 
 gulp.task('js', function() {
-  gulp.src(PATHS.js)
+  var coffee = require('gulp-coffee');
+  var uglify = require('gulp-uglify');
+  var concat = require('gulp-concat');
+  var es = require('event-stream');
+
+  es.merge(
+    gulp.src(PATHS.coffee)
+      .pipe(coffee({bare: true}))
+      .on('error', swallowError),
+    gulp.src(PATHS.js)
+  )
+    .pipe(concat('script.js'))
     .pipe(uglify())
     .pipe(gulp.dest(PATHS.dist))
     .pipe(browserSync.stream());

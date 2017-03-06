@@ -1,14 +1,14 @@
 // Lorenz Strange Attractor
 // Adapted from http://wow.techbrood.com/static/20151028/2960.html
 
-(function(undefined){
+window.Lorenz = function(selector, undefined){
   //Lorenz Attractor Parameters
   var dt = 0.001, // (δτ) Represents time. Draw curve - higher the value, straighter the lines
       p = 28, // (ρ) point of origin
       w = 10, // (σ)width of main element - higher the number, narrower the width
       beta = 8 / 3; // (β) points of equilibrium - this applied value results in the infinity symbol. higher values will break the equilibrium, causing the ends to separate and spread. When ρ = 28, σ = 10, and β = 8/3, the Lorenz system has chaotic solutions; it is this set of chaotic solutions that make up the Lorenz Attractor (the infinity symbol).  If ρ < 1 then there is only one equilibrium point, which is at the origin. This point corresponds to no convection. All orbits converge to the origin when ρ  < 1.  The 'fork' occurs occurs at ρ = 1, or ρ > 1 Try it. 
 
-  var width, height, canvas = d3.select("canvas#splash");
+  var width, height, canvas = d3.select(selector);
   var context = canvas.node().getContext("2d");
 
   function setDims(){
@@ -86,4 +86,4 @@
   $("body").on("click", function(e){
     spawnSprite([e.pageX, e.pageY]);
   });
-})();
+};
