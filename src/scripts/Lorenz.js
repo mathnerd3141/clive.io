@@ -1,24 +1,15 @@
-// (Adapted from http://wow.techbrood.com/static/20151028/2960.html)
+// Lorenz Strange Attractor
+// Adapted from http://wow.techbrood.com/static/20151028/2960.html
 
-Lorenz = function(){
+window.Lorenz = function(selector, undefined){
   //Lorenz Attractor Parameters
   var dt = 0.001, // (δτ) Represents time. Draw curve - higher the value, straighter the lines
       p = 28, // (ρ) point of origin
       w = 10, // (σ)width of main element - higher the number, narrower the width
-      beta = 8 / 3, // (β) points of equilibrium - this applied value results in the infinity symbol. higher values will break the equilibrium, causing the ends to separate and spread. When ρ = 28, σ = 10, and β = 8/3, the Lorenz system has chaotic solutions; it is this set of chaotic solutions that make up the Lorenz Attractor (the infinity symbol).  If ρ < 1 then there is only one equilibrium point, which is at the origin. This point corresponds to no convection. All orbits converge to the origin when ρ  < 1.  The 'fork' occurs occurs at ρ = 1, or ρ > 1 Try it. 
+      beta = 8 / 3; // (β) points of equilibrium - this applied value results in the infinity symbol. higher values will break the equilibrium, causing the ends to separate and spread. When ρ = 28, σ = 10, and β = 8/3, the Lorenz system has chaotic solutions; it is this set of chaotic solutions that make up the Lorenz Attractor (the infinity symbol).  If ρ < 1 then there is only one equilibrium point, which is at the origin. This point corresponds to no convection. All orbits converge to the origin when ρ  < 1.  The 'fork' occurs occurs at ρ = 1, or ρ > 1 Try it. 
 
-      //Below x, y, and z values are the components of a given three dimensional location in space
-      x0 = 0.5, y0 = 0.5, z0 = 10; //change in x,y, or z with respect to time
-
-  var width, height, canvas = d3.select("canvas#splash");
+  var width, height, canvas = d3.select(selector);
   var context = canvas.node().getContext("2d");
-
-  //http://stackoverflow.com/a/32798277
-  context['imageSmoothingEnabled'] = true;       /* standard */
-  context['mozImageSmoothingEnabled'] = true;    /* Firefox */
-  context['oImageSmoothingEnabled'] = true;      /* Opera */
-  context['webkitImageSmoothingEnabled'] = true; /* Safari */
-  context['msImageSmoothingEnabled'] = true;     /* IE */
 
   function setDims(){
     width = $("header").outerWidth();
@@ -38,31 +29,28 @@ Lorenz = function(){
 
   //Color Range
   var color = d3.scalePow()
-                .domain([0, 8, 23, 55])
-                .range(["#666", "#099", "#069", "#009"])
+                .domain([-1000000, 0, 8, 23, 55, 1000000])
+                .range(["#699", "#699", "#099", "#069", "#009", "#009"])
                 .exponent(1.5)
                 .interpolate(d3.interpolateRgb);
 
-  function spawnSprite(spawnAtMouse) {
-    if(typeof spawnAtMouse == "undefined" || spawnAtMouse !== true)
-      spawnAtMouse = false;
-    
+  function spawnSprite(location) {
+    //Generate x, y location from mouse (given), or else on the edges of the screen
     var x, y;
-    do{
-      x = width * Math.random() - width / 2;
-      y = height * Math.random() - height / 2;
-    }while(Math.abs(x) < width / 4 && Math.abs(y) < height / 4); //Redo it until it's not in the center quarter (by area) of the screen
-    x = x / 12;
-    y = y / 8;
-    var z = z0 + (Math.random() - 0.5) * 10,
-        n = Math.random() * 3 | 1, //different speeds
-        t1 = Math.random() * 10000 + 20000; // time (sec) it's allowed to swirl for
+    if(typeof location !== "undefined")
+      x = location[0], y = location[1];
+    else if(Math.random() > 0.5)
+      x = width * Math.random(), y = (Math.random() > 0.5) * height;
+    else
+      y = height * Math.random(), x = (Math.random() > 0.5) * width;
     
-    if(spawnAtMouse){
-      var m = d3.mouse(canvas.node())
-      x = (m[0] - width / 2) / 12;
-      y = (m[1] - height / 2) / 8;
-    }
+    //Account for scaling factor and centering
+    x = (x - width/2) / 12;
+    y = (y - height/2) / 8;
+    
+    var z = 10 + (Math.random() - 0.5) * 10,
+        n = Math.random() * 3 + 1, //different speeds
+        t1 = Math.random() * 5000 + 15000; // time (sec) it's allowed to swirl for
     
     
     var offset = Math.random() * 30; //to vary the colors more
@@ -84,20 +72,18 @@ Lorenz = function(){
   }
   function fadeTick(){
     context.save();
-    context.setTransform(1, 0, 0, 1, 0, 0);
-
     //source-atop draws old image on top of the new image, eliminating the part of the old image that is outside of the new image range.
     context.globalCompositeOperation = "source-atop";
     context.fillStyle = "rgba(0,0,0,.05)";
-    context.fillRect(0, 0, width, height);
+    context.fillRect(-width/2, -height/2, width, height);
     context.restore();
   }
 
-  d3.interval(function(elapsedTime){spawnSprite();}, 500);
-  d3.interval(function(elapsedTime){fadeTick();}, 200);
-  for(var i = 0; i < 30; i++)
+  d3.interval(function(elapsedTime){spawnSprite();}, 800);
+  d3.interval(function(elapsedTime){fadeTick();}, 150);
+  for(var i = 0; i < 20; i++)
     spawnSprite();
-  $("body").on("click", function(){
-    spawnSprite(true);
+  $("body").on("click", function(e){
+    spawnSprite([e.pageX, e.pageY]);
   });
 };
