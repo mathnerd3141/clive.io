@@ -6,4 +6,4 @@
 
 Clive Chan's personal website and webdev tech testing ground. :)
 
-Check out [cchan/ec2](https://github.com/cchan/ec2) for the server backend this basic Express server runs on top of.
+Check out [github.com/clive-io](https://github.com/clive-io) for the server backend this basic Express server runs on top of.
