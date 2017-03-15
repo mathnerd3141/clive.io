@@ -2,4 +2,4 @@
 npm run clean
 npm run build
 
-router create clive.io
+router create --domain=clive.io
