@@ -18,7 +18,10 @@ app.get '/rr', (req, res) ->
   res.redirect 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
 
 app.use '/resume.pdf', (req, res, next) ->
-  console.log 'Resume visited from ' + req.ip
-  next()
+  request.get 'http://ip-api.com/json/' + req.ip, (api_err, api_res, api_data) ->
+    if (api_err) console.log 'Resume ' + req.ip + ', lookup error.'
+    else if (api_res.statusCode !== 200) console.log 'Resume ' + req.ip + ', lookup returned status ' + api_res.statusCode + '.'
+    else console.log 'Resume ' + req.ip + ', lookup: ' + data.html_url.org + ' isp ' + data.html_url.isp + ' in ' + data.html_url.city + ',' + data.html_url.regionName + ',' + data.html_url.countryCode
+    next()
 
 app.use express.static 'dist'
