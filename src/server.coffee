@@ -27,7 +27,9 @@ app.use '/resume.pdf', (req, res, next) ->
       return console.log json_err
     if api_err or api_res.statusCode != 200 then console.log 'Resume ' + req.ip + ', lookup error.'
     else if api_data?.status != 'success' then console.log 'Resume ' + req.ip + ', lookup error: ' + api_data?.message + '.'
-    else console.log 'Resume ' + req.ip + ', ORG ' + api_data?.org + ' ISP ' + api_data?.isp +
-        ' FROM ' + api_data?.city + ', ' + api_data?.regionName + ', ' + api_data?.countryCode + '.'
+    else console.log 'Resume ' + req.ip + ',' + 
+      ' ISP ' + api_data?.isp +
+      (if api_data?.org != api_data?.isp then ' ORG ' + api_data?.org else '') +
+      ' FROM ' + api_data?.city + ', ' + api_data?.regionName + ', ' + api_data?.countryCode + '.'
 
 app.use express.static 'dist'
