@@ -20,7 +20,7 @@ app.get '/rr', (req, res) ->
   res.redirect 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
 
 app.get ['/resume', '/resume.pdf'], (req, res) ->
-  res.setHeader 'Cache-Control', 'no-cache, must-revalidate'
+  #res.setHeader 'Cache-Control', 'no-cache, must-revalidate'
   res.sendFile 'resume.pdf', { root: path.join __dirname, '../dist' }
   request.get 'http://ip-api.com/json/' + req.ip, (api_err, api_res, api_data) ->
     try
