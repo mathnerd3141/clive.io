@@ -7,7 +7,8 @@
     "start": "gulp build && coffee src/server.coffee",
     "build": "gulp build",
     "test": "snyk test",
-    "clean": "npm install && npm rebuild && npm prune && rm -rf dist"
+    "prestart": "npm install && npm rebuild",
+    "poststart": "npm prune"
   },
   "repository": {
     "type": "git",
@@ -34,8 +35,10 @@
     "gulp-pug": "^3.2.0",
     "gulp-purifycss": "^0.2.0",
     "gulp-sass": "^3.0.0",
+    "gulp-sequence": "^0.4.6",
     "gulp-uglify": "^3.0.0",
     "gulp-uglifycss": "^1.0.8",
+    "rmfr": "^1.0.3",
     "snyk": "^1.22.1"
   }
 }

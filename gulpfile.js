@@ -1,7 +1,8 @@
-var gulp = require('gulp');
-var browserSync = require('browser-sync').create();
+const gulp = require('gulp');
+const browserSync = require('browser-sync').create();
+const gulpSequence = require('gulp-sequence').use(gulp);
 
-var PATHS = {
+const PATHS = {
   server: "src/server.coffee",
   pugsrc: "src/views/index.pug",
   pugwatch: "src/views/**/*.{pug,html,md}",
@@ -9,7 +10,7 @@ var PATHS = {
   coffee: "src/scripts/**/*.coffee",
   js: "src/scripts/**/*.js",
   static: "static/**/*.*",
-  dist: "./dist"
+  dist: "dist"
 };
 
 function swallowError(e){
@@ -18,7 +19,7 @@ function swallowError(e){
 }
 
 gulp.task('serve', ['build'], function() {
-  var nodemon = require('gulp-nodemon');
+  const nodemon = require('gulp-nodemon');
 
   nodemon({
     script: PATHS.server
@@ -35,13 +36,18 @@ gulp.task('serve', ['build'], function() {
   gulp.watch(PATHS.static, ['static']);
 });
 
-gulp.task('build', ['js', 'pug', 'sass', 'static']);
+gulp.task('build', gulpSequence('rmfr', ['js', 'pug', 'static'], 'sass'));
+
+gulp.task('rmfr', function(){
+  const rmfr = require('rmfr');
+  return rmfr(PATHS.dist);
+});
 
 gulp.task('js', function() {
-  var coffee = require('gulp-coffee');
-  var uglify = require('gulp-uglify');
-  var concat = require('gulp-concat');
-  var es = require('event-stream');
+  const coffee = require('gulp-coffee');
+  const uglify = require('gulp-uglify');
+  const concat = require('gulp-concat');
+  const es = require('event-stream');
 
   es.merge(
     gulp.src(PATHS.coffee)
@@ -56,7 +62,7 @@ gulp.task('js', function() {
 });
 
 gulp.task('pug', function() {
-  var pug = require('gulp-pug');
+  const pug = require('gulp-pug');
 
   return gulp.src(PATHS.pugsrc)
     .pipe(pug())
@@ -66,11 +72,11 @@ gulp.task('pug', function() {
 });
 
 gulp.task('sass', function() {
-  var sass = require('gulp-sass');
-  var autoprefixer = require('gulp-autoprefixer');
-  var concat = require('gulp-concat');
-  var purify = require('gulp-purifycss');
-  var uglify = require('gulp-uglifycss');
+  const sass = require('gulp-sass');
+  const autoprefixer = require('gulp-autoprefixer');
+  const concat = require('gulp-concat');
+  const purify = require('gulp-purifycss');
+  const uglify = require('gulp-uglifycss');
 
   return gulp.src(PATHS.sass)
     .pipe(sass({outputStyle:'compressed'}).on('error', sass.logError))
