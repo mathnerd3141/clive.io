@@ -67,16 +67,17 @@ gulp.task('pug', function() {
 
 gulp.task('sass', function() {
   var sass = require('gulp-sass');
-  var sourcemaps = require('gulp-sourcemaps');
   var autoprefixer = require('gulp-autoprefixer');
   var concat = require('gulp-concat');
+  var purify = require('gulp-purifycss');
+  var uglify = require('gulp-uglifycss');
 
   return gulp.src(PATHS.sass)
-    .pipe(sourcemaps.init())
     .pipe(sass({outputStyle:'compressed'}).on('error', sass.logError))
     .pipe(autoprefixer())
     .pipe(concat('style.css'))
-    .pipe(sourcemaps.write('.'))
+    .pipe(purify(['./dist/**.html', './dist/**.js']))
+    .pipe(uglify())
     .pipe(gulp.dest(PATHS.dist))
     .pipe(browserSync.stream());
 });

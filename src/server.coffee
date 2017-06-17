@@ -6,8 +6,12 @@ helmet = require 'helmet'
 request = require 'request'
 path = require 'path'
 
+if not process.env.PORT?
+  console.log 'Clive.IO server: You need to specify a $PORT.'
+  process.exit(1)
+
 http.listen process.env.PORT, 'localhost', ->
-	console.log "listening on * : " + process.env.PORT
+	console.log 'listening on * : ' + process.env.PORT
 
 app.set 'trust proxy', true
 
