@@ -84,8 +84,11 @@ window.Lorenz = function(selector, undefined){
   for(var i = 0; i < 20; i++)
     spawnSprite();
   
-  var clicktouch = 'ontouchstart' in window ? 'touchstart' : 'click';
-  $("body").on(clicktouch, function(e){
+  $("body").on("click touchstart", function(e){
     spawnSprite([e.pageX, e.pageY]);
+    
+    e.stopPropagation();
+    e.preventDefault();
+    return false;
   });
 };

@@ -1,5 +1,5 @@
 animations = 
-  'Lorenz': {title: 'Lorenz Strange Attractor', desc: 'Click around to add streamers!'}
+  'Lorenz': {title: 'Lorenz Strange Attractor', desc: 'Click or tap anywhere to add streamers!'}
 
 $ =>
   # Set the canvas to automatically resize

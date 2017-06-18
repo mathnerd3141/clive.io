@@ -31,34 +31,37 @@ div#splash-wrap
     opacity: 0
     transition: opacity 5s
 
-  aside
-    display: none
-    z-index: 1000
-    cursor: default
-    position: absolute
-    bottom: -4.2em
-    padding: 2em 1em 3em 1em
-    transition: bottom 1s, opacity 1s
-    &:hover
-      bottom: -1em
+aside#simulation-info
+  display: none
+  cursor: default
+  position: fixed
+  bottom: -3em
+  padding: 2em 1em 3em 1em
+  transition: bottom 1s
+  &:hover, &:active
+    bottom: -1em
+    *, #simulation-name
       opacity: 1
-    right: 1em
-    text-align: right
-    font-family: $titlefont
-    color: $almostwhite
-    opacity: 0.35
-    font-size: 0.7em
-    z-index: 1000
-    #simulation-name
-      margin-bottom: 0.5em
-      font-size: 1.3em
-    ul
-      margin: 0
-      padding: 0 0 0 1em
-      list-style-type: none
-      li:before
-        content: "-"
-        margin-right: 0.5em
+  right: 1em
+  text-align: right
+  font-family: $titlefont
+  color: $almostwhite
+  font-size: 0.7em
+  z-index: 1000
+  #simulation-name
+    margin-bottom: 0.5em
+    font-size: 1.3em
+    opacity: 0.5
+  *
+    transition: opacity 1s
+    opacity: 0
+  ul
+    margin: 0
+    padding: 0 0 0 1em
+    list-style-type: none
+    li:before
+      content: "-"
+      margin-right: 0.5em
 
 body>header
   font-family: $titlefont
