@@ -83,7 +83,9 @@ window.Lorenz = function(selector, undefined){
   d3.interval(function(elapsedTime){fadeTick();}, 150);
   for(var i = 0; i < 20; i++)
     spawnSprite();
-  $("body").on("click", function(e){
+  
+  var clicktouch = 'ontouchstart' in window ? 'touchstart' : 'click';
+  $("body").on(clicktouch, function(e){
     spawnSprite([e.pageX, e.pageY]);
   });
 };

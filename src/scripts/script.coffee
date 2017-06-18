@@ -18,13 +18,13 @@ $ =>
   $('#simulation-note').text animations[name].desc
   $('#simulation-info').show()
 
-$ =>
-  # Smooth scrolling, adapted from calcbee and onestep
-  # Originally adapted from //http://www.paulund.co.uk/smooth-scroll-to-internal-links-with-jquery
-  $('a[href^="#"]').on 'click', (e) ->
-    $('html, body').stop().animate {scrollTop: $(@hash).offset().top}, 900, 'swing', =>
-      window.location.hash = @hash
-    e.preventDefault()
+#$ =>
+#  # Smooth scrolling, adapted from calcbee and onestep
+#  # Originally adapted from //http://www.paulund.co.uk/smooth-scroll-to-internal-links-with-jquery
+#  $('a[href^="#"]').on 'click', (e) ->
+#    $('html, body').stop().animate {scrollTop: $(@hash).offset().top}, 900, 'swing', =>
+#      window.location.hash = @hash
+#    e.preventDefault()
 
 # Google Analytics
 `(function(C,l,i,v,e,I,O){C['GoogleAnalyticsObject']=e;C[e]=C[e]||function(){
