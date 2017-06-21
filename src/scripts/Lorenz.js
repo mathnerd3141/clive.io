@@ -84,12 +84,7 @@ window.Lorenz = function(selector, undefined){
   for(var i = 0; i < 20; i++)
     spawnSprite();
   
-  var debounce = false;
   $("body").on("click touchstart", function(e){
-    if(!debounce){
-      spawnSprite([e.pageX, e.pageY]);
-      debounce = true;
-      setTimeout(function(){debounce = false;}, 100);
-    }
+    spawnSprite([e.pageX, e.pageY]);
   });
 };
