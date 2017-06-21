@@ -79,12 +79,12 @@ window.Lorenz = function(selector, undefined){
     context.restore();
   }
   
-  d3.interval(function(elapsedTime){spawnSprite();}, 800);
-  d3.interval(function(elapsedTime){fadeTick();}, 150);
+  d3.interval(function(elapsedTime){spawnSprite();}, 900);
+  d3.interval(function(elapsedTime){fadeTick();}, 180);
   for(var i = 0; i < 20; i++)
     spawnSprite();
   
-  $("body").on("click touchstart", function(e){
+  $("body").on("mousedown click touchstart tap touch", function(e){
     spawnSprite([e.pageX, e.pageY]);
   });
 };
