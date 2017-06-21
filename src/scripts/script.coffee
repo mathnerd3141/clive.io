@@ -10,6 +10,9 @@ $ =>
   resize()
   $('window').resize resize
   
+  # Enable FastClick
+  FastClick.attach document.body
+  
   # Fetch and run the simulation
   name = Object.keys(animations)[Math.floor Math.random()*Object.keys(animations).length]
   window[name]("canvas#splash")
