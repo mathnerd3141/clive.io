@@ -78,17 +78,18 @@ window.Lorenz = function(selector, undefined){
     context.fillRect(-width/2, -height/2, width, height);
     context.restore();
   }
-
+  
   d3.interval(function(elapsedTime){spawnSprite();}, 800);
   d3.interval(function(elapsedTime){fadeTick();}, 150);
   for(var i = 0; i < 20; i++)
     spawnSprite();
   
+  var debounce = false;
   $("body").on("click touchstart", function(e){
-    spawnSprite([e.pageX, e.pageY]);
-    
-    e.stopPropagation();
-    e.preventDefault();
-    return false;
+    if(!debounce){
+      spawnSprite([e.pageX, e.pageY]);
+      debounce = true;
+      setTimeout(function(){debounce = false;}, 100);
+    }
   });
 };
