@@ -22,6 +22,7 @@ app.get '/', (req, res) ->
 
 app.get '/rr', (req, res) ->
   res.redirect 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+  # Use redis redirect here?
 
 cache = {}
 app.get ['/resume', '/resume.pdf'], (req, res) ->

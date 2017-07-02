@@ -4,7 +4,7 @@
   "description": "Clive Chan's personal homepage",
   "main": "src/server.coffee",
   "scripts": {
-    "start": "gulp build >/dev/null && coffee src/server.coffee",
+    "start": "NODE_ENV=production gulp build >/dev/null && coffee src/server.coffee",
     "build": "gulp build",
     "test": "snyk test",
     "prestart": "npm install >/dev/null",
