@@ -18,65 +18,66 @@ html(lang="en")
     meta(name="msapplication-navbutton-color" content="mediumblue")
     meta(name="apple-mobile-web-app-capable" content="yes")
     meta(name="apple-mobile-web-app-status-bar-style" content="black-translucent")
-    meta(name="og:image" content="https://clive.io/img/logo-min.png")
+    meta(name="og:image" content="https://clive.io/img/logo-min-black.png")
     meta(name="og:email" content="cc@clive.io")
     
     //- load only the "necessary" styles - normalize since it'll overwrite, then custom style. Montserrat/FontAwesome are non-critical.
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" integrity="sha256-HxaKz5E/eBbvhGMNwhWRPrAR9i/lG1JeT4mD6hCQ7s4=" crossorigin="anonymous")
     link(rel="stylesheet" href="style.css")
   body
-    header
-      div#title
-        span#logo
-          img(src="img/logo-min.png" alt="[awesome personal logo]")
-        h1 Clive Chan
-        aside
-          a(href="mailto:cc@clive.io" title="Email: cc@clive.io" aria-label="email")
-            i.fa.fa-envelope(aria-hidden="true") Email: cc@clive.io.
-          a(href="https://github.com/cchan" title="GitHub: cchan" aria-label="github")
-            i.fa.fa-github(aria-hidden="true") GitHub: cchan.
-          a.second(href="https://linkedin.com/in/cchan3141" title="LinkedIn: cchan3141" aria-label="linkedin")
-            i.fa.fa-linkedin(aria-hidden="true") LinkedIn: cchan3141.
-      
-      p.tagline
-        span
-          a(href="https://www.bloomberg.com/professional/" title="Bloomberg Professional Service") Bloomberg
-          |  data science intern.
+    div#title
+      span#logo
+        img(src="img/logo-min-white.png" alt="[awesome personal logo]")
+      h1 Clive Chan
+      aside
+        a(href="mailto:cc@clive.io" title="Email: cc@clive.io" aria-label="email")
+          i.fa.fa-envelope(aria-hidden="true") Email: cc@clive.io.
+        a(href="https://github.com/cchan" title="GitHub: cchan" aria-label="github")
+          i.fa.fa-github(aria-hidden="true") GitHub: cchan.
+        a(href="https://linkedin.com/in/cchan3141" title="LinkedIn: cchan3141" aria-label="linkedin")
+          i.fa.fa-linkedin(aria-hidden="true") LinkedIn: cchan3141.
+    
+    p#tagline
+      span
+        a(href="https://www.bloomberg.com/professional/" title="Bloomberg Professional Service") Bloomberg
+        |  data science intern.
+      |  
+      span
+        a(href="https://teamwaterloop.ca" title="Team Waterloop") Hyperloop
+        |  software systems lead.
+      //- Zenith Suborbitals cofounder.
+      |  
+      span
+        span Founder of a 
+          a(href="http://lexhack.org" title="LexHack") hackathon
+          | ,
         |  
-        span
-          a(href="https://teamwaterloop.ca" title="Team Waterloop") Hyperloop
-          |  software systems lead.
-        //- Zenith Suborbitals cofounder.
+        span a 
+          a(href="http://vitaedev.com" title="VitaeDev") startup
+          | ,
         |  
-        span
-          span Founder of a 
-            a(href="http://lexhack.org" title="LexHack") hackathon
-            | ,
+        span and several 
+          a(href="https://lexscibowl.org" title="LexSciBowl") STEM
           |  
-          span a 
-            a(href="http://vitaedev.com" title="VitaeDev") startup
-            | ,
+          a(href="https://www.facebook.com/lexopensource/" title="OpenSource MakerSpace") outreach
           |  
-          span and several 
-            a(href="https://lexscibowl.org" title="LexSciBowl") STEM
-            |  
-            a(href="https://www.facebook.com/lexopensource/" title="OpenSource MakerSpace") outreach
-            |  
-            a(href="https://www.youtube.com/watch?v=dhyWVuB6GBc&t=43m46s" title="\"Cracking the Co-op\" Speaker Panel") initiatives
-            | .
+          a(href="https://www.youtube.com/watch?v=dhyWVuB6GBc&t=43m46s" title="\"Cracking the Co-op\" Speaker Panel") initiatives
+          | .
+      |  
+      span
+        span UWaterloo Software Engineering Co-op,
         |  
-        span
-          span UWaterloo Software Engineering Co-op,
-          |  
-          span Class of 2021.
-      div(id="cta")
-        a(href="resume.pdf" title="Resume") r&eacute;sum&eacute;
+        span Class of 2021.
+    
+    div#cta
+      a(href="resume.pdf" title="Resume") r&eacute;sum&eacute;
+      //- add more here in the future
     
     div#splash-wrap
       canvas#splash
-    aside#simulation-info(onclick="" aria-haspopup="true")
-      div#simulation-name
-      div#simulation-note
+      aside#simulation-info(onclick="" aria-haspopup="true")
+        div#simulation-name
+        div#simulation-note
     
     link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat")
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous")

@@ -4,12 +4,12 @@ animations =
 
 $ =>
   # Set original canvas dimensions
-  orig_dims = {width: $('header').outerWidth(), height: $('header').outerHeight()}
+  orig_dims = {width: $('body').outerWidth(), height: $('body').outerHeight()}
   $('canvas#splash').attr orig_dims
   
   # Make the canvas automatically resize without redrawing (CSS resize only)
   resize = =>
-    curr_dims = {width: $('header').outerWidth(), height: $('header').outerHeight()}
+    curr_dims = {width: $('body').outerWidth(), height: $('body').outerHeight()}
     if curr_dims.width / curr_dims.height > orig_dims.width / orig_dims.height
       $('canvas#splash').css
         width: curr_dims.width
@@ -23,7 +23,7 @@ $ =>
         'margin-left': (curr_dims.width - curr_dims.height * orig_dims.width / orig_dims.height) / 2
         'margin-top': 0
   getScalingFactor = =>
-    curr_dims = {width: $('header').outerWidth(), height: $('header').outerHeight()}
+    curr_dims = {width: $('body').outerWidth(), height: $('body').outerHeight()}
     if curr_dims.width / curr_dims.height > orig_dims.width / orig_dims.height
       curr_dims.width / orig_dims.width
     else

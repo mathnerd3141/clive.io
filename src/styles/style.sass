@@ -1,18 +1,33 @@
 $almostwhite: #eee
+$aspectthreshold: "7/5"
 
-$titlefont: "Segoe UI", Montserrat, "Open Sans" //- add Gotham from Waterloo
-$contentfont: Montserrat //for now
-
+// Whole-document
 html, body
   height: 100%
   width: 100%
   padding: 0
   margin: 0
+  text-align: center
+  color: $almostwhite
+  background-color: black
+  font-size: 14pt
+  font-family: "Segoe UI", Montserrat, "Open Sans" // add Gotham from Waterloo?
+  font-size: 3vh
+  @media(max-aspect-ratio: $aspectthreshold)
+    font-size: 2.7vh
 
+// Generic elements
+a
+  color: white
+  text-decoration: none
+p
+  margin: 0.5em 0 0 0
 ::selection
   background: white
   color: black
+  text-shadow: none
 
+// FA semantic content (if FA doesn't load)
 .fa.fa-envelope
   content: "email"
 .fa.fa-github
@@ -20,161 +35,115 @@ html, body
 .fa.fa-linkedin
   content: "linkedin"
 
-body
-  background-color: black
-  font-size: 12pt
-  font-size: 2.8vh
-
-div#splash-wrap
+div#splash-wrap, canvas#splash
   position: fixed
   top: 0
   bottom: 0
   left: 0
   right: 0
   overflow: hidden
-
-  canvas#splash
-    position: fixed
-    z-index: -1000
-    top: 0
-    bottom: 0
-    left: 0
-    right: 0
-    opacity: 0
-    transition: opacity 5s
-
+canvas#splash
+  opacity: 0
+  transition: opacity 5s
 aside#simulation-info
   display: none
   position: fixed
+  font-size: 0.6em
+  z-index: 200
+  right: 0
   bottom: -3em
-  padding: 2em 2em 3em 1em
   transition: bottom 1s
   &:hover, &:focus, &:active
     bottom: -1em
     cursor: pointer
     *, #simulation-name
       opacity: 1
-  right: 0
+  padding: 2em 2em 3em 1em
   text-align: right
-  font-family: $titlefont
   color: $almostwhite
-  font-size: 0.7em
-  z-index: 1000
+  *
+    transition: opacity 1s
+    opacity: 0
   #simulation-name
     margin-bottom: 0.5em
     font-size: 1.3em
     opacity: 0.5
-  *
-    transition: opacity 1s
-    opacity: 0
-  ul
-    margin: 0
-    padding: 0 0 0 1em
-    list-style-type: none
-    li:before
-      content: "-"
-      margin-right: 0.5em
 
-body>header
-  font-family: $titlefont
-  display: block
-  height: 100%
-  text-align: center
-  color: $almostwhite
+#title, #tagline, #cta
   position: relative
-  z-index: 100
-  
-  a
-    color: white
-  p
-    margin: 0.5em 0 0 0
-  
-  #title
-    position: relative
-    padding-top: 10em
-    padding-right: 1em
-    @media(max-aspect-ratio: 6/5)
-      padding-top: 6em
-      padding-right: 0
-    &>*
-      display: inline-block
-      @media(max-aspect-ratio: 6/5)
-        display: block
-      vertical-align: middle
-    #logo img
-      height: 6em
-      width: 6em
-      
-      opacity: 0.7
-      transition: opacity 0.5s
-      &:hover
-        opacity: 1
-    h1
-      font-size: 3em
-      margin: -0.2em 0.8em 0 0.5em
-    aside a
+  z-index: 1000
+  margin: 1em auto
+  max-width: 60%
+  text-shadow: 0 0 0.3em #000000
+  @media(max-aspect-ratio: $aspectthreshold)
+    max-width: 95%
+
+#title
+  padding-top: 7em
+  padding-right: 1em
+  margin-top: 0
+  @media(max-aspect-ratio: $aspectthreshold)
+    padding-top: 6em
+    padding-right: 0
+  &>*
+    display: inline-block
+    @media(max-aspect-ratio: $aspectthreshold)
       display: block
-      @media(max-aspect-ratio: 6/5)
-        display: inline-block
-      text-decoration: none
-      
-      .fa
-        font-size: 0.01em
-        &::before
-          font-size: 100em
-      .fa.fa-envelope
-        vertical-align: 20%
-      .fa.fa-github
-        vertical-align: 5%
-      .fa.fa-linkedin
-        vertical-align: 5%
-      
-      color: inherit
-      transition: color 0.5s, background-color 0.5s
-      &:hover
-        background-color: white
-        color: black
-        text-shadow: none
-      
-      font-size: 1.5em
-      height: 1.3em
-      width: 1.3em
-      line-height: 1.3em
-      border-radius: 0.2em
-  
-  .tagline
-    position: relative
-    text-shadow: 0 0 0.2em #000000
-    max-width: 45%
-    margin: 1em auto
-    @media(max-aspect-ratio: 6/5)
-      max-width: 95%
-    &>span
-      padding: 0.25em 0
-      margin: 0 0.1em
-    span
+    vertical-align: middle
+  #logo img
+    height: 6em
+    width: 6em
+    opacity: 0.7
+    transition: opacity 0.5s
+    &:hover
+      opacity: 1
+  h1
+    font-size: 3em
+    margin: -0.2em 0.8em 0 0.5em
+  aside a
+    display: block
+    @media(max-aspect-ratio: $aspectthreshold)
       display: inline-block
-    .b
-      font-weight: bold
-  
-  #cta //"call to action"
-    margin-top: 1em
-    margin-bottom: 3em
-    text-align: center
-    width: 100%
-    &>a
-      font-weight: bold
-      position: relative
-      display: inline-block
-      padding: 0.2em 0.4em
-      bottom: 0
-      margin: 1em
-      transition: background-color 0.5s, color 0.5s
-      text-decoration: none
-      color: white
-      background-color: transparent
-      border: solid 0.05em white
-      border-radius: 0.2em
-      &:hover
-        background-color: white
-        color: black
+    font-size: 1.5em
+    height: 1.3em
+    width: 1.3em
+    line-height: 1.3em
+    border-radius: 0.2em
+    .fa
+      font-size: 0.01em
+      &::before
+        font-size: 100em
+    .fa.fa-envelope
+      font-size: 0.009em
+      vertical-align: 10em
+    transition: color 0.5s, background-color 0.5s
+    &:hover
+      background-color: white
+      color: black
+
+#tagline
+  &>span
+    padding: 0.25em 0.2em
+  span
+    display: inline-block
+  a
+    text-decoration: underline
+
+#cta //"call to action"
+  margin: 1em auto 4em auto
+  display: inline-block
+  a
+    display: inline-block
+    min-width: 4em
+    margin: 1em
+    font-weight: bold
+    padding: 0.2em 0.4em
+    border: solid 0.05em white
+    border-radius: 0.2em
+    transition: background-color 0.5s, color 0.5s, text-shadow 0.5s
+    background-color: transparent
+    color: white
+    &:hover
+      background-color: white
+      color: black
+      text-shadow: none
