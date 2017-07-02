@@ -6,19 +6,19 @@
   "scripts": {
     "start": "NODE_ENV=production coffee src/server.coffee",
     "build": "gulp build",
-    "prebuild": "npm install >/dev/null; npm prune",
+    "prebuild": "npm install --silent; npm prune",
     "test": "snyk test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cchan/clive.io.git"
+    "url": "git+https://github.com/clive-io/clive.io.git"
   },
   "author": "Clive Chan (cc@clive.io)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cchan/clive.io/issues"
+    "url": "https://github.com/clive-io/clive.io/issues"
   },
-  "homepage": "http://clive.io",
+  "homepage": "https://clive.io",
   "dependencies": {
     "express": "^4.13.4",
     "helmet": "^3.2.0",
@@ -38,6 +38,6 @@
     "gulp-uglify": "^3.0.0",
     "gulp-uglifycss": "^1.0.8",
     "rmfr": "^1.0.3",
-    "snyk": "^1.22.1"
+    "snyk": "^1.36.2"
   }
 }
