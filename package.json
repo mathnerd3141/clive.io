@@ -4,11 +4,10 @@
   "description": "Clive Chan's personal homepage",
   "main": "src/server.coffee",
   "scripts": {
-    "start": "NODE_ENV=production gulp build >/dev/null && coffee src/server.coffee",
+    "start": "NODE_ENV=production coffee src/server.coffee",
     "build": "gulp build",
-    "test": "snyk test",
-    "prestart": "npm install >/dev/null",
-    "poststart": "npm prune"
+    "prebuild": "npm install >/dev/null; npm prune",
+    "test": "snyk test"
   },
   "repository": {
     "type": "git",
