@@ -61,17 +61,20 @@ window.Lorenz = function(selector, onclick, undefined){
         t.stop();
     });
   }
+  
+  //start black
+  context.fillStyle = "rgb(0,0,0)";
+  context.fillRect(-width/2, -height/2, width, height);
+  
+  //source-atop draws old image on top of the new image, eliminating the part of the old image that is outside of the new image range.
+  context.globalCompositeOperation = "source-atop";
+  context.fillStyle = "rgba(0,0,0,.05)";
   function fadeTick(){
-    context.save();
-    //source-atop draws old image on top of the new image, eliminating the part of the old image that is outside of the new image range.
-    context.globalCompositeOperation = "source-atop";
-    context.fillStyle = "rgba(0,0,0,.05)";
     context.fillRect(-width/2, -height/2, width, height);
-    context.restore();
   }
 
-  d3.interval(function(elapsedTime){spawnSprite();}, 900);
-  d3.interval(function(elapsedTime){fadeTick();}, 180);
+  d3.interval(function(elapsedTime){spawnSprite();}, 1000);
+  d3.interval(function(elapsedTime){fadeTick();}, 200);
   for(var i = 0; i < 20; i++)
     spawnSprite();
 
