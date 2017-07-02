@@ -1,7 +1,7 @@
 // Lorenz Strange Attractor
 // Adapted from http://wow.techbrood.com/static/20151028/2960.html
 
-window.Lorenz = function(selector, undefined){
+window.Lorenz = function(selector, onclick, undefined){
   //Lorenz Attractor Parameters
   var dt = 0.001, // (δτ) Represents time. Draw curve - higher the value, straighter the lines
       p = 28, // (ρ) point of origin
@@ -10,22 +10,14 @@ window.Lorenz = function(selector, undefined){
 
   var width, height, canvas = d3.select(selector);
   var context = canvas.node().getContext("2d");
+  width = $(selector).outerWidth();
+  height = $(selector).outerHeight();
 
-  function setDims(){
-    width = $("header").outerWidth();
-    height = $("header").outerHeight();
-    
-    canvas.attr("width", width)
-          .attr("height", height);
-    
-    // set how the new images are drawn onto the existing image. 'lighter' will  display the new over the old
-    context.globalCompositeOperation = "lighter";
-    context.translate(width / 2, height / 2);
-    context.scale(12, 8);
-    context.lineWidth = 0.2;
-  }
-  $(window).resize(setDims);
-  setDims();
+  // set how the new images are drawn onto the existing image. 'lighter' will  display the new over the old
+  context.globalCompositeOperation = "lighter";
+  context.translate(width / 2, height / 2);
+  context.scale(12, 8);
+  context.lineWidth = 0.2;
 
   //Color Range
   var color = d3.scalePow()
@@ -34,27 +26,26 @@ window.Lorenz = function(selector, undefined){
                 .exponent(1.5)
                 .interpolate(d3.interpolateRgb);
 
-  function spawnSprite(location) {
+  function spawnSprite(x, y) {
     //Generate x, y location from mouse (given), or else on the edges of the screen
-    var x, y;
-    if(typeof location !== "undefined")
-      x = location[0], y = location[1];
-    else if(Math.random() > 0.5)
-      x = width * Math.random(), y = (Math.random() > 0.5) * height;
-    else
-      y = height * Math.random(), x = (Math.random() > 0.5) * width;
-    
+    if(typeof x == "undefined" && typeof y == "undefined"){
+      if(Math.random() > 0.5)
+        x = width * Math.random(), y = (Math.random() > 0.5) * height;
+      else
+        y = height * Math.random(), x = (Math.random() > 0.5) * width;
+    }
+
     //Account for scaling factor and centering
     x = (x - width/2) / 12;
     y = (y - height/2) / 8;
-    
+
     var z = 10 + (Math.random() - 0.5) * 10,
         n = Math.random() * 3 + 1, //different speeds
         t1 = Math.random() * 5000 + 15000; // time (sec) it's allowed to swirl for
-    
-    
+
+
     var offset = Math.random() * 30; //to vary the colors more
-    
+
     var t = d3.timer(function(t0) {
       for (var i = 0; i < n; ++i) {
         context.strokeStyle = color(z + offset);
@@ -78,13 +69,15 @@ window.Lorenz = function(selector, undefined){
     context.fillRect(-width/2, -height/2, width, height);
     context.restore();
   }
-  
+
   d3.interval(function(elapsedTime){spawnSprite();}, 900);
   d3.interval(function(elapsedTime){fadeTick();}, 180);
   for(var i = 0; i < 20; i++)
     spawnSprite();
-  
-  $("body").on("mousedown click touchstart tap touch", function(e){
-    spawnSprite([e.pageX, e.pageY]);
-  });
+
+  return {
+    onclicktouch: function(x, y){
+      spawnSprite(x, y);
+    }
+  };
 };
