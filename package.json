@@ -5,9 +5,7 @@
   "main": "src/server.coffee",
   "scripts": {
     "start": "NODE_ENV=production coffee src/server.coffee",
-    "build": "gulp build",
-    "prebuild": "npm install --silent; npm prune",
-    "test": "snyk test"
+    "build": "gulp build"
   },
   "repository": {
     "type": "git",
