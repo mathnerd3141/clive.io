@@ -1,6 +1,0 @@
-#!/bin/sh
-
-export PM2_HOME=/home/www/.pm2
-
-npm run build
-pm2 restart clive.io

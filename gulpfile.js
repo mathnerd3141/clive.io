@@ -3,8 +3,7 @@ const browserSync = require('browser-sync').create();
 const gulpSequence = require('gulp-sequence').use(gulp);
 
 const PATHS = {
-  server: "src/server.coffee",
-  pugsrc: "src/views/index.pug",
+  pugsrc: "src/views/**/*.pug",
   pugwatch: "src/views/**/*.{pug,html,md}",
   sass: "src/styles/**/*.{scss,sass}",
   coffee: "src/scripts/**/*.coffee",
@@ -18,16 +17,13 @@ function swallowError(e){
   this.emit('end');
 }
 
-gulp.task('serve', ['build'], function() {
-  const nodemon = require('gulp-nodemon');
-
-  nodemon({
-    script: PATHS.server
-  });
-
-  browserSync.init({
-    proxy: 'localhost:' + process.env.PORT,
-    online: false
+gulp.task('serve-dev', ['build'], function() {
+  browserSync({
+    serveStatic: ['./dist'],
+    port: process.env.PORT || 3000,
+    online: false,
+    open: "local",
+    logSnippet: false
   });
 
   gulp.watch([PATHS.js, PATHS.coffee], ['js']);
@@ -36,12 +32,7 @@ gulp.task('serve', ['build'], function() {
   gulp.watch(PATHS.static, ['static']);
 });
 
-gulp.task('build', gulpSequence('rmfr', ['js', 'pug', 'static'], 'sass'));
-
-gulp.task('rmfr', function(){
-  const rmfr = require('rmfr');
-  return rmfr(PATHS.dist);
-});
+gulp.task('build', gulpSequence(['js', 'pug', 'static'], 'sass'));
 
 gulp.task('js', function() {
   const coffee = require('gulp-coffee');
@@ -94,4 +85,4 @@ gulp.task('static', function() {
     .pipe(browserSync.stream());
 });
 
-gulp.task('default', ['serve']);
+gulp.task('default', ['serve-dev']);

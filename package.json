@@ -18,24 +18,19 @@
   },
   "homepage": "https://clive.io",
   "dependencies": {
-    "express": "^4.13.4",
-    "helmet": "^3.2.0",
-    "request": "^2.81.0"
-  },
-  "devDependencies": {
     "browser-sync": "^2.18.4",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
     "gulp-coffee": "^2.3.3",
     "gulp-concat": "^2.6.1",
-    "gulp-nodemon": "^2.2.1",
     "gulp-pug": "^3.2.0",
     "gulp-purifycss": "^0.2.0",
     "gulp-sass": "^3.0.0",
     "gulp-sequence": "^0.4.6",
     "gulp-uglify": "^3.0.0",
-    "gulp-uglifycss": "^1.0.8",
-    "rmfr": "^1.0.3",
-    "snyk": "^1.36.2"
+    "gulp-uglifycss": "^1.0.8"
+  },
+  "devDependencies": {
+    "gulp-nodemon": "^2.2.1"
   }
 }
