@@ -13,7 +13,7 @@ deploy:
   access_key_id: GOOGCS2ANU2MAVQYD3GJ
   secret_access_key:
     secure: "bJQVGZ61U8XDbEbiPyCSbRS61DMj6LzFYChpJX4HAuG2/ijlhyXN/fks9Hmr6fSHx9OmSMkRToVUxH7WJsBB3NuSrorWGrDVsaNogG7UR92c2Wtr9chxJLykiW2LpfIt9u/vciPeJUycEVi9vWcrl24FiK4SXAVpi7wy1LSK03CUbGpxfuvnnqY/7g7psmyYQM4rK9u16gdkAQ5pjhngaxMirYdZLK/cqrV8KcLfxkd188CySsrYwN/iu0dNCQjaQQNRAMDRHAPcnNTctgnZO5VsWQ5jVFtLbNLJEOlYuIRdG7lO1Z7v9yASKr/hSxsYTSVRZQw81Z+wYY8zHDw5Vm/jI4l7LtT40VpQHN+UipjDAY5ndg17uzcJcLaIEbxTb/m8WjaQsEbjxPacVaGH7pJGGLb252JLFLYhQ8USMZg+T+lcRm+mlwl4Ex57HpMkSe3h3faVegRbASwzwfKeud+RZXA6dePgXnaEVHT5F4qAYYaC78vd4GcVaoj7vlGH2OqinS5JHBu7FfDCZC+U/aIR0Coch+dogGrhd1hudoExRVY6lRYjJYflvP5PYfeJvb4su/DG0mlYRG4etizckq6ZBjDFGe6LevOqNAxCc1X0derYd7KMlvraIEjBlWQc/CtcXCDcrSp4Ul1paw+tFPY0B/M6F1gYEF20ErOrY94="
-  bucket: clive-io
+  bucket: clive.io
   skip_cleanup: true
   acl: public-read
   local-dir: dist
