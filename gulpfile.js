@@ -18,7 +18,7 @@ function swallowError(e){
 }
 
 gulp.task('serve-dev', ['build'], function() {
-  browserSync({
+  browserSync.init({
     serveStatic: ['./dist'],
     port: process.env.PORT || 3000,
     online: false,
