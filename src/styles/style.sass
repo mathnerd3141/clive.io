@@ -36,6 +36,7 @@ p
   content: "linkedin"
 
 div#splash-wrap, canvas#splash
+  user-select: none
   position: fixed
   top: 0
   bottom: 0
@@ -74,13 +75,18 @@ aside#simulation-info
   z-index: 1000
   margin: 1em auto
   max-width: 60%
+  @media(max-height: 500px)
+    font-size: 4vh
+    max-width: 90%
+    margin: 0.5em auto
   text-shadow: 0 0 0.3em #000000
   @media(max-aspect-ratio: $aspectthreshold)
     max-width: 95%
 
 #title
   padding-top: 7em
-  padding-right: 1em
+  @media(max-height: 500px)
+    padding-top: 5em
   margin-top: 0
   @media(max-aspect-ratio: $aspectthreshold)
     padding-top: 6em
@@ -91,6 +97,7 @@ aside#simulation-info
       display: block
     vertical-align: middle
   #logo img
+    user-select: none
     height: 6em
     width: 6em
     opacity: 0.7
@@ -99,11 +106,20 @@ aside#simulation-info
       opacity: 1
   h1
     font-size: 3em
-    margin: -0.2em 0.8em 0 0.5em
-  aside a
-    display: block
+    margin: -0.2em 0.5em 0 0.5em
     @media(max-aspect-ratio: $aspectthreshold)
-      display: inline-block
+      font-size: 2.5em
+      margin: 0 0 0.2em 0
+  ul
+    margin: 0 auto
+    padding: 0
+    width: 8em
+    text-align: center
+  ul li
+    list-style-type: none
+    display: inline-block
+  ul a
+    display: block
     font-size: 1.5em
     height: 1.3em
     width: 1.3em
@@ -111,12 +127,15 @@ aside#simulation-info
     border-radius: 0.2em
     margin: 0.2em
     .fa
-      font-size: 0.01em
-      &::before
-        font-size: 100em
-    .fa.fa-envelope
-      font-size: 0.009em
-      vertical-align: 10em
+      span
+        display: inline-block
+        overflow: hidden
+        height: 1px
+        width: 1px
+        opacity: 0.01
+    .fa.fa-envelope, .fa.fa-file, .fa.fa-key
+      font-size: 0.9em
+      vertical-align: 0.1em
     transition: color 0.5s, background-color 0.5s, text-shadow 0.5s
     &:hover
       background-color: white
@@ -128,16 +147,19 @@ aside#simulation-info
     display: inline-block
   &>span
     display: block
+    margin: 0.4em
   a
     text-decoration: underline
 
 #cta //"call to action"
+  display: none
+  user-select: none
   margin: 1em auto 4em auto
   display: inline-block
   a
     display: inline-block
     min-width: 4em
-    margin: 1em
+    margin: 0.5em
     font-weight: bold
     padding: 0.2em 0.4em
     border: solid 0.05em white

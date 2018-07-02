@@ -27,15 +27,29 @@ html(lang="en")
   body
     div#title
       span#logo
-        img(src="img/logo-min-white.png" alt="[awesome personal logo]")
+        img(src="img/logo-min-white.png" alt="[awesome personal logo]" aria-hidden="true")
       h1 Clive Chan
-      aside
-        a(href="mailto:cc@clive.io" title="Email: cc@clive.io" aria-label="email")
-          i.fa.fa-envelope(aria-hidden="true") Email: cc@clive.io.
-        a(href="https://github.com/cchan" title="GitHub: cchan" aria-label="github")
-          i.fa.fa-github(aria-hidden="true") GitHub: cchan.
-        a(href="https://linkedin.com/in/cchan3141" title="LinkedIn: cchan3141" aria-label="linkedin")
-          i.fa.fa-linkedin(aria-hidden="true") LinkedIn: cchan3141.
+      ul
+        li
+          a(href="mailto:cc@clive.io" title="Email: cc@clive.io" aria-label="email")
+            i.fa.fa-envelope(aria-hidden="true")
+              span(aria-hidden="false") Email: cc@clive.io 
+        li
+          a(href="https://github.com/cchan" title="GitHub: cchan" aria-label="github")
+            i.fa.fa-github(aria-hidden="true")
+              span(aria-hidden="false") GitHub: cchan 
+        li
+          a(href="https://linkedin.com/in/cchan3141" title="LinkedIn: cchan3141" aria-label="linkedin")
+            i.fa.fa-linkedin(aria-hidden="true")
+              span(aria-hidden="false") LinkedIn: cchan3141 
+        li
+          a(href="https://keybase.io/cchan3141" title="Keybase: cchan3141" aria-label="keybase")
+            i.fa.fa-key(aria-hidden="true")
+              span(aria-hidden="false") Keybase: cchan3141 
+        li
+          a(href="https://clive.io/resume" title="Resume: https://clive.io/resume" aria-label="resume")
+            i.fa.fa-file(aria-hidden="true")
+              span(aria-hidden="false") Resume: https://clive.io/resume 
     
     p#tagline
       span
@@ -55,10 +69,12 @@ html(lang="en")
         span UWaterloo Software Engineering.
     
     div#cta
-      a(href="https://storage.googleapis.com/clive.io/resume.pdf" title="Resume") r&eacute;sum&eacute;
+      a(href="https://clive.io/resume" title="Resume") r&eacute;sum&eacute;
+      | 
+      a(href="mailto:cc@clive.io" title="Email") email
       //- add more here in the future
     
-    div#splash-wrap
+    div#splash-wrap(aria-hidden="true")
       canvas#splash
       aside#simulation-info(onclick="" aria-haspopup="true")
         div#simulation-name
