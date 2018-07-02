@@ -109,6 +109,7 @@ aside#simulation-info
     width: 1.3em
     line-height: 1.3em
     border-radius: 0.2em
+    margin: 0.2em
     .fa
       font-size: 0.01em
       &::before
@@ -116,16 +117,17 @@ aside#simulation-info
     .fa.fa-envelope
       font-size: 0.009em
       vertical-align: 10em
-    transition: color 0.5s, background-color 0.5s
+    transition: color 0.5s, background-color 0.5s, text-shadow 0.5s
     &:hover
       background-color: white
       color: black
+      text-shadow: none
 
 #tagline
-  &>span
-    padding: 0.25em 0.2em
   span
     display: inline-block
+  &>span
+    display: block
   a
     text-decoration: underline
 

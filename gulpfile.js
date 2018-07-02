@@ -1,13 +1,13 @@
 const gulp = require('gulp');
 const browserSync = require('browser-sync').create();
 const gulpSequence = require('gulp-sequence').use(gulp);
+const pump = require('pump');
 
 const PATHS = {
   pugsrc: "src/views/**/*.pug",
   pugwatch: "src/views/**/*.{pug,html,md}",
   sass: "src/styles/**/*.{scss,sass}",
-  coffee: "src/scripts/**/*.coffee",
-  js: "src/scripts/**/*.js",
+  ts: "src/scripts/**/*.ts",
   static: "static/**/*.*",
   dist: "dist"
 };
@@ -26,30 +26,30 @@ gulp.task('serve-dev', ['build'], function() {
     logSnippet: false
   });
 
-  gulp.watch([PATHS.js, PATHS.coffee], ['js']);
+  gulp.watch(PATHS.ts, ['ts']);
   gulp.watch(PATHS.pugwatch, ['pug']);
   gulp.watch(PATHS.sass, ['sass']);
   gulp.watch(PATHS.static, ['static']);
 });
 
-gulp.task('build', gulpSequence(['js', 'pug', 'static'], 'sass'));
+gulp.task('build', gulpSequence(['ts', 'pug', 'static'], 'sass'));
 
-gulp.task('js', function() {
-  const coffee = require('gulp-coffee');
+gulp.task('ts', function(cb) {
+  const ts = require('gulp-typescript');
   const uglify = require('gulp-uglify');
   const concat = require('gulp-concat');
   const es = require('event-stream');
 
-  es.merge(
-    gulp.src(PATHS.coffee)
-      .pipe(coffee({bare: true}))
-      .on('error', swallowError),
-    gulp.src(PATHS.js)
-  )
-    .pipe(concat('script.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest(PATHS.dist))
-    .pipe(browserSync.stream());
+  pump([
+      gulp.src(PATHS.ts),
+      ts({ module: 'none' }),
+      concat('script.js'),
+      uglify(),
+      gulp.dest(PATHS.dist),
+      browserSync.stream()
+    ],
+    cb
+  );
 });
 
 gulp.task('pug', function() {

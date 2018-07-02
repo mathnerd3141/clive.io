@@ -22,7 +22,7 @@ html(lang="en")
     meta(name="og:email" content="cc@clive.io")
     
     //- load only the "necessary" styles - normalize since it'll overwrite, then custom style. Montserrat/FontAwesome are non-critical.
-    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" integrity="sha256-HxaKz5E/eBbvhGMNwhWRPrAR9i/lG1JeT4mD6hCQ7s4=" crossorigin="anonymous")
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" integrity="sha256-oSrCnRYXvHG31SBifqP2PM1uje7SJUyX0nTwO2RJV54=" crossorigin="anonymous")
     link(rel="stylesheet" href="style.css")
   body
     div#title
@@ -39,35 +39,20 @@ html(lang="en")
     
     p#tagline
       span
-        a(href="https://www.bloomberg.com/professional/" title="Bloomberg Professional Service") Bloomberg
-        |  software engineering intern.
-      |  
+        span
+          a(href="https://www.bloomberg.com/professional/" title="Bloomberg Professional Service") Bloomberg
+          |  ML intern,
+        | 
+        span
+          a(href="https://teamwaterloop.ca" title="Team Waterloop") Hyperloop
+          |  technical lead,
+        | 
+        span
+          | future 
+          a(href="https://tesla.com/autopilot" title="Tesla Autopilot") Tesla Autopilot
+          |  intern.
       span
-        a(href="https://teamwaterloop.ca" title="Team Waterloop") Hyperloop
-        |  technical lead & former embedded software lead.
-      //- Zenith Suborbitals cofounder.
-      |  
-      span
-        span Founder of a 
-          a(href="http://lexhack.org" title="LexHack") hackathon
-          | ,
-        |  
-        span a 
-          a(href="http://vitaedev.com" title="VitaeDev") startup
-          | ,
-        |  
-        span and several 
-          a(href="https://lexscibowl.org" title="LexSciBowl") STEM
-          |  
-          a(href="https://www.facebook.com/lexopensource/" title="OpenSource MakerSpace") outreach
-          |  
-          a(href="https://www.youtube.com/watch?v=dhyWVuB6GBc&t=43m46s" title="\"Cracking the Co-op\" Speaker Panel") initiatives
-          | .
-      |  
-      span
-        span UWaterloo Software Engineering Co-op,
-        |  
-        span Class of 2021.
+        span UWaterloo Software Engineering.
     
     div#cta
       a(href="https://storage.googleapis.com/clive.io/resume.pdf" title="Resume") r&eacute;sum&eacute;
@@ -82,6 +67,13 @@ html(lang="en")
     link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat")
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous")
     
-    script(defer src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.9.1/d3.min.js" integrity="sha256-jJlsVPlSwQyGokYi0JgmrFRihc7ILE3Id8AB0dpr0JA=" crossorigin="anonymous")
-    script(defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous")
+    script(defer src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js" integrity="sha256-hYXbQJK4qdJiAeDVjjQ9G0D6A0xLnDQ4eJI9dkm7Fpk=" crossorigin="anonymous")
+    script(defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous")
     script(defer src="script.js")
+    script.
+      (function(C,l,i,v,e,I,O){C['GoogleAnalyticsObject']=e;C[e]=C[e]||function(){
+      (C[e].q=C[e].q||[]).push(arguments)},C[e].l=1*new Date();I=l.createElement(i),
+      O=l.getElementsByTagName(i)[0];I.async=1;I.src=v;O.parentNode.insertBefore(I,O)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-62605323-2', 'auto');
+      ga('send', 'pageview');
