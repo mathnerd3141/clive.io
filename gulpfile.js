@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const browserSync = require('browser-sync').create();
 const gulpSequence = require('gulp-sequence').use(gulp);
 const pump = require('pump');
+const sourceMaps = require('gulp-sourcemaps');
 
 const PATHS = {
   pugsrc: "src/views/**/*.pug",
@@ -36,15 +37,18 @@ gulp.task('build', gulpSequence(['ts', 'pug', 'static'], 'sass'));
 
 gulp.task('ts', function(cb) {
   const ts = require('gulp-typescript');
+  const tsConfig = require('./tsconfig.json')
   const uglify = require('gulp-uglify');
   const concat = require('gulp-concat');
   const es = require('event-stream');
 
   pump([
       gulp.src(PATHS.ts),
-      ts({ module: 'none' }),
+      sourceMaps.init(),
+      ts(tsConfig.compilerOptions),
       concat('script.js'),
       uglify(),
+      sourceMaps.write(),
       gulp.dest(PATHS.dist),
       browserSync.stream()
     ],
@@ -70,11 +74,13 @@ gulp.task('sass', function() {
   const uglify = require('gulp-uglifycss');
 
   return gulp.src(PATHS.sass)
+    .pipe(sourceMaps.init())
     .pipe(sass({outputStyle:'compressed'}).on('error', sass.logError))
     .pipe(autoprefixer())
     .pipe(concat('style.css'))
     .pipe(purify(['./dist/**.html', './dist/**.js']))
     .pipe(uglify())
+    .pipe(sourceMaps.write())
     .pipe(gulp.dest(PATHS.dist))
     .pipe(browserSync.stream());
 });

@@ -1,3 +1,4 @@
+// Waiting on https://github.com/Microsoft/TypeScript/issues/10178
 /// <reference types="d3"/>
 
 // Lorenz Strange Attractor

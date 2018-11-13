@@ -1,13 +1,20 @@
 /// <reference types="jquery"/>
 /// <reference path="./Lorenz"/>
+/// <reference path="./GridSearch"/>
 
 $(function() {
   // Gravitation, Swarm intelligence, Delaunay face, machine learning, stereoscopic simulations, Hyperloop!
-  const animations = [{
+  const animations = [
+    {
       title: 'Lorenz Strange Attractor',
       desc: 'Click or tap anywhere to add streamers!',
       init: Lorenz,
     },
+    //{
+    //  title: 'A* Grid Search',
+    //  desc: '',
+    //  init: GridSearch,
+    //},
   ];
 
   const getDims = () => {

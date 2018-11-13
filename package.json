@@ -29,9 +29,11 @@
     "gulp-purifycss": "^0.2.0",
     "gulp-sass": "^4.0.1",
     "gulp-sequence": "^1.0.0",
+    "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.0",
     "gulp-uglifycss": "^1.0.8",
-    "pump": "^3.0.0"
+    "pump": "^3.0.0",
+    "ts-polyfill": "^3.0.1"
   },
   "devDependencies": {
     "gulp-nodemon": "^2.2.1",
