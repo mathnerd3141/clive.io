@@ -52,8 +52,8 @@ aside#simulation-info
   font-size: 0.6em
   z-index: 200
   right: 0
-  bottom: -3em
-  transition: bottom 1s
+  bottom: -3.4em
+  transition: bottom 0.8s
   &:hover, &:focus, &:active
     bottom: -1em
     cursor: pointer
@@ -63,12 +63,14 @@ aside#simulation-info
   text-align: right
   color: $almostwhite
   *
-    transition: opacity 1s
+    transition: opacity 0.8s
     opacity: 0
   #simulation-name
     margin-bottom: 0.5em
     font-size: 1.3em
     opacity: 0.5
+  #simulation-note div
+    margin-top: 0.4em;
 
 #title, #tagline, #cta
   position: relative

@@ -8,7 +8,7 @@ $(function() {
   const animations = [
     {
       title: 'Lorenz Strange Attractor',
-      desc: 'A beautiful mathematical shape. Click or tap anywhere to add streamers!',
+      desc: 'A beautiful chaotic attractor. Click or tap anywhere to add streamers.',
       init: Lorenz,
       scaling: 'keep-aspect-ratio'
     },
@@ -90,6 +90,6 @@ $(function() {
   // Now that it's loaded, fade in and add content
   $('canvas#splash').css({ opacity: 1 });
   $('#simulation-name').text(animation.title);
-  $('#simulation-note').text(animation.desc);
+  $('#simulation-note').html(animation.desc + "<div>Reload for another animation!</div>");
   return $('#simulation-info').show();
 });
