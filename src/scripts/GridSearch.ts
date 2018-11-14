@@ -86,11 +86,27 @@ class PriorityQueueSet<T> {
 }
 
 const GridSearch = (selector : string) : { onclicktouch : (x: number, y: number) => void } => {
-  const gridWidth = 10, gridHeight = 10;
+  let width, height, canvas = d3.select(selector);
+  let context = (<HTMLCanvasElement> canvas.node()).getContext("2d");
+  width = $(selector).outerWidth();
+  height = $(selector).outerHeight();
+
+  // set how the new images are drawn onto the existing image.
+  context.globalCompositeOperation = "source-over";
+  //context.translate(width / 2, height / 2);
+  //context.scale(12, 8);
+  //context.lineWidth = 0.2;
+
+  const gridWidth = 40, gridHeight = 40;
   let grid : Array<Array<boolean>>;
   
   function randomize_grid(){
-    grid = Array(gridHeight).fill(0).map(a => Array(gridWidth).fill(0).map(b => Math.random() < 0.4));
+    grid = Array(gridHeight).fill(0).map((a, i) =>
+      Array(gridWidth).fill(0).map((b, j) => {
+        i *= 1.0; j *= 1.0;
+        return -0.4 * Math.random() > (i + j)/(gridHeight + gridWidth) * ((i + j)/(gridHeight + gridWidth) - 1);
+      })
+    );
     grid[0][0] = grid[0][1] = grid[1][0] = grid[1][1] = false;
     grid[gridWidth-1][gridHeight-1] = grid[gridWidth-1][gridHeight-2] =
         grid[gridWidth-2][gridHeight-1] = grid[gridWidth-2][gridHeight-2] = false;
@@ -106,6 +122,7 @@ const GridSearch = (selector : string) : { onclicktouch : (x: number, y: number)
       (y(point1) - y(point2)) * (y(point1) - y(point2)) +
       (x(point1) - x(point2)) * (x(point1) - x(point2))
     );
+    //return Math.abs(y(point1) - y(point2)) + Math.abs(x(point1) - x(point2));
   }
   function heuristic_cost_est(point1, point2){
     return dist_between(point1, point2);
@@ -123,89 +140,119 @@ const GridSearch = (selector : string) : { onclicktouch : (x: number, y: number)
     return Math.floor(point / FUDGE);
   }
 
-  function get<K, V>(map : Map<K, V>, key : K){
+  function get(map : Map<number, number>, key : number) : number{
     if(map.has(key))
       return map.get(key);
     else
       return Infinity;
   }
 
-  function doSearch(){
-    const start = point(0, 0), goal = point(gridHeight - 1, gridWidth - 1);
-    let gScore = new Map<number, number>(), fScore = new Map<number, number>();
-    let closedSet = new Set<number>();
-    let openSet = new PriorityQueueSet<number>((a, b) => get(fScore, a) < get(fScore, b));
+  const start = point(0, 0), goal = point(gridHeight - 1, gridWidth - 1);
+  let gScore, fScore, closedSet, openSet, cameFrom;
+
+  function init_search(){
+    gScore = new Map<number, number>();
+    fScore = new Map<number, number>();
+    closedSet = new Set<number>();
+    openSet = new PriorityQueueSet<number>((a, b) => get(fScore, a) < get(fScore, b));
     openSet.push(start);
-    let cameFrom = new Map<number, number>();
+    cameFrom = new Map<number, number>();
     gScore.set(start, 0);
     fScore.set(start, get(gScore, start) + heuristic_cost_est(start, goal));
-
-    function show_grid(){
-      let strs = [];
-      for(var i = 0; i < gridHeight; i++){
-        let str = [];
-        for(var j = 0; j < gridWidth; j++){
-          if(grid[i][j])
-            str.push("#");
-          else if(closedSet.has(point(i, j)))
-            str.push("x");
-          else if(openSet.has(point(i, j)))
-            str.push("o");
-          else
-            str.push(" ");
-        }
-        strs.push(str);
-      }
-
-      let curr = goal;
-      do{
-        strs[y(curr)][x(curr)] = "@";
-        curr = cameFrom.get(curr);
-      }while(curr != start && curr !== undefined);
-      strs[y(start)][x(start)] = '*';
-      strs[y(goal)][x(goal)] = '!';
-
-      console.log(strs.map(a => a.join('')).join('\n'));
-    }
-
-    while(openSet.size() > 0){
-      let current = openSet.pop();
-      if(current == goal){
-        console.log("SUCCESS");
-        return;
-      }
-      openSet.delete(current);
-      closedSet.add(current);
-      for(var di of [-1, 0, 1]){
-        for(var dj of [-1, 0, 1]){
-          let neighbor = point(y(current) + di, x(current) + dj);
-          if(!valid(neighbor)) continue;
-          if(closedSet.has(neighbor)) continue;// Ignore the neighbor which is already evaluated.
-          let tentative_gScore = get(gScore, current) + dist_between(current, neighbor); // The distance from start to a neighbor
-          if(!openSet.has(neighbor))	// Discover a new node
-            openSet.push(neighbor);
-          if(tentative_gScore < get(gScore, neighbor)){
-            // This is a first known or better path, record it.
-            cameFrom.set(neighbor, current);
-            gScore.set(neighbor, tentative_gScore);
-            fScore.set(neighbor, get(gScore, neighbor) + heuristic_cost_est(neighbor, goal));
-          }
-        }
-      }
-      show_grid();
-    }
-    console.log("FAILED");
   }
 
-  let started = false;
+  let colorgrid : Array<Array<string>>;
+
+  function init_draw(){
+    colorgrid = Array(gridHeight).fill(0).map(a => Array(gridWidth).fill("#555"));
+    colorgrid[y(start)][x(start)] = "#f00";
+    colorgrid[y(goal)][x(goal)] = "#0f0";
+    context.clearRect(0, 0, width, height); // Clear the canvas.
+    for(var i = 0; i < gridHeight; i++){
+      for(var j = 0; j < gridWidth; j++){
+        context.fillStyle = colorgrid[i][j];
+        context.fillRect(i * width / gridWidth, j * height / gridHeight, width / gridWidth, height / gridHeight);  
+      }
+    }
+  }
+
+  function show_grid(){
+    for(var i = 0; i < gridHeight; i++){
+      for(var j = 0; j < gridWidth; j++){
+        if(i == 0 && j == 0 || i == gridHeight - 1 && j == gridWidth - 1)
+          continue;
+        let original = colorgrid[i][j];
+        if(grid[i][j]){
+          colorgrid[i][j] = "black";
+        }
+        else if(closedSet.has(point(i, j))){
+          colorgrid[i][j] = "#339";
+        }
+        else if(openSet.has(point(i, j))){
+          colorgrid[i][j] = "#933";
+        }
+        else{
+          colorgrid[i][j] ="#555";
+        }
+        if(colorgrid[i][j] != original){
+          context.fillStyle = colorgrid[i][j];
+          context.fillRect(i * width / gridWidth, j * height / gridHeight, width / gridWidth, height / gridHeight);
+        }
+      }
+    }
+    let curr = goal;
+    do{
+      colorgrid[y(curr)][x(curr)] = "#0f0";
+      context.fillStyle = "#0f0";
+      context.fillRect(y(curr) * width / gridWidth, x(curr) * height / gridHeight, width / gridWidth, height / gridHeight);
+      curr = cameFrom.get(curr);
+    }while(curr != start && curr !== undefined);
+  }
+
+  function search_iteration(){
+    let current = openSet.pop();
+    if(current == goal) return true;
+    openSet.delete(current);
+    closedSet.add(current);
+    for(var di of [-1, 0, 1]){
+      for(var dj of [-1, 0, 1]){
+        //if(di + dj == 0 || di == dj) continue; // A* doesn't work with manhattan metric apparently?
+        let neighbor = point(y(current) + di, x(current) + dj);
+        if(!valid(neighbor)) continue;
+        if(closedSet.has(neighbor)) continue;// Ignore the neighbor which is already evaluated.
+        let tentative_gScore = get(gScore, current) + dist_between(current, neighbor); // The distance from start to a neighbor
+        if(!openSet.has(neighbor))	// Discover a new node
+          openSet.push(neighbor);
+        if(tentative_gScore < get(gScore, neighbor)){
+          // This is a first known or better path, record it.
+          cameFrom.set(neighbor, current);
+          gScore.set(neighbor, tentative_gScore);
+          fScore.set(neighbor, get(gScore, neighbor) + heuristic_cost_est(neighbor, goal));
+        }
+      }
+    }
+  }
+
+  function reset(){
+    randomize_grid();
+    init_search();
+    init_draw();
+    window.requestAnimationFrame(iterate_and_show);
+  }
+  function iterate_and_show(){
+    if(search_iteration() || openSet.size() == 0){
+      show_grid();
+      setTimeout(reset, 3000);
+      return;
+    }
+    show_grid();
+    window.requestAnimationFrame(iterate_and_show);
+  }
+  reset();
+
   return {
     onclicktouch: function(x, y){
-      if(!started){
-        console.log("CLICKTOUCH");
-        randomize_grid();
-        doSearch();
-        started = true;
-      }
+      // TODO
     }
   };
 };

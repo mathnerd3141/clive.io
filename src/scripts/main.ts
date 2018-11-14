@@ -1,4 +1,5 @@
 /// <reference types="jquery"/>
+/// <reference types="js-cookie"/>
 /// <reference path="./Lorenz"/>
 /// <reference path="./GridSearch"/>
 
@@ -7,15 +8,26 @@ $(function() {
   const animations = [
     {
       title: 'Lorenz Strange Attractor',
-      desc: 'Click or tap anywhere to add streamers!',
+      desc: 'A beautiful mathematical shape. Click or tap anywhere to add streamers!',
       init: Lorenz,
+      scaling: 'keep-aspect-ratio'
     },
-    //{
-    //  title: 'A* Grid Search',
-    //  desc: '',
-    //  init: GridSearch,
-    //},
+    {
+      title: 'A* Grid Search',
+      desc: 'A simple pathfinding algorithm.',
+      init: GridSearch,
+      scaling: 'stretch'
+    },
   ];
+
+  // Pick a random animation.
+  let animationIndex;
+  let prevAnimationIndex = Cookies.get('animationIndex') || -1;
+  do{
+    animationIndex = Math.floor(Math.random() * animations.length);
+  } while(animations.length > 1 && animationIndex == prevAnimationIndex);
+  Cookies.set('animationIndex', animationIndex);
+  let animation = animations[animationIndex];
 
   const getDims = () => {
     return {
@@ -32,7 +44,13 @@ $(function() {
   // Make the canvas automatically resize without redrawing (CSS resize only)
   $(window).resize(() => {
     let curr_dims = getDims();
-    $('canvas#splash').css(curr_dims.ratio > orig_dims.ratio ? {
+    if(animation.scaling == 'stretch') {
+      $('canvas#splash').css({
+        width: curr_dims.width,
+        height: curr_dims.height
+      });
+    } else if(animation.scaling == 'keep-aspect-ratio') {
+      $('canvas#splash').css(curr_dims.ratio > orig_dims.ratio ? {
         width: curr_dims.width,
         height: curr_dims.width / orig_dims.ratio,
         'margin-left': 0,
@@ -43,22 +61,30 @@ $(function() {
         'margin-left': (curr_dims.width - curr_dims.height * orig_dims.ratio) / 2,
         'margin-top': 0
       });
+    }
   }).resize();
 
   // Deal with scaling problems for onclick/touch
   $(window).on("mousedown click touchstart tap touch", (e) => {
     let curr_dims = getDims();
-    let scale = curr_dims.ratio > orig_dims.ratio ?
-      curr_dims.width / orig_dims.width :
-      curr_dims.height / orig_dims.height;
-    return props.onclicktouch(
-      (e.pageX - parseInt($('canvas#splash').css('margin-left'))) / scale,
-      (e.pageY - parseInt($('canvas#splash').css('margin-top'))) / scale
-    );
+    if(animation.scaling == 'stretch') {
+      return props.onclicktouch(
+        (e.pageX) / (curr_dims.width / orig_dims.width),
+        (e.pageY) / (curr_dims.height / orig_dims.height)
+      );
+    }
+    else if(animation.scaling == 'keep-aspect-ratio') {
+      let scale = curr_dims.ratio > orig_dims.ratio ?
+        curr_dims.width / orig_dims.width :
+        curr_dims.height / orig_dims.height;
+      return props.onclicktouch(
+        (e.pageX - parseInt($('canvas#splash').css('margin-left'))) / scale,
+        (e.pageY - parseInt($('canvas#splash').css('margin-top'))) / scale
+      );
+    }
   });
 
   // Fetch and run the simulation
-  let animation = animations[Math.floor(Math.random() * animations.length)];
   let props = animation.init("canvas#splash");
 
   // Now that it's loaded, fade in and add content

@@ -20,6 +20,7 @@
   "dependencies": {
     "@types/d3": "^5.0.0",
     "@types/jquery": "^3.3.4",
+    "@types/js-cookie": "^2.2.0",
     "browser-sync": "^2.24.5",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^5.0.0",

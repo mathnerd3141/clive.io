@@ -17,7 +17,7 @@ const Lorenz = (selector : string) : { onclicktouch : (x: number, y: number) => 
   height = $(selector).outerHeight();
 
   // set how the new images are drawn onto the existing image. 'lighter' will  display the new over the old
-  context.globalCompositeOperation = "lighter";
+  context.globalCompositeOperation = "source-over";
   context.translate(width / 2, height / 2);
   context.scale(12, 8);
   context.lineWidth = 0.2;
