@@ -3,6 +3,10 @@ const browserSync = require('browser-sync').create();
 const gulpSequence = require('gulp-sequence').use(gulp);
 const pump = require('pump');
 const sourceMaps = require('gulp-sourcemaps');
+const changed = require('gulp-cached');
+const gulpif = require('gulp-if');
+
+const PROD = !!process.env.PROD;
 
 const PATHS = {
   pugsrc: "src/views/**/*.pug",
@@ -15,7 +19,8 @@ const PATHS = {
 
 function swallowError(e){
   console.error(e.toString());
-  this.emit('end');
+  if(!PROD)
+    this.emit('end');
 }
 
 gulp.task('serve-dev', ['build'], function() {
@@ -40,17 +45,17 @@ gulp.task('ts', function(cb) {
   const tsConfig = require('./tsconfig.json')
   const uglify = require('gulp-uglify');
   const concat = require('gulp-concat');
-  const es = require('event-stream');
 
   pump([
       gulp.src(PATHS.ts),
-      sourceMaps.init(),
+      changed(PATHS.dist),
+      gulpif(!PROD, sourceMaps.init()),
       ts(tsConfig.compilerOptions),
       concat('script.js'),
       uglify(),
-      sourceMaps.write(),
+      gulpif(!PROD, sourceMaps.write()),
       gulp.dest(PATHS.dist),
-      browserSync.stream()
+      gulpif(!PROD, browserSync.stream())
     ],
     cb
   );
@@ -63,7 +68,7 @@ gulp.task('pug', function() {
     .pipe(pug())
     .on('error', swallowError)
     .pipe(gulp.dest(PATHS.dist))
-    .pipe(browserSync.stream());
+    .pipe(gulpif(!PROD, browserSync.stream()));
 });
 
 gulp.task('sass', function() {
@@ -74,21 +79,21 @@ gulp.task('sass', function() {
   const uglify = require('gulp-uglifycss');
 
   return gulp.src(PATHS.sass)
-    .pipe(sourceMaps.init())
+    .pipe(gulpif(!PROD, sourceMaps.init()))
     .pipe(sass({outputStyle:'compressed'}).on('error', sass.logError))
     .pipe(autoprefixer())
     .pipe(concat('style.css'))
     .pipe(purify(['./dist/**.html', './dist/**.js']))
     .pipe(uglify())
-    .pipe(sourceMaps.write())
+    .pipe(gulpif(!PROD, sourceMaps.write()))
     .pipe(gulp.dest(PATHS.dist))
-    .pipe(browserSync.stream());
+    .pipe(gulpif(!PROD, browserSync.stream()));
 });
 
 gulp.task('static', function() {
   return gulp.src(PATHS.static)
     .pipe(gulp.dest(PATHS.dist))
-    .pipe(browserSync.stream());
+    .pipe(gulpif(!PROD, browserSync.stream()));
 });
 
 gulp.task('default', ['serve-dev']);

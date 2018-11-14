@@ -186,13 +186,13 @@ const GridSearch = (selector : string) : { onclicktouch : (x: number, y: number)
           colorgrid[i][j] = "black";
         }
         else if(closedSet.has(point(i, j))){
-          colorgrid[i][j] = "#339";
+          colorgrid[i][j] = "#115";
         }
         else if(openSet.has(point(i, j))){
-          colorgrid[i][j] = "#933";
+          colorgrid[i][j] = "#511";
         }
         else{
-          colorgrid[i][j] ="#555";
+          colorgrid[i][j] ="#222";
         }
         if(colorgrid[i][j] != original){
           context.fillStyle = colorgrid[i][j];
@@ -202,8 +202,8 @@ const GridSearch = (selector : string) : { onclicktouch : (x: number, y: number)
     }
     let curr = goal;
     do{
-      colorgrid[y(curr)][x(curr)] = "#0f0";
-      context.fillStyle = "#0f0";
+      colorgrid[y(curr)][x(curr)] = "#090";
+      context.fillStyle = "#090";
       context.fillRect(y(curr) * width / gridWidth, x(curr) * height / gridHeight, width / gridWidth, height / gridHeight);
       curr = cameFrom.get(curr);
     }while(curr != start && curr !== undefined);
