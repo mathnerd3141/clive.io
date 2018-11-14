@@ -32,13 +32,13 @@ gulp.task('serve-dev', ['build'], function() {
     logSnippet: false
   });
 
-  gulp.watch(PATHS.ts, ['ts']);
-  gulp.watch(PATHS.pugwatch, ['pug']);
-  gulp.watch(PATHS.sass, ['sass']);
-  gulp.watch(PATHS.static, ['static']);
+  gulp.watch(PATHS.ts, gulpSequence('ts', 'cache-bust'));
+  gulp.watch(PATHS.pugwatch, gulpSequence('pug', 'cache-bust'));
+  gulp.watch(PATHS.sass, gulpSequence('sass', 'cache-bust'));
+  gulp.watch(PATHS.static, gulpSequence('static', 'cache-bust'));
 });
 
-gulp.task('build', gulpSequence(['ts', 'pug', 'static'], 'sass'));
+gulp.task('build', gulpSequence(['ts', 'pug', 'static'], 'sass', 'cache-bust'));
 
 gulp.task('ts', function(cb) {
   const ts = require('gulp-typescript');
@@ -63,15 +63,20 @@ gulp.task('ts', function(cb) {
 
 gulp.task('pug', function() {
   const pug = require('gulp-pug');
-  const cachebust = require('gulp-cache-bust');
 
   return gulp.src(PATHS.pugsrc)
     .pipe(pug())
-    .pipe(cachebust({basePath: PATHS.dist + '/'}))
     .on('error', swallowError)
+    .pipe(gulp.dest(PATHS.dist));
+});
+
+gulp.task('cache-bust', function() {
+  const cachebust = require('gulp-cache-bust');
+  gulp.src(PATHS.dist + '/**/*.html')
+    .pipe(cachebust())
     .pipe(gulp.dest(PATHS.dist))
     .pipe(gulpif(!PROD, browserSync.stream()));
-});
+})
 
 gulp.task('sass', function() {
   const sass = require('gulp-sass');
