@@ -63,9 +63,11 @@ gulp.task('ts', function(cb) {
 
 gulp.task('pug', function() {
   const pug = require('gulp-pug');
+  const cachebust = require('gulp-cache-bust');
 
   return gulp.src(PATHS.pugsrc)
     .pipe(pug())
+    .pipe(cachebust({basePath: PATHS.dist + '/'}))
     .on('error', swallowError)
     .pipe(gulp.dest(PATHS.dist))
     .pipe(gulpif(!PROD, browserSync.stream()));
