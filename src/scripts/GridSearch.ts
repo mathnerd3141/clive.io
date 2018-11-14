@@ -182,6 +182,7 @@ const GridSearch = (selector : string) : { onclicktouch : (x: number, y: number)
         change_color(curr, "#090");
         curr = cameFrom.get(curr);
       }while(curr != start && curr !== undefined);
+      change_color(start, "#090");
       return true;
     }
     closedSet.add(current);
