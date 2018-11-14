@@ -1,7 +1,7 @@
 /// <reference types="jquery"/>
 /// <reference types="js-cookie"/>
-/// <reference path="./Lorenz"/>
-/// <reference path="./GridSearch"/>
+/// <reference path="./Lorenz.ts"/>
+/// <reference path="./GridSearch.ts"/>
 
 $(function() {
   // Gravitation, Swarm intelligence, Delaunay face, machine learning, stereoscopic simulations, Hyperloop!
@@ -22,11 +22,11 @@ $(function() {
 
   // Pick a random animation.
   let animationIndex;
-  let prevAnimationIndex = Cookies.get('animationIndex') || -1;
+  let prevAnimationIndex = Cookies.getJSON('animationIndex').i || -1;
   do{
     animationIndex = Math.floor(Math.random() * animations.length);
   } while(animations.length > 1 && animationIndex == prevAnimationIndex);
-  Cookies.set('animationIndex', animationIndex);
+  Cookies.set('animationIndex', {i: animationIndex});
   let animation = animations[animationIndex];
 
   const getDims = () => {

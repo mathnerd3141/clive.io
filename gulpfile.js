@@ -3,7 +3,6 @@ const browserSync = require('browser-sync').create();
 const gulpSequence = require('gulp-sequence').use(gulp);
 const pump = require('pump');
 const sourceMaps = require('gulp-sourcemaps');
-const changed = require('gulp-cached');
 const gulpif = require('gulp-if');
 
 const PROD = !!process.env.PROD;
@@ -17,10 +16,12 @@ const PATHS = {
   dist: "dist"
 };
 
-function swallowError(e){
-  console.error(e.toString());
-  if(!PROD)
-    this.emit('end');
+function swallowError(desc){
+  return function(e){
+    console.error("Error in " + desc + ":" + e.toString());
+    if(!PROD)
+      this.emit('end');
+  }
 }
 
 gulp.task('serve-dev', ['build'], function() {
@@ -32,25 +33,42 @@ gulp.task('serve-dev', ['build'], function() {
     logSnippet: false
   });
 
-  gulp.watch(PATHS.ts, gulpSequence('ts', 'cache-bust'));
-  gulp.watch(PATHS.pugwatch, gulpSequence('pug', 'cache-bust'));
-  gulp.watch(PATHS.sass, gulpSequence('sass', 'cache-bust'));
-  gulp.watch(PATHS.static, gulpSequence('static', 'cache-bust'));
+  gulp.watch(PATHS.ts, function (event) {
+    gulpSequence('ts', 'cache-bust')(function (err) {
+      if (err) console.log(err)
+    })
+  });
+  gulp.watch(PATHS.pugwatch, function (event) {
+    gulpSequence('pug', 'cache-bust')(function (err) {
+      if (err) console.log(err)
+    })
+  });
+  gulp.watch(PATHS.sass, function (event) {
+    gulpSequence('sass', 'cache-bust')(function (err) {
+      if (err) console.log(err)
+    })
+  });
+  gulp.watch(PATHS.static, function (event) {
+    gulpSequence('static', 'cache-bust')(function (err) {
+      if (err) console.log(err)
+    })
+  });
 });
 
 gulp.task('build', gulpSequence(['ts', 'pug', 'static'], 'sass', 'cache-bust'));
 
+const ts = require('gulp-typescript');
+const Hjson = require('hjson');
+const fs = require('fs');
+const tsConfig = Hjson.parse(fs.readFileSync('./tsconfig.json').toString());
+const tsProject = ts.createProject(tsConfig.compilerOptions);
 gulp.task('ts', function(cb) {
-  const ts = require('gulp-typescript');
-  const tsConfig = require('./tsconfig.json')
   const uglify = require('gulp-uglify');
   const concat = require('gulp-concat');
-
   pump([
       gulp.src(PATHS.ts),
-      changed(PATHS.dist),
       gulpif(!PROD, sourceMaps.init()),
-      ts(tsConfig.compilerOptions),
+      tsProject(),
       concat('script.js'),
       uglify(),
       gulpif(!PROD, sourceMaps.write()),
@@ -58,7 +76,8 @@ gulp.task('ts', function(cb) {
       gulpif(!PROD, browserSync.stream())
     ],
     cb
-  );
+  )
+  .on('error', swallowError('ts'));
 });
 
 gulp.task('pug', function() {
@@ -66,7 +85,7 @@ gulp.task('pug', function() {
 
   return gulp.src(PATHS.pugsrc)
     .pipe(pug())
-    .on('error', swallowError)
+    .on('error', swallowError('pug'))
     .pipe(gulp.dest(PATHS.dist));
 });
 
