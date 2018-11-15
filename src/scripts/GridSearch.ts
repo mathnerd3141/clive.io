@@ -166,7 +166,12 @@ const GridSearch = (selector : string) : { onclicktouch : (x: number, y: number)
 
   function change_color(p : number, color : string) {
     context.fillStyle = color;
-    context.fillRect((y(p) * width / gridWidth) | 0, (x(p) * height / gridHeight) | 0, (width / gridWidth) | 0, (height / gridHeight) | 0);
+    context.fillRect(
+      y(p) * width / gridWidth,
+      x(p) * height / gridHeight,
+      width / gridWidth,
+      height / gridHeight
+    );
   }
 
   const BLOCKED = "black";
