@@ -22,7 +22,7 @@ $(function() {
 
   // Pick a random animation.
   let animationIndex;
-  let prevAnimationIndex = Cookies.getJSON('animationIndex').i || -1;
+  let prevAnimationIndex = Cookies.getJSON('animationIndex') && Cookies.getJSON('animationIndex').i || -1;
   do{
     animationIndex = Math.floor(Math.random() * animations.length);
   } while(animations.length > 1 && animationIndex == prevAnimationIndex);
