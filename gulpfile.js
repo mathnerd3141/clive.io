@@ -24,39 +24,6 @@ function swallowError(desc){
   }
 }
 
-gulp.task('serve-dev', ['build'], function() {
-  browserSync.init({
-    serveStatic: ['./dist'],
-    port: process.env.PORT || 3000,
-    online: false,
-    open: "local",
-    logSnippet: false
-  });
-
-  gulp.watch(PATHS.ts, function (event) {
-    gulpSequence('ts', 'cache-bust')(function (err) {
-      if (err) console.log(err)
-    })
-  });
-  gulp.watch(PATHS.pugwatch, function (event) {
-    gulpSequence('pug', 'cache-bust')(function (err) {
-      if (err) console.log(err)
-    })
-  });
-  gulp.watch(PATHS.sass, function (event) {
-    gulpSequence('sass', 'cache-bust')(function (err) {
-      if (err) console.log(err)
-    })
-  });
-  gulp.watch(PATHS.static, function (event) {
-    gulpSequence('static', 'cache-bust')(function (err) {
-      if (err) console.log(err)
-    })
-  });
-});
-
-gulp.task('build', gulpSequence(['ts', 'pug', 'static'], 'sass', 'cache-bust'));
-
 const ts = require('gulp-typescript');
 const Hjson = require('hjson');
 const fs = require('fs');
@@ -91,7 +58,7 @@ gulp.task('pug', function() {
 
 gulp.task('cache-bust', function() {
   const cachebust = require('gulp-cache-bust');
-  gulp.src(PATHS.dist + '/**/*.html')
+  return gulp.src(PATHS.dist + '/**/*.html')
     .pipe(cachebust())
     .pipe(gulp.dest(PATHS.dist))
     .pipe(gulpif(!PROD, browserSync.stream()));
@@ -122,4 +89,37 @@ gulp.task('static', function() {
     .pipe(gulpif(!PROD, browserSync.stream()));
 });
 
-gulp.task('default', ['serve-dev']);
+gulp.task('build', gulp.series(gulp.parallel('ts', 'pug', 'static'), 'sass', 'cache-bust'));
+
+gulp.task('serve-dev', gulp.series('build', function() {
+  browserSync.init({
+    serveStatic: ['./dist'],
+    port: process.env.PORT || 3000,
+    online: false,
+    open: "local",
+    logSnippet: false
+  });
+
+  gulp.watch(PATHS.ts, function (event) {
+    gulpSequence('ts', 'cache-bust')(function (err) {
+      if (err) console.log(err)
+    })
+  });
+  gulp.watch(PATHS.pugwatch, function (event) {
+    gulpSequence('pug', 'cache-bust')(function (err) {
+      if (err) console.log(err)
+    })
+  });
+  gulp.watch(PATHS.sass, function (event) {
+    gulpSequence('sass', 'cache-bust')(function (err) {
+      if (err) console.log(err)
+    })
+  });
+  gulp.watch(PATHS.static, function (event) {
+    gulpSequence('static', 'cache-bust')(function (err) {
+      if (err) console.log(err)
+    })
+  });
+}));
+
+gulp.task('default', gulp.series('serve-dev'));
