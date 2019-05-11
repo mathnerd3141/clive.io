@@ -2,9 +2,7 @@
   "name": "clive.io",
   "version": "0.0.0",
   "description": "Clive Chan's personal homepage",
-  "main": "src/server.coffee",
   "scripts": {
-    "start": "NODE_ENV=production coffee src/server.coffee",
     "build": "gulp build"
   },
   "repository": {
@@ -22,27 +20,22 @@
     "@types/jquery": "^3.3.29",
     "@types/js-cookie": "^2.2.2",
     "browser-sync": "^2.26.3",
+    "del": "^4.1.1",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.0.0",
     "gulp-cache-bust": "^1.4.0",
-    "gulp-cached": "^1.1.1",
-    "gulp-coffee": "^3.0.3",
     "gulp-concat": "^2.6.1",
     "gulp-if": "^2.0.2",
     "gulp-pug": "^4.0.1",
     "gulp-purifycss": "^0.2.0",
     "gulp-sass": "^4.0.2",
-    "gulp-sequence": "^1.0.0",
     "gulp-sourcemaps": "^2.6.5",
+    "gulp-typescript": "^5.0.1",
     "gulp-uglify": "^3.0.2",
     "gulp-uglifycss": "^1.0.8",
     "hjson": "^3.1.2",
-    "pump": "^3.0.0",
-    "ts-polyfill": "^3.3.3"
-  },
-  "devDependencies": {
-    "gulp-nodemon": "^2.4.2",
-    "gulp-typescript": "^5.0.1",
+    "ts-polyfill": "^3.3.3",
     "typescript": "^3.4.1"
-  }
+  },
+  "devDependencies": {}
 }
