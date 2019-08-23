@@ -2,13 +2,8 @@ language: node_js
 node_js:
 - '8'
 install:
-- yarn global add gulp-cli
-- yarn
-cache:
-  yarn: true
-  directories:
-  - node_modules
-  - $(npm config get prefix)/bin/gulp-cli
+- npm i -g gulp
+- npm i
 script: PROD=true gulp build
 deploy:
   provider: gcs

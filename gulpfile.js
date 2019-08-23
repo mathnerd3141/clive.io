@@ -1,6 +1,7 @@
 const gulp = require('gulp');
 const browserSync = require('browser-sync').create();
 const gulpif = require('gulp-if');
+const sourceMaps = require('gulp-sourcemaps');
 
 const PROD = !!process.env.PROD;
 
@@ -52,7 +53,6 @@ gulp.task('sass', function() {
   const sass = require('gulp-sass');
   const autoprefixer = require('gulp-autoprefixer');
   const concat = require('gulp-concat');
-  const sourceMaps = require('gulp-sourcemaps');
 
   return gulp.src(PATHS.sass)
     .pipe(gulpif(!PROD, sourceMaps.init()))
@@ -68,8 +68,10 @@ gulp.task('purifycss', function() {
   const uglify = require('gulp-uglifycss');
 
   return gulp.src(PATHS.dist + '/style.css')
+    .pipe(gulpif(!PROD, sourceMaps.init({loadMaps: true})))
     .pipe(purify(['./build/**.html', './dist/**.js']))
     .pipe(uglify())
+    .pipe(gulpif(!PROD, sourceMaps.write()))
     .pipe(gulp.dest(PATHS.dist))
     .pipe(gulpif(!PROD, browserSync.stream({once: true})));
 });
@@ -77,7 +79,9 @@ gulp.task('purifycss', function() {
 gulp.task('uglifyjs', function(){
   const uglify = require('gulp-uglify');
   return gulp.src(PATHS.build + '/script.js')
+      .pipe(gulpif(!PROD, sourceMaps.init({loadMaps: true})))
       .pipe(uglify())
+      .pipe(gulpif(!PROD, sourceMaps.write()))
       .pipe(gulp.dest(PATHS.dist))
       .pipe(gulpif(!PROD, browserSync.stream({once: true})));
 });
