@@ -35,3 +35,4 @@ jobs:
       with:
         path: 'dist'
         destination: 'clive.io'
+        parent: false
